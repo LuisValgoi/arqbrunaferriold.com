@@ -7,7 +7,8 @@ import namecircle from "../img/name-circle.png";
 export default function Avatar() {
   return (
     <Container>
-      <NameCircle src={namecircle} alt="namecircle" />
+      <Title>BRUNA FERRI</Title>
+      <NameCircle src={namecircle} alt="BRUNA FERRI ARQUITETURA & INTERIORES" />
       <PhotoBorder />
       <Photo src={photo} alt="me" />
     </Container>
@@ -15,12 +16,25 @@ export default function Avatar() {
 }
 
 const Container = tw.div`
+  relative
   flex
   content-center
   justify-center
   items-center
   mb-12 sm:mb-14
 `;
+
+const Title = tw.h1`
+  absolute
+  uppercase
+  text-arq-brown-300
+  font-rockwell
+  text-rcenter
+  text-lg
+  uppercase
+  top-title
+`;
+
 
 const Photo = tw.img`
   bg-center
@@ -39,7 +53,7 @@ const PhotoBorder = tw.div`
   w-48 sm:w-60
   h-48 sm:h-60
   animate-spin-slow
-  bg-gradient-to-r from-arq-green-300 via-arq-green-100 to-arq-brown-200
+  bg-gradient-to-r from-arq-brown-100 via-arq-brown-300 to-arq-brown-700
 `;
 
 const NameCircle = tw.img`

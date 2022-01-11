@@ -7,9 +7,6 @@
     .text-shadow {
       text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2);
     }
-    .button-shadow-arq-green-600 {
-      box-shadow: 4px 4px 0px #6b7774;
-    }
     .button-border-arq-green-600 {
       border: 1px solid #6b7774;
     }
@@ -28,7 +25,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #eff0e9;
+  background-color: #f9f9fa;
   overflow-x: hidden;
   overflow-y: hidden;
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import tw from "tailwind-styled-components";
 
-import texture from "../img/texture-bg-2.svg";
+import texture from "../img/texture-bg.png";
 
 export default function Layout({ children }) {
   return (
@@ -19,7 +19,7 @@ const Container = tw.div`
   flex 
   flex-col
   justify-center
-  bg-arq-green-100
+  bg-app-raw-bg
   content-center 
   items-center
   bg-repeat
