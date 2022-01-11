@@ -51,14 +51,3 @@ const Button = tw.button`
   hover:text-arq-brown-50
   hover:border-arq-brown-700
 `;
-
-const Paragraph = tw.span`
-  text-arq-brown-300
-  text-center
-  uppercase
-  font-rockwell
-  pt-2
-  text-center
-  text-sm sm:text-lg
-  hover:text-arq-brown-50
-`;
