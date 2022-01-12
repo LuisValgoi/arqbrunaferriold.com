@@ -12,7 +12,7 @@
 @layer utilities {
   @variants responsive {
     .text-shadow {
-      text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2);
+      text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
     }
     .button-border-arq-green-600 {
       border: 1px solid #6b7774;
@@ -34,7 +34,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #f9f9fa;
   overflow-x: hidden;
-  overflow-y: hidden;
 }
 
 code {

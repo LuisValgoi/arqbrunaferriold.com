@@ -1,5 +1,6 @@
 import React from "react";
 import tw from "tailwind-styled-components";
+import styled from "styled-components";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faInstagram, faFacebookF, faPinterestP } from '@fortawesome/free-brands-svg-icons'
@@ -24,7 +25,11 @@ const Container = tw.article`
   items-center
 `;
 
-const Brands = tw.div`
+const BrandsInner = styled.div`
+  max-width: 250px;
+`;
+
+const Brands = tw(BrandsInner)`
   flex
   justify-around
   items-center

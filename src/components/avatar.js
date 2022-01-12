@@ -13,7 +13,7 @@ export default function Avatar() {
     <Container>
       <NameCircle $small={isSmallScreen(breakpoint)} src={nameCircle} alt="BRUNA FERRI ARQUITETURA & INTERIORES" />
       <PhotoBorder />
-      <Photo src={photo} alt="me" />
+      <Photo src={photo} alt="me" width="160px" height="160px" />
     </Container>
   );
 }
@@ -57,10 +57,10 @@ const NameCircle = styled.img`
 
   @keyframes spin-name-circle {
     from {
-      transform: ${(props) => (props.$small ? "rotate(0deg) scale(0.93)" : "rotate(0deg) scale(1.15)")};
+      transform: ${(props) => (props.$small ? "rotate(0deg) scale(0.8)" : "rotate(0deg) scale(1)")};
     }
     to {
-      transform: ${(props) => (props.$small ? "rotate(360deg) scale(0.93)" : "rotate(360deg) scale(1.15)")};
+      transform: ${(props) => (props.$small ? "rotate(360deg) scale(0.8)" : "rotate(360deg) scale(1)")};
     }
   }
 `;

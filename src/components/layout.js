@@ -18,8 +18,8 @@ const Container = tw.div`
   h-screen
   flex 
   flex-col
-  justify-center
   bg-app-raw-bg
+  justify-center
   content-center 
   items-center
   bg-repeat
@@ -31,6 +31,8 @@ const Container = tw.div`
 const Content = tw.div`
   align-center
   max-w-screen-sm	
+  absolute
+  top-16
 `;
 
 const InnerContent = tw.div`
