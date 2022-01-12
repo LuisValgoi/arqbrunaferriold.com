@@ -46,9 +46,8 @@ const Paragraph = tw.span`
   text-center
   text-sm sm:text-md
   uppercase
-  font-rockwell
+  font-emperatriz
   rounded
-  pt-2
   ${(props) => props.$hasMB && "mb-2"}
   px-4
   py-1

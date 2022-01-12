@@ -1,3 +1,4 @@
-# https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow:
+Allow: /
+Sitemap: https://arqbrunaferri-bio.netlify.app/sitemap.xml
+Host: https://arqbrunaferri-bio.netlify.app/

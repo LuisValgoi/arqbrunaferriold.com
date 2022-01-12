@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import tw from "tailwind-styled-components";
+import styled from 'styled-components';
 
 import photo from "../img/perfil.png";
-import namecircle from "../img/name-circle.png";
+import nameCircle from "../img/name-circle.png";
+import { useBreakpoint, isSmallScreen } from "../hooks/useBreakpoints";
 
 export default function Avatar() {
+  const breakpoint = useBreakpoint();
+
   return (
     <Container>
-      <Title>BRUNA FERRI</Title>
-      <NameCircle src={namecircle} alt="BRUNA FERRI ARQUITETURA & INTERIORES" />
+      <NameCircle $small={isSmallScreen(breakpoint)} src={nameCircle} alt="BRUNA FERRI ARQUITETURA & INTERIORES" />
       <PhotoBorder />
       <Photo src={photo} alt="me" />
     </Container>
@@ -23,18 +26,6 @@ const Container = tw.div`
   items-center
   mb-12 sm:mb-14
 `;
-
-const Title = tw.h1`
-  absolute
-  uppercase
-  text-arq-brown-300
-  font-rockwell
-  text-rcenter
-  text-lg
-  uppercase
-  top-title
-`;
-
 
 const Photo = tw.img`
   bg-center
@@ -56,10 +47,20 @@ const PhotoBorder = tw.div`
   bg-gradient-to-r from-arq-brown-100 via-arq-brown-300 to-arq-brown-700
 `;
 
-const NameCircle = tw.img`
-  absolute
-  rounded-full
-  animate-spin-super-slow
-  w-56 sm:w-72
-  w-56 sm:h-72
+const NameCircle = styled.img`
+  position: absolute;
+  z-index: 10;
+  animation-name: spin-name-circle;
+  animation-duration: 80000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+
+  @keyframes spin-name-circle {
+    from {
+      transform: ${(props) => (props.$small ? "rotate(0deg) scale(0.93)" : "rotate(0deg) scale(1.15)")};
+    }
+    to {
+      transform: ${(props) => (props.$small ? "rotate(360deg) scale(0.93)" : "rotate(360deg) scale(1.15)")};
+    }
+  }
 `;

@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "emperatriz";
+  src: url("./fonts/emperatriz/emperatriz.woff") format("woff2"), url("./fonts/emperatriz/emperatriz.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
 @layer utilities {
   @variants responsive {
     .text-shadow {

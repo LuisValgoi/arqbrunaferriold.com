@@ -31,7 +31,6 @@ const Container = tw.article`
 
 const Button = tw.button`
   w-full
-  pt-4
   py-2
   px-10
   mb-4
@@ -39,8 +38,8 @@ const Button = tw.button`
   justify-center
   items-center
   uppercase
-  text-arq-brown-300
-  font-rockwell
+  text-arq-brown-700
+  font-emperatriz
   rounded
   bg-transparent
   border-2
