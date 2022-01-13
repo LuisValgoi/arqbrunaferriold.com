@@ -34,7 +34,7 @@ const Content = tw.div`
   align-center
   max-w-screen-sm	
   absolute
-  top-16
+  top-24
 `;
 
 const InnerContent = tw.div`
