@@ -1,0 +1,6 @@
+@font-face {
+  font-family: "emperatriz";
+  src: url("emperatriz.woff") format("woff2"), url("emperatriz.woff") format("woff");
+  font-weight: normal;
+  font-size: 0;
+}
