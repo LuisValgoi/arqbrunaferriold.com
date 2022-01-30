@@ -4,14 +4,11 @@ import styled from 'styled-components';
 
 import photo from "../img/perfil.png";
 import nameCircle from "../img/name-circle.png";
-import { useBreakpoint, isSmallScreen } from "../hooks/useBreakpoints";
 
 export default function Avatar() {
-  const breakpoint = useBreakpoint();
-
   return (
     <Container>
-      <NameCircle $small={isSmallScreen(breakpoint)} src={nameCircle} alt="BRUNA FERRI ARQUITETURA & INTERIORES" />
+      <NameCircle src={nameCircle} alt="BRUNA FERRI ARQUITETURA & INTERIORES" />
       <PhotoBorder />
       <Photo src={photo} alt="me" width="160px" height="160px" />
     </Container>
@@ -29,7 +26,7 @@ const Container = tw.div`
 
 const Photo = tw.img`
   bg-center
-  w-40 sm:w-52
+  w-40
   rounded-full
   bg-cover
   bg-center
@@ -41,8 +38,8 @@ const Photo = tw.img`
 const PhotoBorder = tw.div`
   absolute
   rounded-full
-  w-48 sm:w-60
-  h-48 sm:h-60
+  w-48
+  h-48
   animate-spin-slow
   bg-gradient-to-r from-arq-brown-100 via-arq-brown-300 to-arq-brown-700
 `;
@@ -57,10 +54,10 @@ const NameCircle = styled.img`
 
   @keyframes spin-name-circle {
     from {
-      transform: ${(props) => (props.$small ? "rotate(0deg) scale(0.8)" : "rotate(0deg) scale(1)")};
+      transform: rotate(0deg) scale(0.8);
     }
     to {
-      transform: ${(props) => (props.$small ? "rotate(360deg) scale(0.8)" : "rotate(360deg) scale(1)")};
+      transform: rotate(360deg) scale(0.8);
     }
   }
 `;
