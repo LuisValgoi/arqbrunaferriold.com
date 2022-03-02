@@ -20,6 +20,7 @@ module.exports = {
         "arq-brown-200": "#9f6037",
         "arq-brown-300": "#744c2f",
         "arq-brown-700": "#29261d",
+        "arq-brown-800": "#332013",
         "arq-green-100": "#EFF0E9",
         "arq-green-300": "#BDC9B8",
         "arq-green-400": "#9ea899",
