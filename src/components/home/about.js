@@ -1,7 +1,7 @@
 import React from "react";
 import tw from "tailwind-styled-components";
 
-import { Paragraph, Title } from '../ui/ui';
+import { Paragraph, Title } from '../ui';
 
 const About = () => {
   return (

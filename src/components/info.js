@@ -89,6 +89,7 @@ const Button = tw.span`
   bg-arq-brown-300
   border-2
   border-arq-brown-500
+  mb-2
 
   cursor-pointer
   transform transition duration-300 ease-in-out
