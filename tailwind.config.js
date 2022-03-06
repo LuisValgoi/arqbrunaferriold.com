@@ -19,6 +19,7 @@ module.exports = {
         "arq-brown-100": "#E6E3DE",
         "arq-brown-200": "#9f6037",
         "arq-brown-300": "#744c2f",
+        "arq-brown-500": "#523521",
         "arq-brown-700": "#29261d",
         "arq-brown-800": "#332013",
         "arq-green-100": "#EFF0E9",
@@ -31,6 +32,11 @@ module.exports = {
         68: "17rem",
       },
       minWidth: {
+        300: "300px",
+        500: "500px",
+      },
+      maxWidth: {
+        500: "500px",
         300: "300px"
       },
       height: {
@@ -42,6 +48,7 @@ module.exports = {
       },
       fontFamily: {
         emperatriz: ["emperatriz"],
+        "fira-sans": ["Fira Sans"]
       },
       backgroundSize: {
         "50px": "50px",

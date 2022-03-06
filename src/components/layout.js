@@ -22,6 +22,7 @@ Layout.displayName = "Layout";
 
 const ContainerTexture = styled.div`
   background-color: #fafafa;
+  overflow-x: hidden;
   opacity: 0.8;
   background-size: 10px 10px;
   background-image: repeating-linear-gradient(45deg, #ffffff 0, #ffffff 1px, #fafafa 0, #fafafa 50%);
@@ -43,10 +44,14 @@ const Content = tw.div`
   max-w-screen-sm	
   absolute
   transform transition duration-300 ease-in-out
-  top-12
+  top-8
 `;
 
 const InnerContent = tw.div`
+  flex
+  flex-col
+  justify-center
+  items-center
   align-center
 `;
 

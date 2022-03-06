@@ -29,8 +29,9 @@ const Container = tw.div`
   content-center
   justify-center
   items-center
-  mb-12
+  mb-10
   transform transition duration-300 ease-in-out
+  scale-90
 `;
 
 const Photo = tw.img`
@@ -60,6 +61,7 @@ const NameCircle = styled.img`
   animation-duration: 80000ms;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
+  max-width: 300px;
 
   @keyframes spin-name-circle {
     from {

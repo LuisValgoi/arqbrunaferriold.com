@@ -39,6 +39,7 @@ const Container = tw.article`
   justify-center
   items-center
   mt-4
+  max-w-300
 `;
 
 const Button = tw.button`
@@ -50,7 +51,7 @@ const Button = tw.button`
   justify-center
   items-center
   uppercase
-  text-arq-brown-700
+  text-arq-brown-500
   font-emperatriz
   rounded
   bg-transparent

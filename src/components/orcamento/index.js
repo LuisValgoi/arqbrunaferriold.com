@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
+
+import StepWelcome from "./stepWelcome";
 
 const Orcamento = () => {
+  const [selectedStep, setSelectedStep] = useState(1);
+  
   return (
     <>
-      <h1>orcamento</h1>
+      {selectedStep === 1 && <StepWelcome setSelectedStep />}
     </>
   );
 }

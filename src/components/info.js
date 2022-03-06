@@ -52,7 +52,7 @@ const Brands = tw(BrandsInner)`
   items-center
   w-full
   px-4
-  pb-4
+  pb-2
 `;
 
 const BrandIcon = tw(FontAwesomeIcon)`
@@ -70,28 +70,31 @@ const Paragraph = tw.span`
   uppercase
   font-emperatriz
   rounded
-  ${(props) => props.$hasMB && "mb-2"}
   px-4
-  py-1
+  py-2
   bg-arq-brown-300
+  border-2
+  border-arq-brown-500
 `;
 
-const Button = tw.button`
-  cursor-pointer
+const Button = tw.span`
   text-white
   text-center
   text-sm sm:text-md
   uppercase
   font-emperatriz
   rounded
-  ${(props) => props.$hasMB && "mb-2"}
   px-4
-  py-1
+  py-2
   bg-arq-brown-300
+  border-2
+  border-arq-brown-500
+
+  cursor-pointer
   transform transition duration-300 ease-in-out
   hover:bg-arq-brown-700
+  hover:border-arq-brown-700
   hover:scale-105
-  hover:border-2
   hover:black
 `;
 
