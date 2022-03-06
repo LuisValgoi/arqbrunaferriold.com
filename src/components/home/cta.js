@@ -1,15 +1,19 @@
 import React from "react";
 import tw from "tailwind-styled-components";
 
-export default function CTAs() {
-  const urlOrcamento = "https://api.whatsapp.com/send?phone=5551981909312&text=Ol%C3%A1,%20gostaria%20de%20realizar%20um%20or%C3%A7amento!%20";
+import { useApp } from "../../context/AppContext";
+
+const CTAs = () => {
   const urlRender = "https://api.whatsapp.com/send?phone=5551981909312&text=Ol%C3%A1,%20como%20funciona%20o%20seu%20servi%C3%A7o%20de%20render?%20";
   const urlContato = "mailto:arqbrunaferri@gmail.com";
   const urlTCC = "https://drive.google.com/file/d/19hfupNCSJW6yaz5ftTmKFrUpbukFQ-pf/view?usp=sharing";
+  const { setSelectedMenu } = useApp();
+
+  const handleClickOrcamento = () => setSelectedMenu('ORCAMENTO');
 
   return (
     <Container>
-      <Button onClick={() => window.open(urlOrcamento, "_blank")}>
+      <Button onClick={handleClickOrcamento}>
         SOLICITAR ORÇAMENTO
       </Button>
       <Button onClick={() => window.open(urlRender, "_blank")}>
@@ -24,6 +28,10 @@ export default function CTAs() {
     </Container>
   );
 }
+
+export default CTAs;
+
+CTAs.displayName = "CTAs";
 
 const Container = tw.article`
   flex
@@ -54,7 +62,6 @@ const Button = tw.button`
   hover:text-arq-brown-50
   hover:border-arq-brown-700
 `;
-
 
 const ButtonPrimary = tw.button`
   w-full

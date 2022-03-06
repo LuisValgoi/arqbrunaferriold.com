@@ -2,15 +2,23 @@ import React from "react";
 import styled from "styled-components";
 import tw from "tailwind-styled-components";
 
-export default function Layout({ children }) {
+import { useApp } from '../context/AppContext';
+
+const Layout = ({ children }) => {
+  const { selectedMenu } = useApp();
+
   return (
     <Container>
-      <Content>
+      <Content $isOrcamento={selectedMenu === "ORCAMENTO"}>
         <InnerContent>{children}</InnerContent>
       </Content>
     </Container>
   );
 }
+
+export default Layout;
+
+Layout.displayName = "Layout";
 
 const ContainerTexture = styled.div`
   background-color: #fafafa;
@@ -34,7 +42,8 @@ const Content = tw.div`
   align-center
   max-w-screen-sm	
   absolute
-  top-14 sm:top-24
+  transform transition duration-300 ease-in-out
+  top-12
 `;
 
 const InnerContent = tw.div`

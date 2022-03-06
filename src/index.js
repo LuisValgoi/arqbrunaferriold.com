@@ -1,13 +1,32 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "tailwindcss/tailwind.css";
+import styled from "styled-components";
 
-import Home from "./pages/home";
+import { AppProvider } from "./context/AppContext";
+import Layout from "./components/layout";
+import Switcher from "./components/switcher";
+import LineTextureSrc from "./img/lines.svg";
+
+import "tailwindcss/tailwind.css";
 import "./index.css";
+
+const LineTexture = styled.div`
+  background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.9)), url(${LineTextureSrc});
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: absolute;
+`;
 
 ReactDOM.render(
   <React.StrictMode>
-    <Home />
+    <AppProvider>
+      <LineTexture>
+        <Layout>
+          <Switcher />
+        </Layout>
+      </LineTexture>
+    </AppProvider>
   </React.StrictMode>,
   document.getElementById("root"),
 );

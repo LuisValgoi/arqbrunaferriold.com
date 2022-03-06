@@ -2,7 +2,7 @@ import React from "react";
 import tw from "tailwind-styled-components";
 import styled from "styled-components";
 
-export default function About() {
+const About = () => {
   return (
     <Container>
       <Title>sobre</Title>
@@ -16,6 +16,10 @@ export default function About() {
     </Container>
   );
 }
+
+export default About;
+
+About.displayName = "About";
 
 const Container = tw.article`
   flex

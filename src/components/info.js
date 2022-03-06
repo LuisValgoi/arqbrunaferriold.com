@@ -1,11 +1,15 @@
 import React from "react";
 import tw from "tailwind-styled-components";
 import styled from "styled-components";
+import { useApp } from "../context/AppContext";
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faInstagram, faFacebookF, faPinterestP } from '@fortawesome/free-brands-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faInstagram, faFacebookF, faPinterestP } from "@fortawesome/free-brands-svg-icons";
+import { faLongArrowAltLeft } from "@fortawesome/free-solid-svg-icons";
 
-export default function Info() {
+const Info = () => {
+  const { selectedMenu, setSelectedMenu } = useApp();
+
   return (
     <Container>
       <Brands>
@@ -13,16 +17,29 @@ export default function Info() {
         <BrandIcon size="3x" color="#744c2f" icon={faInstagram} onClick={() => window.open("https://www.instagram.com/arqbrunaferri")} />
         <BrandIcon size="2x" color="#744c2f" icon={faPinterestP} onClick={() => window.open("https://br.pinterest.com/arqbrunaferri")} />
       </Brands>
-      <Paragraph>em que posso te ajudar?</Paragraph>
+
+      {selectedMenu === "ORCAMENTO" && (
+        <Button onClick={() => setSelectedMenu("HOME")}>
+          <ButtonIcon icon={faLongArrowAltLeft} size="1x" />
+          voltar para home
+        </Button>
+      )}
+
+      {selectedMenu === "HOME" && <Paragraph>em que posso te ajudar ?</Paragraph>}
     </Container>
   );
-}
+};
+
+export default Info;
+
+Info.displayName = "Info";
 
 const Container = tw.article`
   flex
   flex-col
   justify-center
   items-center
+  min-w-300
 `;
 
 const BrandsInner = styled.div`
@@ -57,4 +74,27 @@ const Paragraph = tw.span`
   px-4
   py-1
   bg-arq-brown-300
+`;
+
+const Button = tw.button`
+  cursor-pointer
+  text-white
+  text-center
+  text-sm sm:text-md
+  uppercase
+  font-emperatriz
+  rounded
+  ${(props) => props.$hasMB && "mb-2"}
+  px-4
+  py-1
+  bg-arq-brown-300
+  transform transition duration-300 ease-in-out
+  hover:bg-arq-brown-700
+  hover:scale-105
+  hover:border-2
+  hover:black
+`;
+
+const ButtonIcon = tw(FontAwesomeIcon)`
+  mr-2
 `;

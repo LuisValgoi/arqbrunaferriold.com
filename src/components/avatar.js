@@ -2,12 +2,16 @@ import React from "react";
 import tw from "tailwind-styled-components";
 import styled from 'styled-components';
 
+import { useApp } from '../context/AppContext';
+
 import photo from "../img/perfil.png";
 import nameCircle from "../img/name-circle.png";
 
-export default function Avatar() {
+const Avatar = () => {
+  const { selectedMenu } = useApp();
+
   return (
-    <Container>
+    <Container $decrease={selectedMenu === "ORCAMENTO"}>
       <NameCircle src={nameCircle} alt="BRUNA FERRI ARQUITETURA & INTERIORES" />
       <PhotoBorder />
       <Photo src={photo} alt="me" width="160px" height="160px" />
@@ -15,13 +19,18 @@ export default function Avatar() {
   );
 }
 
+export default Avatar;
+
+Avatar.displayName = "Avatar";
+
 const Container = tw.div`
   relative
   flex
   content-center
   justify-center
   items-center
-  mb-12 sm:mb-14
+  mb-12
+  transform transition duration-300 ease-in-out
 `;
 
 const Photo = tw.img`
