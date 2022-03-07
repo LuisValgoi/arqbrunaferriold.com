@@ -33,6 +33,7 @@ module.exports = {
       },
       minWidth: {
         300: "300px",
+        320: "320px",
         500: "500px",
       },
       maxWidth: {
@@ -60,5 +61,5 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/forms")],
 };

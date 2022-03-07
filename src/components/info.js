@@ -12,11 +12,13 @@ const Info = () => {
 
   return (
     <Container>
-      <Brands>
-        <BrandIcon size="2x" color="#744c2f" icon={faFacebookF} onClick={() => window.open("https://www.facebook.com/arqbrunaferri")} />
-        <BrandIcon size="3x" color="#744c2f" icon={faInstagram} onClick={() => window.open("https://www.instagram.com/arqbrunaferri")} />
-        <BrandIcon size="2x" color="#744c2f" icon={faPinterestP} onClick={() => window.open("https://br.pinterest.com/arqbrunaferri")} />
-      </Brands>
+      {selectedMenu !== "ORCAMENTO" && (
+        <Brands>
+          <BrandIcon size="2x" color="#744c2f" icon={faFacebookF} onClick={() => window.open("https://www.facebook.com/arqbrunaferri")} />
+          <BrandIcon size="3x" color="#744c2f" icon={faInstagram} onClick={() => window.open("https://www.instagram.com/arqbrunaferri")} />
+          <BrandIcon size="2x" color="#744c2f" icon={faPinterestP} onClick={() => window.open("https://br.pinterest.com/arqbrunaferri")} />
+        </Brands>
+      )}
 
       {selectedMenu === "ORCAMENTO" && (
         <Button onClick={() => setSelectedMenu("HOME")}>
