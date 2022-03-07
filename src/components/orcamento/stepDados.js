@@ -2,9 +2,9 @@ import React from "react";
 import tw from "tailwind-styled-components";
 
 import StepBase from "../stepBase";
-import { ButtonOutline as ButtonOutlineUI, ButtonPrimary as ButtonPrimaryUI, InputAndLabel, Title } from "../ui";
+import { ButtonOutline as ButtonOutlineUI, ButtonPrimary as ButtonPrimaryUI, FieldArea, InputAndLabel, Title } from "../ui";
 
-const StepDados = ({ navigateToStep, isGoingBack, form, setFormValue, stepHasError }) => {
+const StepDados = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormValue, stepHasError }) => {
   const handleMoveForward = (event) => {
     event.preventDefault();
     if (stepHasError) return;
@@ -13,13 +13,13 @@ const StepDados = ({ navigateToStep, isGoingBack, form, setFormValue, stepHasErr
 
   return (
     <StepBase isGoingBack={isGoingBack}>
-      <Title>MAIS SOBRE VOCÊ</Title>
+      <Title>NOS CONTE SOBRE VOCÊ</Title>
       <FieldArea>
         <InputAndLabel
           onChange={(e) => setFormValue("entryName", e.target.value)}
-          value={form.entryName.value}
-          hasError={form.entryName.error}
-          errorMessage={form.entryName.message}
+          value={formValues.entryName}
+          hasError={formErrors.entryName.error}
+          errorMessage={formErrors.entryName.message}
           inputType="text"
           htmlFor="entryName"
           placeholder="Ex: John Doe"
@@ -27,23 +27,23 @@ const StepDados = ({ navigateToStep, isGoingBack, form, setFormValue, stepHasErr
         />
         <InputAndLabel
           onChange={(e) => setFormValue("entryEmail", e.target.value)}
-          value={form.entryEmail.value}
-          hasError={form.entryEmail.error}
-          errorMessage={form.entryEmail.message}
+          value={formValues.entryEmail}
+          hasError={formErrors.entryEmail.error}
+          errorMessage={formErrors.entryEmail.message}
           inputType="email"
           htmlFor="entryEmail"
           placeholder="Ex: johndoe@email.com"
           label="Qual o seu e-mail?"
         />
         <InputAndLabel
-          onChange={(e) => setFormValue("entryAge", e.target.value)}
-          value={form.entryAge.value}
-          hasError={form.entryAge.error}
-          errorMessage={form.entryAge.message}
-          inputType="number"
-          htmlFor="entryAge"
-          placeholder="Ex: 24"
-          label="Qual a sua idade?"
+          onChange={(e) => setFormValue("entryWhatsapp", e.target.value)}
+          value={formValues.entryWhatsapp}
+          hasError={formErrors.entryWhatsapp.error}
+          errorMessage={formErrors.entryWhatsapp.message}
+          inputType="tel"
+          htmlFor="entryWhatsapp"
+          placeholder="Ex: +5551997079544"
+          label="Qual o seu WhatsApp?"
         />
       </FieldArea>
 
@@ -60,10 +60,6 @@ const StepDados = ({ navigateToStep, isGoingBack, form, setFormValue, stepHasErr
 export default StepDados;
 
 StepDados.displayName = "StepDados";
-
-const FieldArea = tw.div`
-  min-w-320
-`;
 
 const ButtonArea = tw.div`
   grid

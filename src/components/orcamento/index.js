@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import StepWelcome from "./stepWelcome";
 import StepDados from "./stepDados";
+import StepInfos from "./stepInfos";
 
 const formItemHasError = (name, value) => {
   const IS_EMPTY_STANDARD = /^$/g;
@@ -10,7 +11,7 @@ const formItemHasError = (name, value) => {
   const IS_PHONE_STANDARD = /\+?\(?\d{2,4}\)?[\d\s-]{3,}/g;
   const IS_AGE_STANDARD = /^(1[89]|[2-9]\d)$/;
 
-  const IS_FIELD_ANY = ["entryName", "entryEmail", "entryAge", "entryWhatsapp"].includes(name);
+  const IS_FIELD_ANY = STEP_01.concat(STEP_02).includes(name);
   if (IS_FIELD_ANY) {
     if (new RegExp(IS_EMPTY_STANDARD).test(value)) {
       return true;
@@ -51,87 +52,108 @@ const formItemHasError = (name, value) => {
   }
 };
 
-const validateFormValue = (name, value, form, setForm) => {
+const validateFormValue = (name, value, formErrors, setFormErrors) => {
   const IS_EMPTY_STANDARD = /^$/g;
   const IS_MORE_THAN_255 = value?.length > 255;
   const IS_EMAIL_STANDARD = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
   const IS_PHONE_STANDARD = /\+?\(?\d{2,4}\)?[\d\s-]{3,}/g;
   const IS_AGE_STANDARD = /^(1[89]|[2-9]\d)$/;
 
-  const IS_FIELD_ANY = ["entryName", "entryEmail", "entryAge", "entryWhatsapp"].includes(name);
+  const IS_FIELD_ANY = STEP_01.concat(STEP_02).includes(name);
   if (IS_FIELD_ANY) {
     if (new RegExp(IS_EMPTY_STANDARD).test(value)) {
-      setForm({ ...form, [name]: { error: true, message: "Digite algum valor." } });
+      setFormErrors({ ...formErrors, [name]: { error: true, message: "Digite algum valor." } });
       return;
     }
 
     if (IS_MORE_THAN_255) {
-      setForm({ ...form, [name]: { error: true, message: "Digite no máximo 255 caracteres." } });
+      setFormErrors({ ...formErrors, [name]: { error: true, message: "Digite no máximo 255 caracteres." } });
       return;
     }
 
-    setForm({ ...form, [name]: { error: false, message: "" } });
+    setFormErrors({ ...formErrors, [name]: { error: false, message: "" } });
   }
 
   const IS_FIELD_EMAIL = ["entryEmail"].includes(name);
   if (IS_FIELD_EMAIL) {
     if (!new RegExp(IS_EMAIL_STANDARD).test(value)) {
-      setForm({ ...form, [name]: { error: true, message: "Digite um e-mail válido." } });
+      setFormErrors({ ...formErrors, [name]: { error: true, message: "Digite um e-mail válido." } });
       return;
     }
 
-    setForm({ ...form, [name]: { error: false, message: "" } });
+    setFormErrors({ ...formErrors, [name]: { error: false, message: "" } });
   }
 
   const IS_FIELD_WHATSAPP = ["entryWhatsapp"].includes(name);
   if (IS_FIELD_WHATSAPP) {
     if (!new RegExp(IS_PHONE_STANDARD).test(value)) {
-      setForm({ ...form, [name]: { error: true, message: "Digite um número válido." } });
+      setFormErrors({ ...formErrors, [name]: { error: true, message: "Digite um número válido." } });
       return;
     }
 
-    setForm({ ...form, [name]: { error: false, message: "" } });
+    setFormErrors({ ...formErrors, [name]: { error: false, message: "" } });
   }
 
   const IS_FIELD_AGE = ["entryAge"].includes(name);
   if (IS_FIELD_AGE) {
     if (!new RegExp(IS_AGE_STANDARD).test(value)) {
-      setForm({ ...form, [name]: { error: true, message: "Você precisa ter 18 anos ou mais." } });
+      setFormErrors({ ...formErrors, [name]: { error: true, message: "Você precisa ter 18 anos ou mais." } });
       return;
     }
 
-    setForm({ ...form, [name]: { error: false, message: "" } });
+    setFormErrors({ ...formErrors, [name]: { error: false, message: "" } });
   }
 };
 
+const STEP_01 = ["entryName", "entryEmail", "entryWhatsapp"];
+
+const STEP_02 = ["entryOccupancy", "entryAge", "entryHowYouMet"];
+
 const Orcamento = () => {
   const [selectedStep, setSelectedStep] = useState(1);
-
   const [isGoingBack, setIsGoingBack] = useState(false);
-
   const [formStepDadosHasError, setFormStepDadosHasError] = useState(false);
+  const [formStepInfosHasError, setFormStepInfosHasError] = useState(false);
 
-  const [form, setForm] = React.useState({
+  const [formValues, setFormValues] = React.useState({
+    entryName: "",
+    entryEmail: "",
+    entryWhatsapp: "",
+    entryOccupancy: "",
+    entryAge: "",
+    entryHowYouMet: "",
+  });
+
+  const [formErrors, setFormErrors] = React.useState({
     entryName: {
-      value: "",
       error: false,
       message: "",
     },
     entryEmail: {
-      value: "",
+      error: false,
+      message: "",
+    },
+    entryWhatsapp: {
+      error: false,
+      message: "",
+    },
+    entryOccupancy: {
       error: false,
       message: "",
     },
     entryAge: {
-      value: "",
+      error: false,
+      message: "",
+    },
+    entryHowYouMet: {
       error: false,
       message: "",
     },
   });
 
   const setFormValue = (name, value) => {
-    setForm({ ...form, [name]: value });
-    validateFormValue(name, value, form, setForm);
+    setFormValues({ ...formValues, [name]: value });
+    validateFormValue(name, value, formErrors, setFormErrors);
   };
 
   const navigateToStep = (step, isGoingBack) => {
@@ -140,18 +162,30 @@ const Orcamento = () => {
   };
 
   useEffect(() => {
-    const formStepDadosHasError = Object.entries(form)
-      .filter((formItem) => ["entryName", "entryEmail", "entryAge"].includes(formItem[0]))
-      .map((formValue) => formItemHasError(formValue[0], formValue[1].value))
+    const formStepDadosHasError = Object.entries(formValues)
+      .filter((formItem) => STEP_01.includes(formItem[0]))
+      .map((formValue) => formItemHasError(formValue[0], formValue[1]))
       .some((error) => error);
     setFormStepDadosHasError(formStepDadosHasError);
-  }, [form]);
+
+    const formStepInfosHasError = Object.entries(formValues)
+      .filter((formItem) => STEP_02.includes(formItem[0]))
+      .map((formValue) => formItemHasError(formValue[0], formValue[1]))
+      .some((error) => error);
+    setFormStepInfosHasError(formStepInfosHasError);
+  }, [formValues]);
 
   return (
     <>
       {selectedStep === 1 && <StepWelcome isGoingBack={isGoingBack} navigateToStep={navigateToStep} />}
 
-      {selectedStep === 2 && <StepDados isGoingBack={isGoingBack} navigateToStep={navigateToStep} stepHasError={formStepDadosHasError} form={form} setFormValue={setFormValue} />}
+      {selectedStep === 2 && (
+        <StepDados isGoingBack={isGoingBack} navigateToStep={navigateToStep} stepHasError={formStepDadosHasError} formValues={formValues} formErrors={formErrors} setFormValue={setFormValue} />
+      )}
+
+      {selectedStep === 3 && (
+        <StepInfos isGoingBack={isGoingBack} navigateToStep={navigateToStep} stepHasError={formStepInfosHasError} formValues={formValues} formErrors={formErrors} setFormValue={setFormValue} />
+      )}
     </>
   );
 };

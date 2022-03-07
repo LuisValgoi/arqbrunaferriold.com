@@ -7,7 +7,7 @@ import { ButtonOutline as ButtonOutlineUI, Paragraph, Title } from "../ui";
 const StepWelcome = ({ isGoingBack, navigateToStep }) => {
   return (
     <StepBase isGoingBack={isGoingBack}>
-      <Title>SOLICITAÇÃO DE PROPOSTA DE PROJETO</Title>
+      <Title>SOLICITAÇÃO DE ORÇAMENTO</Title>
       <Paragraph>
         {`Olá, tudo bem?! Ficamos muito felizes que você chegou até aqui. Isso significa que está interessado em nosso trabalho. Para que isso aconteça, precisamos de algumas informações, para entendermos do que se trata o seu projeto.`}
       </Paragraph>

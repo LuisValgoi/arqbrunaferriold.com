@@ -90,6 +90,10 @@ export const Input = tw.input`
   ${(props) => (props.$hasError ? "border-red-500" : "border-arq-brown-200")}
 `;
 
+export const FieldArea = tw.div`
+  min-w-320
+`;
+
 export const InputAndLabel = ({ onChange, value, htmlFor, inputType, label, placeholder, hasError, errorMessage }) => {
   return (
     <div className="text-left mb-2">
