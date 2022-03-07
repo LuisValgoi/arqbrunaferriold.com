@@ -13,7 +13,7 @@ const StepDados = ({ navigateToStep, isGoingBack, formValues, formErrors, setFor
 
   return (
     <StepBase isGoingBack={isGoingBack}>
-      <Title>NOS CONTE SOBRE VOCÊ</Title>
+      <Title>SOBRE VOCÊ</Title>
       <FieldArea>
         <InputAndLabel
           onChange={(e) => setFormValue("entryName", e.target.value)}

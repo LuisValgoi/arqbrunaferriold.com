@@ -8,9 +8,11 @@ const StepWelcome = ({ isGoingBack, navigateToStep }) => {
   return (
     <StepBase isGoingBack={isGoingBack}>
       <Title>SOLICITAÇÃO DE ORÇAMENTO</Title>
-      <Paragraph>
-        {`Olá, tudo bem?! Ficamos muito felizes que você chegou até aqui. Isso significa que está interessado em nosso trabalho. Para que isso aconteça, precisamos de algumas informações, para entendermos do que se trata o seu projeto.`}
-      </Paragraph>
+      <ParagraphArea>
+        <Paragraph>
+          {`Olá, tudo bem?! Ficamos muito felizes que você chegou até aqui. Isso significa que está interessado em nosso trabalho. Para que isso aconteça, precisamos de algumas informações, para entendermos do que se trata o seu projeto.`}
+        </Paragraph>
+      </ParagraphArea>
       <ButtonOutline onClick={() => navigateToStep(2, false)}>Começar</ButtonOutline>
     </StepBase>
   );
@@ -19,6 +21,10 @@ const StepWelcome = ({ isGoingBack, navigateToStep }) => {
 export default StepWelcome;
 
 StepWelcome.displayName = "StepWelcome";
+
+const ParagraphArea = tw.div`
+  max-w-300
+`;
 
 const ButtonOutline = tw(ButtonOutlineUI)`
   mt-6

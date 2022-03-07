@@ -15,7 +15,6 @@ const LineTexture = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  position: absolute;
 `;
 
 ReactDOM.render(

@@ -33,18 +33,15 @@ const Container = tw(ContainerTexture)`
   h-screen
   flex 
   flex-col
-  justify-center
   content-center 
   items-center
-  z-10
 `;
 
 const Content = tw.div`
   align-center
   max-w-screen-sm	
-  absolute
   transform transition duration-300 ease-in-out
-  top-8
+  mt-10
 `;
 
 const InnerContent = tw.div`
@@ -52,6 +49,5 @@ const InnerContent = tw.div`
   flex-col
   justify-center
   items-center
-  align-center
 `;
 

@@ -3,6 +3,11 @@ import React, { useEffect, useState } from "react";
 import StepWelcome from "./stepWelcome";
 import StepDados from "./stepDados";
 import StepInfos from "./stepInfos";
+import StepProjeto from "./stepProjeto";
+
+const STEP_01 = ["entryName", "entryEmail", "entryWhatsapp"];
+const STEP_02 = ["entryOccupancy", "entryAge", "entryHowYouMet"];
+const STEP_03 = ["entryProjectDescription", "entryProjectCity", "entryProjectBuilt", "entryProjectType", "entryProjectTypeOther"];
 
 const formItemHasError = (name, value) => {
   const IS_EMPTY_STANDARD = /^$/g;
@@ -11,7 +16,7 @@ const formItemHasError = (name, value) => {
   const IS_PHONE_STANDARD = /\+?\(?\d{2,4}\)?[\d\s-]{3,}/g;
   const IS_AGE_STANDARD = /^(1[89]|[2-9]\d)$/;
 
-  const IS_FIELD_ANY = STEP_01.concat(STEP_02).includes(name);
+  const IS_FIELD_ANY = STEP_01.concat(STEP_02).concat(STEP_03).includes(name);
   if (IS_FIELD_ANY) {
     if (new RegExp(IS_EMPTY_STANDARD).test(value)) {
       return true;
@@ -59,7 +64,7 @@ const validateFormValue = (name, value, formErrors, setFormErrors) => {
   const IS_PHONE_STANDARD = /\+?\(?\d{2,4}\)?[\d\s-]{3,}/g;
   const IS_AGE_STANDARD = /^(1[89]|[2-9]\d)$/;
 
-  const IS_FIELD_ANY = STEP_01.concat(STEP_02).includes(name);
+  const IS_FIELD_ANY = STEP_01.concat(STEP_02).concat(STEP_03).includes(name);
   if (IS_FIELD_ANY) {
     if (new RegExp(IS_EMPTY_STANDARD).test(value)) {
       setFormErrors({ ...formErrors, [name]: { error: true, message: "Digite algum valor." } });
@@ -105,15 +110,12 @@ const validateFormValue = (name, value, formErrors, setFormErrors) => {
   }
 };
 
-const STEP_01 = ["entryName", "entryEmail", "entryWhatsapp"];
-
-const STEP_02 = ["entryOccupancy", "entryAge", "entryHowYouMet"];
-
 const Orcamento = () => {
   const [selectedStep, setSelectedStep] = useState(1);
   const [isGoingBack, setIsGoingBack] = useState(false);
   const [formStepDadosHasError, setFormStepDadosHasError] = useState(false);
   const [formStepInfosHasError, setFormStepInfosHasError] = useState(false);
+  const [formStepProjectHasError, setFormStepProjectHasError] = useState(false);
 
   const [formValues, setFormValues] = React.useState({
     entryName: "",
@@ -122,6 +124,11 @@ const Orcamento = () => {
     entryOccupancy: "",
     entryAge: "",
     entryHowYouMet: "",
+    entryProjectDescription: "",
+    entryProjectCity: "",
+    entryProjectBuilt: "Sim",
+    entryProjectType: "Interiores",
+    entryProjectTypeOther: "",
   });
 
   const [formErrors, setFormErrors] = React.useState({
@@ -149,6 +156,26 @@ const Orcamento = () => {
       error: false,
       message: "",
     },
+    entryProjectDescription: {
+      error: false,
+      message: "",
+    },
+    entryProjectCity: {
+      error: false,
+      message: "",
+    },
+    entryProjectBuilt: {
+      error: false,
+      message: "",
+    },
+    entryProjectType: {
+      error: false,
+      message: "",
+    },
+    entryProjectTypeOther: {
+      error: false,
+      message: "",
+    },
   });
 
   const setFormValue = (name, value) => {
@@ -173,6 +200,12 @@ const Orcamento = () => {
       .map((formValue) => formItemHasError(formValue[0], formValue[1]))
       .some((error) => error);
     setFormStepInfosHasError(formStepInfosHasError);
+
+    const formStepProjectHasError = Object.entries(formValues)
+      .filter((formItem) => STEP_03.includes(formItem[0]))
+      .map((formValue) => formItemHasError(formValue[0], formValue[1]))
+      .some((error) => error);
+    setFormStepProjectHasError(formStepProjectHasError);
   }, [formValues]);
 
   return (
@@ -185,6 +218,10 @@ const Orcamento = () => {
 
       {selectedStep === 3 && (
         <StepInfos isGoingBack={isGoingBack} navigateToStep={navigateToStep} stepHasError={formStepInfosHasError} formValues={formValues} formErrors={formErrors} setFormValue={setFormValue} />
+      )}
+
+      {selectedStep === 4 && (
+        <StepProjeto isGoingBack={isGoingBack} navigateToStep={navigateToStep} stepHasError={formStepProjectHasError} formValues={formValues} formErrors={formErrors} setFormValue={setFormValue} />
       )}
     </>
   );
