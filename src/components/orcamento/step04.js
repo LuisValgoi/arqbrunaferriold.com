@@ -2,9 +2,9 @@ import React from "react";
 import tw from "tailwind-styled-components";
 
 import StepBase from "../stepBase";
-import { ButtonOutline as ButtonOutlineUI, ButtonPrimary as ButtonPrimaryUI, FieldArea, InputAndLabel, RadioButtonGroupAndLabel, SelectAndLabel, TextAreaAndLabel, Title } from "../ui";
+import { ButtonOutline as ButtonOutlineUI, ButtonPrimary as ButtonPrimaryUI, FieldArea, InputAndLabel, SelectAndLabel, TextAreaAndLabel, Title } from "../ui";
 
-const StepProjeto = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormValue, stepHasError }) => {
+const Step04 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormValue, stepHasError }) => {
   const handleMoveForward = (event) => {
     event.preventDefault();
     if (stepHasError) return;
@@ -13,7 +13,8 @@ const StepProjeto = ({ navigateToStep, isGoingBack, formValues, formErrors, setF
 
   return (
     <StepBase isGoingBack={isGoingBack}>
-      <Title>SOBRE O PROJETO</Title>
+      <Title>QUANTO AO PROJETO</Title>
+
       <FieldArea>
         <TextAreaAndLabel
           onChange={(e) => setFormValue("entryProjectDescription", e.target.value)}
@@ -24,7 +25,7 @@ const StepProjeto = ({ navigateToStep, isGoingBack, formValues, formErrors, setF
           rows={3}
           htmlFor="entryProjectDescription"
           placeholder="Ex: Gostaria de reformar o meu restaurante..."
-          label="Conte-nos um pouco sobre seu projeto"
+          label="Quais são os detalhes do seu projeto?"
         />
 
         <InputAndLabel
@@ -75,25 +76,6 @@ const StepProjeto = ({ navigateToStep, isGoingBack, formValues, formErrors, setF
             noLabel
           />
         )}
-
-        <RadioButtonGroupAndLabel
-          onChange={(e) => setFormValue("entryProjectBuilt", e.target.value)}
-          hasError={formErrors.entryProjectBuilt.error}
-          errorMessage={formErrors.entryProjectBuilt.message}
-          label="O imóvel já encontra-se construído?"
-          name="entryProjectBuilt"
-          value={formValues.entryProjectBuilt}
-          options={[
-            {
-              value: "Sim",
-              display: "Sim",
-            },
-            {
-              value: "Não",
-              display: "Não",
-            },
-          ]}
-        />
       </FieldArea>
 
       <ButtonArea>
@@ -106,9 +88,9 @@ const StepProjeto = ({ navigateToStep, isGoingBack, formValues, formErrors, setF
   );
 };
 
-export default StepProjeto;
+export default Step04;
 
-StepProjeto.displayName = "StepProjeto";
+Step04.displayName = "Step04";
 
 const ButtonArea = tw.div`
   grid

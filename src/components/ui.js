@@ -142,13 +142,13 @@ export const FieldArea = tw.div`
   min-w-320
 `;
 
-export const InputAndLabel = ({ onChange, value, htmlFor, inputType, label, placeholder, hasError, errorMessage, noLabel=false }) => {
+export const InputAndLabel = ({ onChange, value, htmlFor, inputType, label, placeholder, hasError, errorMessage, noLabel = false, ...props }) => {
   return (
     <div className="text-left mb-2">
       {!noLabel && <Label htmlFor={htmlFor}>{label}</Label>}
 
       <div className="mt-1 relative rounded-md shadow-sm">
-        <Input $hasError={hasError} onChange={onChange} value={value} type={inputType} name={htmlFor} id={htmlFor} placeholder={placeholder} />
+        <Input {...props} $hasError={hasError} onChange={onChange} value={value} type={inputType} name={htmlFor} id={htmlFor} placeholder={placeholder} />
       </div>
 
       {hasError && <p className="mt-2 text-red-500 text-xs italic">{errorMessage}</p>}

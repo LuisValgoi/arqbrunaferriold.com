@@ -4,7 +4,7 @@ import tw from "tailwind-styled-components";
 import StepBase from "../stepBase";
 import { ButtonOutline as ButtonOutlineUI, ButtonPrimary as ButtonPrimaryUI, FieldArea, InputAndLabel, Title } from "../ui";
 
-const StepDados = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormValue, stepHasError }) => {
+const Step02 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormValue, stepHasError }) => {
   const handleMoveForward = (event) => {
     event.preventDefault();
     if (stepHasError) return;
@@ -13,7 +13,8 @@ const StepDados = ({ navigateToStep, isGoingBack, formValues, formErrors, setFor
 
   return (
     <StepBase isGoingBack={isGoingBack}>
-      <Title>SOBRE VOCÊ</Title>
+      <Title>QUANTO AO SEU CONTATO</Title>
+
       <FieldArea>
         <InputAndLabel
           onChange={(e) => setFormValue("entryName", e.target.value)}
@@ -25,6 +26,7 @@ const StepDados = ({ navigateToStep, isGoingBack, formValues, formErrors, setFor
           placeholder="Ex: John Doe"
           label="Qual o seu nome completo?"
         />
+
         <InputAndLabel
           onChange={(e) => setFormValue("entryEmail", e.target.value)}
           value={formValues.entryEmail}
@@ -35,6 +37,7 @@ const StepDados = ({ navigateToStep, isGoingBack, formValues, formErrors, setFor
           placeholder="Ex: johndoe@email.com"
           label="Qual o seu e-mail?"
         />
+
         <InputAndLabel
           onChange={(e) => setFormValue("entryWhatsapp", e.target.value)}
           value={formValues.entryWhatsapp}
@@ -57,9 +60,9 @@ const StepDados = ({ navigateToStep, isGoingBack, formValues, formErrors, setFor
   );
 };
 
-export default StepDados;
+export default Step02;
 
-StepDados.displayName = "StepDados";
+Step02.displayName = "Step02";
 
 const ButtonArea = tw.div`
   grid

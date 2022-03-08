@@ -4,7 +4,7 @@ import tw from "tailwind-styled-components";
 import StepBase from "../stepBase";
 import { ButtonOutline as ButtonOutlineUI, ButtonPrimary as ButtonPrimaryUI, FieldArea, InputAndLabel, Title } from "../ui";
 
-const StepInfos = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormValue, stepHasError }) => {
+const Step03 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormValue, stepHasError }) => {
   const handleMoveForward = (event) => {
     event.preventDefault();
     if (stepHasError) return;
@@ -13,7 +13,8 @@ const StepInfos = ({ navigateToStep, isGoingBack, formValues, formErrors, setFor
 
   return (
     <StepBase isGoingBack={isGoingBack}>
-      <Title>UM POUCO MAIS...</Title>
+      <Title>QUANTO À VOCÊ</Title>
+
       <FieldArea>
         <InputAndLabel
           onChange={(e) => setFormValue("entryOccupancy", e.target.value)}
@@ -25,6 +26,7 @@ const StepInfos = ({ navigateToStep, isGoingBack, formValues, formErrors, setFor
           placeholder="Ex: Advogado"
           label="Qual a sua profissão?"
         />
+
         <InputAndLabel
           onChange={(e) => setFormValue("entryAge", e.target.value)}
           value={formValues.entryAge}
@@ -34,7 +36,9 @@ const StepInfos = ({ navigateToStep, isGoingBack, formValues, formErrors, setFor
           htmlFor="entryAge"
           placeholder="Ex: 24"
           label="Qual a sua idade?"
+          min={18}
         />
+
         <InputAndLabel
           onChange={(e) => setFormValue("entryHowYouMet", e.target.value)}
           value={formValues.entryHowYouMet}
@@ -57,9 +61,9 @@ const StepInfos = ({ navigateToStep, isGoingBack, formValues, formErrors, setFor
   );
 };
 
-export default StepInfos;
+export default Step03;
 
-StepInfos.displayName = "StepInfos";
+Step03.displayName = "Step03";
 
 const ButtonArea = tw.div`
   grid
