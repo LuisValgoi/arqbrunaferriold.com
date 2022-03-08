@@ -100,6 +100,7 @@ export const Select = tw.select`
   block
   w-full
   pl-4
+  py-3
   pr-4
   text-xs
   rounded-md
@@ -156,17 +157,20 @@ export const InputAndLabel = ({ onChange, value, htmlFor, inputType, label, plac
   );
 };
 
-export const RadioButtonGroupAndLabel = ({ onChange, hasError, errorMessage, name, label, options, value }) => {
+export const RadioButtonGroupAndLabel = ({ onChange, hasError, errorMessage, name, label, options, value, formItemsInLine = true }) => {
+  const wrapperClasses = formItemsInLine ? "mt-1 relative flex" : "mt-1 relative flex flex-col";
+  const itemClasses = formItemsInLine ? "form-check form-check-inline" : "form-check mt-2";
+
   return (
     <div className="text-left mb-2 mt-4 flex flex-col">
       <Label $noMarginBottom>{label}</Label>
 
-      <div className="mt-1 relative flex">
+      <div className={wrapperClasses}>
         {options.map((option) => (
-          <div key={option.value} className="form-check form-check-inline">
+          <div key={option.value} className={itemClasses}>
             <RadioButton type="radio" id={option.value} name={name} value={option.value} checked={option.value === value} onChange={onChange} />
-            <Label className="ml-1" htmlFor={option.value}>
-              {option.display}
+            <Label className="ml-2" htmlFor={option.value}>
+              {option.label}
             </Label>
           </div>
         ))}
@@ -193,18 +197,20 @@ export const TextAreaAndLabel = ({ onChange, value, htmlFor, inputType, label, r
 
 export const SelectAndLabel = ({ onChange, value, htmlFor, label, options, hasError, errorMessage }) => {
   return (
-    <div className="text-left mb-4">
+    <div className="text-left mb-2">
       <Label htmlFor={htmlFor}>{label}</Label>
 
-      <Select $hasError={hasError} onChange={onChange} value={value} name={htmlFor} id={htmlFor}>
-        {options.map((option) => (
-          <option value={option.value} key={option.label}>
-            {option.label}
-          </option>
-        ))}
-      </Select>
+      <div className="mt-1 relative rounded-md shadow-sm">
+        <Select $hasError={hasError} onChange={onChange} value={value} name={htmlFor} id={htmlFor}>
+          {options.map((option) => (
+            <option value={option.value} key={option.label}>
+              {option.label}
+            </option>
+          ))}
+        </Select>
+      </div>
 
       {hasError && <p className="mt-2 text-red-500 text-xs italic">{errorMessage}</p>}
     </div>
   );
-}
+};

@@ -5,6 +5,7 @@ import Step02 from "./step02";
 import Step03 from "./step03";
 import Step04 from "./step04";
 import Step05 from "./step05";
+import Step06 from "./step06";
 
 // regex
 const IS_EMPTY_STANDARD = /^$/g;
@@ -20,14 +21,17 @@ const STEP_03 = ["entryOccupancy", "entryAge", "entryHowYouMet"];
 const STEP_04 = ["entryProjectDescription", "entryProjectCity", "entryProjectType"];
 const STEP_04_OPTIONAL = ["entryProjectTypeOther"];
 const STEP_05 = ["entryProjectBuilt", "entryProjectArea", "entryProjectEnvironment"];
-const STEP_ALL = STEP_02.concat(STEP_03).concat(STEP_04).concat(STEP_05);
+const STEP_06 = ["entryProjectPlace"];
+const STEP_06_OPTIONAL = ["entryProjectPlaceOther"];
+const STEP_ALL = STEP_02.concat(STEP_03).concat(STEP_04).concat(STEP_05).concat(STEP_06);
 
 // return if there is error or not
 const formItemHasError = (name, value, formValues) => {
-  const IS_OPTIONAL_FIELD_VISIBLE = STEP_04_OPTIONAL.includes(name) && formValues.entryProjectType === "Outros";
+  const IS_OPTIONAL_FIELD_VISIBLE = name === "entryProjectTypeOther" && formValues.entryProjectType === "Outros";
+  const IS_OPTIONAL_FIELD_VISIBLE_2 = name === "entryProjectPlaceOther" && formValues.entryProjectPlace === "Outros";
 
   const IS_FIELD_ANY = STEP_ALL.includes(name);
-  if (IS_FIELD_ANY || IS_OPTIONAL_FIELD_VISIBLE) {
+  if (IS_FIELD_ANY || IS_OPTIONAL_FIELD_VISIBLE || IS_OPTIONAL_FIELD_VISIBLE_2) {
     if (new RegExp(IS_EMPTY_STANDARD).test(value)) {
       return true;
     }
@@ -78,10 +82,11 @@ const formItemHasError = (name, value, formValues) => {
 
 // renders in the UI the error
 const validateFormValue = (name, value, formErrors, setFormErrors, formValues) => {
-  const IS_OPTIONAL_FIELD_VISIBLE = STEP_04_OPTIONAL.includes(name) && formValues.entryProjectType === "Outros";
+  const IS_OPTIONAL_FIELD_VISIBLE = name === "entryProjectTypeOther" && formValues.entryProjectType === "Outros";
+  const IS_OPTIONAL_FIELD_VISIBLE_2 = name === "entryProjectPlaceOther" && formValues.entryProjectPlace === "Outros";
 
   const IS_FIELD_ANY = STEP_ALL.includes(name);
-  if (IS_FIELD_ANY || IS_OPTIONAL_FIELD_VISIBLE) {
+  if (IS_FIELD_ANY || IS_OPTIONAL_FIELD_VISIBLE || IS_OPTIONAL_FIELD_VISIBLE_2) {
     if (new RegExp(IS_EMPTY_STANDARD).test(value)) {
       setFormErrors({ ...formErrors, [name]: { error: true, message: "Digite algum valor." } });
       return;
@@ -142,8 +147,9 @@ const Orcamento = () => {
   const [isGoingBack, setIsGoingBack] = useState(false);
   const [formStep02, setFormStep02] = useState(false);
   const [formStep03, setFormStep03] = useState(false);
-  const [formStep04, setFormStepProjectHasError] = useState(false);
-  const [formStep05, setFormStepProjectDetailsHasError] = useState(false);
+  const [formStep04, setFormStep04] = useState(false);
+  const [formStep05, setFormStep05] = useState(false);
+  const [formStep06, setFormStep06] = useState(false);
 
   const [formValues, setFormValues] = React.useState({
     // STEP_02
@@ -163,6 +169,9 @@ const Orcamento = () => {
     entryProjectBuilt: "Sim",
     entryProjectArea: "",
     entryProjectEnvironment: "",
+    // STEP_06
+    entryProjectPlace: "Local novo + Sem quebra de paredes",
+    entryProjectPlaceOther: "",
   });
 
   const [formErrors, setFormErrors] = React.useState({
@@ -222,6 +231,15 @@ const Orcamento = () => {
       error: false,
       message: "",
     },
+    // STEP_06
+    entryProjectPlace: {
+      error: false,
+      message: "",
+    },
+    entryProjectPlaceOther: {
+      error: false,
+      message: "",
+    },
   });
 
   const setFormValue = (name, value) => {
@@ -251,13 +269,19 @@ const Orcamento = () => {
       .filter((formItem) => STEP_04.concat(STEP_04_OPTIONAL).includes(formItem[0]))
       .map((formValue) => formItemHasError(formValue[0], formValue[1], formValues))
       .some((error) => error);
-    setFormStepProjectHasError(formStep04);
+    setFormStep04(formStep04);
 
     const formStep05 = Object.entries(formValues)
       .filter((formItem) => STEP_05.includes(formItem[0]))
       .map((formValue) => formItemHasError(formValue[0], formValue[1], formValues))
       .some((error) => error);
-    setFormStepProjectDetailsHasError(formStep05);
+    setFormStep05(formStep05);
+
+    const formStep06 = Object.entries(formValues)
+      .filter((formItem) => STEP_06.concat(STEP_06_OPTIONAL).includes(formItem[0]))
+      .map((formValue) => formItemHasError(formValue[0], formValue[1], formValues))
+      .some((error) => error);
+    setFormStep06(formStep06);
   }, [formValues]);
 
   return (
@@ -271,6 +295,8 @@ const Orcamento = () => {
       {step === 4 && <Step04 isGoingBack={isGoingBack} navigateToStep={navigateToStep} stepHasError={formStep04} formValues={formValues} formErrors={formErrors} setFormValue={setFormValue} />}
 
       {step === 5 && <Step05 isGoingBack={isGoingBack} navigateToStep={navigateToStep} stepHasError={formStep05} formValues={formValues} formErrors={formErrors} setFormValue={setFormValue} />}
+
+      {step === 6 && <Step06 isGoingBack={isGoingBack} navigateToStep={navigateToStep} stepHasError={formStep06} formValues={formValues} formErrors={formErrors} setFormValue={setFormValue} />}
     </>
   );
 };

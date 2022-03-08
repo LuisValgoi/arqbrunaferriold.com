@@ -26,11 +26,11 @@ const Step05 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormVa
           options={[
             {
               value: "Sim",
-              display: "Sim",
+              label: "Sim",
             },
             {
               value: "Não",
-              display: "Não",
+              label: "Não",
             },
           ]}
         />

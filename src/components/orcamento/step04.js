@@ -42,7 +42,7 @@ const Step04 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormVa
         <SelectAndLabel
           onChange={(e) => setFormValue("entryProjectType", e.target.value)}
           value={formValues.entryProjectType}
-          htmlFor="receita"
+          htmlFor="entryProjectType"
           label="Que tipo de projeto você precisa?"
           options={[
             {
