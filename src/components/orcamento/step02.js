@@ -23,7 +23,7 @@ const Step02 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormVa
           errorMessage={formErrors.entryName.message}
           inputType="text"
           htmlFor="entryName"
-          placeholder="Ex: John Doe"
+          placeholder="Ex: João da Silva"
           label="Qual o seu nome completo?"
         />
       </FieldArea>
