@@ -26,7 +26,9 @@ const Step03 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormVa
           placeholder="Ex: Advogado"
           label="Qual a sua profissão?"
         />
+      </FieldArea>
 
+      <FieldArea>
         <InputAndLabel
           onChange={(e) => setFormValue("entryAge", e.target.value)}
           value={formValues.entryAge}
@@ -38,7 +40,9 @@ const Step03 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormVa
           label="Qual a sua idade?"
           min={18}
         />
+      </FieldArea>
 
+      <FieldArea>
         <InputAndLabel
           onChange={(e) => setFormValue("entryHowYouMet", e.target.value)}
           value={formValues.entryHowYouMet}

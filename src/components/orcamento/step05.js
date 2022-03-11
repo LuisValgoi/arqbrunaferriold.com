@@ -34,7 +34,9 @@ const Step05 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormVa
             },
           ]}
         />
+      </FieldArea>
 
+      <FieldArea>
         <InputAndLabel
           onChange={(e) => setFormValue("entryProjectArea", e.target.value)}
           value={formValues.entryProjectArea}
@@ -46,7 +48,9 @@ const Step05 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormVa
           label="Qual a área em m² a ser projetada?"
           min={1}
         />
+      </FieldArea>
 
+      <FieldArea>
         <InputAndLabel
           onChange={(e) => setFormValue("entryProjectEnvironment", e.target.value)}
           value={formValues.entryProjectEnvironment}

@@ -141,6 +141,7 @@ export const RadioButton = tw.input`
 
 export const FieldArea = tw.div`
   min-w-320
+  max-w-320
 `;
 
 export const InputAndLabel = ({ onChange, value, htmlFor, inputType, label, placeholder, hasError, errorMessage, noLabel = false, ...props }) => {

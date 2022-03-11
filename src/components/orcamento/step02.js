@@ -26,7 +26,9 @@ const Step02 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormVa
           placeholder="Ex: John Doe"
           label="Qual o seu nome completo?"
         />
+      </FieldArea>
 
+      <FieldArea>
         <InputAndLabel
           onChange={(e) => setFormValue("entryEmail", e.target.value)}
           value={formValues.entryEmail}
@@ -37,7 +39,9 @@ const Step02 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormVa
           placeholder="Ex: johndoe@email.com"
           label="Qual o seu e-mail?"
         />
+      </FieldArea>
 
+      <FieldArea>
         <InputAndLabel
           onChange={(e) => setFormValue("entryWhatsapp", e.target.value)}
           value={formValues.entryWhatsapp}

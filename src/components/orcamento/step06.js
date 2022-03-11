@@ -57,7 +57,50 @@ const Step06 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormVa
             noLabel
           />
         )}
+      </FieldArea>
 
+      <FieldArea>
+        <SelectAndLabel
+          onChange={(e) => setFormValue("entryProjectRevestimentos", e.target.value)}
+          value={formValues.entryProjectRevestimentos}
+          htmlFor="entryProjectRevestimentos"
+          label="Qual o tipo de revestimento e o que buscas?"
+          options={[
+            {
+              label: "Quero substituir os revestimentos antigos por novos",
+              value: "Quero substituir os revestimentos antigos por novos",
+            },
+            {
+              label: "Quero manter os revestimentos antigos existente",
+              value: "Quero manter os revestimentos antigos existente",
+            },
+            {
+              label: "Quero substituir os revestimentos entregue pela construtora",
+              value: "Quero substituir os revestimentos entregue pela construtora",
+            },
+            {
+              label: "Quero manter os revestimentos entregue pela construtora",
+              value: "Quero manter os revestimentos entregue pela construtora",
+            },
+            {
+              label: "Outros",
+              value: "Outros",
+            },
+          ]}
+        />
+
+        {formValues.entryProjectRevestimentos === "Outros" && (
+          <InputAndLabel
+            onChange={(e) => setFormValue("entryProjectRevestimentosOther", e.target.value)}
+            value={formValues.entryProjectRevestimentosOther}
+            hasError={formErrors.entryProjectRevestimentosOther.error}
+            errorMessage={formErrors.entryProjectRevestimentosOther.message}
+            inputType="text"
+            htmlFor="entryProjectRevestimentosOther"
+            placeholder="Ex: Quero manter os revestimentos porém gostaria de..."
+            noLabel
+          />
+        )}
       </FieldArea>
 
       <ButtonArea>

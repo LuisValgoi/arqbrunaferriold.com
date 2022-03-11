@@ -27,7 +27,9 @@ const Step04 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormVa
           placeholder="Ex: Gostaria de reformar o meu restaurante..."
           label="Quais são os detalhes do seu projeto?"
         />
+      </FieldArea>
 
+      <FieldArea>
         <InputAndLabel
           onChange={(e) => setFormValue("entryProjectCity", e.target.value)}
           value={formValues.entryProjectCity}
@@ -38,7 +40,9 @@ const Step04 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormVa
           placeholder="Ex: Porto Alegre/RS"
           label="Em qual cidade será feito o projeto?"
         />
+      </FieldArea>
 
+      <FieldArea>
         <SelectAndLabel
           onChange={(e) => setFormValue("entryProjectType", e.target.value)}
           value={formValues.entryProjectType}
