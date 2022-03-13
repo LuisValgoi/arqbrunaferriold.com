@@ -21,8 +21,8 @@ const STEP_03 = ["entryOccupancy", "entryAge", "entryHowYouMet"];
 const STEP_04 = ["entryProjectDescription", "entryProjectCity", "entryProjectType"];
 const STEP_04_OPTIONAL = ["entryProjectTypeOther"];
 const STEP_05 = ["entryProjectBuilt", "entryProjectArea", "entryProjectEnvironment"];
-const STEP_06 = ["entryProjectPlace", "entryProjectRevestimentos"];
-const STEP_06_OPTIONAL = ["entryProjectPlaceOther", "entryProjectRevestimentosOther"];
+const STEP_06 = ["entryProjectPlace", "entryProjectRevestimentos", "entryProjectForro"];
+const STEP_06_OPTIONAL = ["entryProjectPlaceOther", "entryProjectRevestimentosOther", "entryProjectForroOther"];
 const STEP_ALL = STEP_02.concat(STEP_03).concat(STEP_04).concat(STEP_05).concat(STEP_06);
 
 // return if there is error or not
@@ -30,9 +30,10 @@ const formItemHasError = (name, value, formValues) => {
   const IS_OPTIONAL_FIELD_VISIBLE = name === "entryProjectTypeOther" && formValues.entryProjectType === "Outros";
   const IS_OPTIONAL_FIELD_VISIBLE_2 = name === "entryProjectPlaceOther" && formValues.entryProjectPlace === "Outros";
   const IS_OPTIONAL_FIELD_VISIBLE_3 = name === "entryProjectRevestimentosOther" && formValues.entryProjectRevestimentos === "Outros";
+  const IS_OPTIONAL_FIELD_VISIBLE_4 = name === "entryProjectForroOther" && formValues.entryProjectForro === "Outros";
 
   const IS_FIELD_ANY = STEP_ALL.includes(name);
-  if (IS_FIELD_ANY || IS_OPTIONAL_FIELD_VISIBLE || IS_OPTIONAL_FIELD_VISIBLE_2 || IS_OPTIONAL_FIELD_VISIBLE_3) {
+  if (IS_FIELD_ANY || IS_OPTIONAL_FIELD_VISIBLE || IS_OPTIONAL_FIELD_VISIBLE_2 || IS_OPTIONAL_FIELD_VISIBLE_3 || IS_OPTIONAL_FIELD_VISIBLE_4) {
     if (new RegExp(IS_EMPTY_STANDARD).test(value)) {
       return true;
     }
@@ -86,9 +87,10 @@ const validateFormValue = (name, value, formErrors, setFormErrors, formValues) =
   const IS_OPTIONAL_FIELD_VISIBLE = name === "entryProjectTypeOther" && formValues.entryProjectType === "Outros";
   const IS_OPTIONAL_FIELD_VISIBLE_2 = name === "entryProjectPlaceOther" && formValues.entryProjectPlace === "Outros";
   const IS_OPTIONAL_FIELD_VISIBLE_3 = name === "entryProjectRevestimentosOther" && formValues.entryProjectRevestimentos === "Outros";
+  const IS_OPTIONAL_FIELD_VISIBLE_4 = name === "entryProjectForroOther" && formValues.entryProjectForro === "Outros";
 
   const IS_FIELD_ANY = STEP_ALL.includes(name);
-  if (IS_FIELD_ANY || IS_OPTIONAL_FIELD_VISIBLE || IS_OPTIONAL_FIELD_VISIBLE_2 || IS_OPTIONAL_FIELD_VISIBLE_3) {
+  if (IS_FIELD_ANY || IS_OPTIONAL_FIELD_VISIBLE || IS_OPTIONAL_FIELD_VISIBLE_2 || IS_OPTIONAL_FIELD_VISIBLE_3 || IS_OPTIONAL_FIELD_VISIBLE_4) {
     if (new RegExp(IS_EMPTY_STANDARD).test(value)) {
       setFormErrors({ ...formErrors, [name]: { error: true, message: "Digite algum valor." } });
       return;
@@ -175,7 +177,9 @@ const Orcamento = () => {
     entryProjectPlace: "Local novo + Sem quebra de paredes",
     entryProjectPlaceOther: "",
     entryProjectRevestimentos: "Quero substituir os revestimentos antigos por novos",
-    entryProjectRevestimentosOther: ""
+    entryProjectRevestimentosOther: "",
+    entryProjectForro: "Quero manter o forro existente do local",
+    entryProjectForroOther: ""
   });
 
   const [formErrors, setFormErrors] = React.useState({
@@ -252,6 +256,14 @@ const Orcamento = () => {
       error: false,
       message: "",
     },
+    entryProjectForro: {
+      error: false,
+      message: "",
+    },
+    entryProjectForroOther: {
+      error: false,
+      message: "",
+    }
   });
 
   const setFormValue = (name, value) => {

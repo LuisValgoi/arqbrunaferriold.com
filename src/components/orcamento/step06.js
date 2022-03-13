@@ -103,6 +103,52 @@ const Step06 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormVa
         )}
       </FieldArea>
 
+
+
+      <FieldArea>
+        <SelectAndLabel
+          onChange={(e) => setFormValue("entryProjectForro", e.target.value)}
+          value={formValues.entryProjectForro}
+          htmlFor="entryProjectForro"
+          label="Qual o tipo de forro e o que buscas?"
+          options={[
+            {
+              label: "Quero manter o forro existente do local",
+              value: "Quero manter o forro existente do local",
+            },
+            {
+              label: "Quero colocar forro novo no local",
+              value: "Quero colocar forro novo no local",
+            },
+            {
+              label: "Quero deixar o local sem forro",
+              value: "Quero deixar o local sem forro",
+            },
+            {
+              label: "Quero melhorar o forro existente do local",
+              value: "Quero melhorar o forro existente do local",
+            },
+            {
+              label: "Outros",
+              value: "Outros",
+            },
+          ]}
+        />
+
+        {formValues.entryProjectForro === "Outros" && (
+          <InputAndLabel
+            onChange={(e) => setFormValue("entryProjectForroOther", e.target.value)}
+            value={formValues.entryProjectForroOther}
+            hasError={formErrors.entryProjectForroOther.error}
+            errorMessage={formErrors.entryProjectForroOther.message}
+            inputType="text"
+            htmlFor="entryProjectForroOther"
+            placeholder="Ex: Quero manter o forro existente porém gostaria de..."
+            noLabel
+          />
+        )}
+      </FieldArea>
+
       <ButtonArea>
         <ButtonOutline onClick={() => navigateToStep(5, true)}>Voltar</ButtonOutline>
         <ButtonPrimary $disabled={stepHasError} onClick={handleMoveForward}>
