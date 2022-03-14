@@ -6,6 +6,7 @@ import Step03 from "./step03";
 import Step04 from "./step04";
 import Step05 from "./step05";
 import Step06 from "./step06";
+import Step07 from "./step07";
 
 // regex
 const IS_EMPTY_STANDARD = /^$/g;
@@ -23,7 +24,8 @@ const STEP_04_OPTIONAL = ["entryProjectTypeOther"];
 const STEP_05 = ["entryProjectBuilt", "entryProjectArea", "entryProjectEnvironment"];
 const STEP_06 = ["entryProjectPlace", "entryProjectRevestimentos", "entryProjectForro"];
 const STEP_06_OPTIONAL = ["entryProjectPlaceOther", "entryProjectRevestimentosOther", "entryProjectForroOther"];
-const STEP_ALL = STEP_02.concat(STEP_03).concat(STEP_04).concat(STEP_05).concat(STEP_06);
+const STEP_07 = ["entryFinalsMoveis", "entryFinalsStyle", "entryFinalsNotes"];
+const STEP_ALL = STEP_02.concat(STEP_03).concat(STEP_04).concat(STEP_05).concat(STEP_06).concat(STEP_07);
 
 // return if there is error or not
 const formItemHasError = (name, value, formValues) => {
@@ -154,6 +156,7 @@ const Orcamento = () => {
   const [formStep04, setFormStep04] = useState(false);
   const [formStep05, setFormStep05] = useState(false);
   const [formStep06, setFormStep06] = useState(false);
+  const [formStep07, setFormStep07] = useState(false);
 
   const [formValues, setFormValues] = React.useState({
     // STEP_02
@@ -179,7 +182,11 @@ const Orcamento = () => {
     entryProjectRevestimentos: "Quero substituir os revestimentos antigos por novos",
     entryProjectRevestimentosOther: "",
     entryProjectForro: "Quero manter o forro existente do local",
-    entryProjectForroOther: ""
+    entryProjectForroOther: "",
+    // STEP_07
+    entryFinalsMoveis: "",
+    entryFinalsStyle: "",
+    entryFinalsNotes: ""
   });
 
   const [formErrors, setFormErrors] = React.useState({
@@ -263,7 +270,20 @@ const Orcamento = () => {
     entryProjectForroOther: {
       error: false,
       message: "",
-    }
+    },
+    // STEP_07
+    entryFinalsMoveis: {
+      error: false,
+      message: "",
+    },
+    entryFinalsStyle: {
+      error: false,
+      message: "",
+    },
+    entryFinalsNotes: {
+      error: false,
+      message: "",
+    },
   });
 
   const setFormValue = (name, value) => {
@@ -306,6 +326,12 @@ const Orcamento = () => {
       .map((formValue) => formItemHasError(formValue[0], formValue[1], formValues))
       .some((error) => error);
     setFormStep06(formStep06);
+
+    const formStep07 = Object.entries(formValues)
+      .filter((formItem) => STEP_07.includes(formItem[0]))
+      .map((formValue) => formItemHasError(formValue[0], formValue[1], formValues))
+      .some((error) => error);
+    setFormStep07(formStep07);
   }, [formValues]);
 
   return (
@@ -321,6 +347,8 @@ const Orcamento = () => {
       {step === 5 && <Step05 isGoingBack={isGoingBack} navigateToStep={navigateToStep} stepHasError={formStep05} formValues={formValues} formErrors={formErrors} setFormValue={setFormValue} />}
 
       {step === 6 && <Step06 isGoingBack={isGoingBack} navigateToStep={navigateToStep} stepHasError={formStep06} formValues={formValues} formErrors={formErrors} setFormValue={setFormValue} />}
+
+      {step === 7 && <Step07 isGoingBack={isGoingBack} navigateToStep={navigateToStep} stepHasError={formStep07} formValues={formValues} formErrors={formErrors} setFormValue={setFormValue} />}
     </>
   );
 };
