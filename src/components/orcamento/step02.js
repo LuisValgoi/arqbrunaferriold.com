@@ -36,7 +36,7 @@ const Step02 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormVa
           errorMessage={formErrors.entryEmail.message}
           inputType="email"
           htmlFor="entryEmail"
-          placeholder="Ex: johndoe@email.com"
+          placeholder="Ex: joaodasilva@email.com"
           label="Qual o seu e-mail?"
         />
       </FieldArea>
