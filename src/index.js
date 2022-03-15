@@ -18,14 +18,12 @@ const LineTexture = styled.div`
 `;
 
 ReactDOM.render(
-  <React.StrictMode>
-    <AppProvider>
-      <LineTexture>
-        <Layout>
-          <Switcher />
-        </Layout>
-      </LineTexture>
-    </AppProvider>
-  </React.StrictMode>,
+  <AppProvider>
+    <LineTexture>
+      <Layout>
+        <Switcher />
+      </Layout>
+    </LineTexture>
+  </AppProvider>,
   document.getElementById("root"),
 );
