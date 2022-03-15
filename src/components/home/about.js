@@ -25,4 +25,5 @@ const Container = tw.article`
   items-center
   mb-4
   px-4 sm:px-0
+  max-w-300
 `;
