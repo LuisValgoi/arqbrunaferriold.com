@@ -13,3 +13,7 @@
 - TailwindCSS.
 
 - Styled Components.
+
+# Serverless Functions 
+
+- `netlify dev`: This will invoke the `yarn start` @ [3006](http://localhost:3006/) + [XXXX](http://localhost:XXXX/.netlify/functions/) 

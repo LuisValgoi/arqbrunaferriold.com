@@ -16,6 +16,7 @@
     "@testing-library/user-event": "^12.1.10",
     "antd": "^4.19.2",
     "autoprefixer": "^9",
+    "aws-sdk": "^2.1093.0",
     "dotenv": "^16.0.0",
     "framer-motion": "4.1.17",
     "mailgun-js": "^0.22.0",
@@ -31,6 +32,7 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
+    "dev": "netlify dev",
     "start": "PORT=3006 craco start",
     "build": "CI=true craco build",
     "test": "craco test",
