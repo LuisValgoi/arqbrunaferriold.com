@@ -2,7 +2,7 @@ import React from "react";
 import tw from "tailwind-styled-components";
 
 import StepBase from "../stepBase";
-import { ButtonOutline as ButtonOutlineUI, ButtonPrimary as ButtonPrimaryUI, FieldArea, InputAndLabel, TextAreaAndLabel, Title } from "../ui";
+import { ButtonOutline as ButtonOutlineUI, ButtonPrimary as ButtonPrimaryUI, FieldArea, InputAndLabel, TextAreaAndLabel, Title, UploadAndLabel } from "../ui";
 
 const Step07 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormValue, stepHasError }) => {
   const handleMoveForward = (event) => {
@@ -54,6 +54,17 @@ const Step07 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormVa
           htmlFor="entryFinalsNotes"
           placeholder="Ex: Usar ripas, com neutras, bem minimalista..."
           label="Mais alguma informação extra?"
+        />
+      </FieldArea>
+
+      <FieldArea>
+        <UploadAndLabel
+          onChange={(fileList) => setFormValue("entryFinalsPlanta", fileList)}
+          fileList={formValues.entryFinalsPlanta}
+          hasError={formErrors.entryFinalsPlanta.error}
+          errorMessage={formErrors.entryFinalsPlanta.message}
+          htmlFor="entryFinalsPlanta"
+          label="Anexe as plantas do local"
         />
       </FieldArea>
 

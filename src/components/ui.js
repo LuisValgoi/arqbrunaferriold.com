@@ -1,3 +1,7 @@
+import React from "react";
+import { DeleteOutlined, InboxOutlined } from "@ant-design/icons";
+import { Upload } from "antd";
+import styled from "styled-components";
 import tw from "tailwind-styled-components";
 
 const ButtonBase = tw.button`
@@ -213,5 +217,109 @@ export const SelectAndLabel = ({ onChange, value, htmlFor, label, options, hasEr
 
       {hasError && <p className="mt-2 text-red-500 text-xs italic">{errorMessage}</p>}
     </div>
+  );
+};
+
+export const UploadAndLabel = ({ htmlFor, fileList, label, hasError, errorMessage, onChange }) => {
+  const UploadDragger = styled(Upload.Dragger)`
+    border: 1px dashed #91735f;
+    text-align: center;
+    transition: all 0.2s;
+    padding: 1rem;
+    background: #fff;
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    border-radius: 4px;
+
+    & p {
+      font-size: smaller;
+    }
+
+    &:hover {
+      border: 1px dashed #000;
+    }
+  `;
+
+  const UploadIcon = styled(InboxOutlined)`
+    color: #91735f;
+    font-size: 30px;
+  `;
+
+  const Wrapper = styled.div`
+    margin-bottom: 0.5rem;
+    text-align: left;
+
+    & span.ant-upload-span {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    & span.ant-upload-list-item-name {
+      font-size: smaller;
+      margin-left: 4px;
+      margin-right: 4px;
+      min-width: 277px;
+    }
+
+    & div.ant-upload-text-icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    & span.ant-upload-list-item-card-actions {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    & div.ant-upload-list {
+      margin-top: 12px;
+    }
+  `;
+
+  const [fileListInternal, setFileListInternal] = React.useState([]);
+
+  React.useEffect(() => {
+    if (fileList) setFileListInternal(fileList);
+  }, [fileList]);
+
+  const handleRemove = (file) => {
+    const newFileList = fileListInternal.filter((f) => f.uid !== file.uid);
+    setFileListInternal(newFileList);
+    onChange(newFileList);
+  };
+
+  const handleBeforeUpload = (file) => {
+    const newFileList = [...fileList, file];
+    setFileListInternal(newFileList);
+    onChange(newFileList);
+  };
+
+  return (
+    <Wrapper>
+      <Label htmlFor={htmlFor}>{label}</Label>
+
+      <UploadDragger
+        accept="image/*,.pdf"
+        name={htmlFor}
+        fileList={fileListInternal}
+        onRemove={handleRemove}
+        beforeUpload={handleBeforeUpload}
+        showUploadList={{
+          showDownloadIcon: false,
+          showRemoveIcon: true,
+          removeIcon: <DeleteOutlined />,
+        }}
+      >
+        <p className="ant-upload-drag-icon">
+          <UploadIcon />
+        </p>
+        <p className="ant-upload-text">Clique ou arraste o arquivo para esta área para fazer upload.</p>
+      </UploadDragger>
+
+      {hasError && <p className="mt-2 text-red-500 text-xs italic">{errorMessage}</p>}
+    </Wrapper>
   );
 };

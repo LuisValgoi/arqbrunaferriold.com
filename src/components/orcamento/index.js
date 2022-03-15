@@ -25,6 +25,7 @@ const STEP_05 = ["entryProjectBuilt", "entryProjectArea", "entryProjectEnvironme
 const STEP_06 = ["entryProjectPlace", "entryProjectRevestimentos", "entryProjectForro"];
 const STEP_06_OPTIONAL = ["entryProjectPlaceOther", "entryProjectRevestimentosOther", "entryProjectForroOther"];
 const STEP_07 = ["entryFinalsMoveis", "entryFinalsStyle", "entryFinalsNotes"];
+const STEP_07_SPECIAL = ["entryFinalsPlanta"];
 const STEP_ALL = STEP_02.concat(STEP_03).concat(STEP_04).concat(STEP_05).concat(STEP_06).concat(STEP_07);
 
 // return if there is error or not
@@ -33,6 +34,15 @@ const formItemHasError = (name, value, formValues) => {
   const IS_OPTIONAL_FIELD_VISIBLE_2 = name === "entryProjectPlaceOther" && formValues.entryProjectPlace === "Outros";
   const IS_OPTIONAL_FIELD_VISIBLE_3 = name === "entryProjectRevestimentosOther" && formValues.entryProjectRevestimentos === "Outros";
   const IS_OPTIONAL_FIELD_VISIBLE_4 = name === "entryProjectForroOther" && formValues.entryProjectForro === "Outros";
+  const IS_SPECIAL_CASE = name === "entryFinalsPlanta";
+
+  if (IS_SPECIAL_CASE) {
+    if (formValues.entryFinalsPlanta.length === 0) {
+      return true;
+    }
+
+    return false;
+  }
 
   const IS_FIELD_ANY = STEP_ALL.includes(name);
   if (IS_FIELD_ANY || IS_OPTIONAL_FIELD_VISIBLE || IS_OPTIONAL_FIELD_VISIBLE_2 || IS_OPTIONAL_FIELD_VISIBLE_3 || IS_OPTIONAL_FIELD_VISIBLE_4) {
@@ -90,6 +100,16 @@ const validateFormValue = (name, value, formErrors, setFormErrors, formValues) =
   const IS_OPTIONAL_FIELD_VISIBLE_2 = name === "entryProjectPlaceOther" && formValues.entryProjectPlace === "Outros";
   const IS_OPTIONAL_FIELD_VISIBLE_3 = name === "entryProjectRevestimentosOther" && formValues.entryProjectRevestimentos === "Outros";
   const IS_OPTIONAL_FIELD_VISIBLE_4 = name === "entryProjectForroOther" && formValues.entryProjectForro === "Outros";
+  const IS_SPECIAL_CASE = name === "entryFinalsPlanta";
+
+  if (IS_SPECIAL_CASE) {
+    if (formValues.entryFinalsPlanta.length === 0) {
+      setFormErrors({ ...formErrors, [name]: { error: true, message: "Anexe alguma planta." } });
+    }
+
+    setFormErrors({ ...formErrors, [name]: { error: false, message: "" } });
+    return;
+  }
 
   const IS_FIELD_ANY = STEP_ALL.includes(name);
   if (IS_FIELD_ANY || IS_OPTIONAL_FIELD_VISIBLE || IS_OPTIONAL_FIELD_VISIBLE_2 || IS_OPTIONAL_FIELD_VISIBLE_3 || IS_OPTIONAL_FIELD_VISIBLE_4) {
@@ -186,7 +206,8 @@ const Orcamento = () => {
     // STEP_07
     entryFinalsMoveis: "",
     entryFinalsStyle: "",
-    entryFinalsNotes: ""
+    entryFinalsNotes: "",
+    entryFinalsPlanta: []
   });
 
   const [formErrors, setFormErrors] = React.useState({
@@ -284,6 +305,10 @@ const Orcamento = () => {
       error: false,
       message: "",
     },
+    entryFinalsPlanta: {
+      error: false,
+      message: "",
+    },
   });
 
   const setFormValue = (name, value) => {
@@ -328,7 +353,7 @@ const Orcamento = () => {
     setFormStep06(formStep06);
 
     const formStep07 = Object.entries(formValues)
-      .filter((formItem) => STEP_07.includes(formItem[0]))
+      .filter((formItem) => STEP_07.concat(STEP_07_SPECIAL).includes(formItem[0]))
       .map((formValue) => formItemHasError(formValue[0], formValue[1], formValues))
       .some((error) => error);
     setFormStep07(formStep07);
