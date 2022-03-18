@@ -2,7 +2,7 @@ import React from "react";
 import tw from "tailwind-styled-components";
 
 import StepBase from "../stepBase";
-import { ButtonOutline as ButtonOutlineUI, ButtonPrimary as ButtonPrimaryUI, FieldArea, InputAndLabel, Title } from "../ui";
+import { ButtonOutline as ButtonOutlineUI, ButtonPrimary as ButtonPrimaryUI, FieldArea, InputAndLabel, InputMaskAndLabel, Title } from "../ui";
 
 const Step03 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormValue, stepHasError }) => {
   const handleMoveForward = (event) => {
@@ -29,16 +29,16 @@ const Step03 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormVa
       </FieldArea>
 
       <FieldArea>
-        <InputAndLabel
+        <InputMaskAndLabel
           onChange={(e) => setFormValue("entryAge", e.target.value)}
           value={formValues.entryAge}
           hasError={formErrors.entryAge.error}
           errorMessage={formErrors.entryAge.message}
-          inputType="number"
+          inputType="tel"
           htmlFor="entryAge"
-          placeholder="Ex: 24"
+          mask="99 \anos"
+          placeholder="Ex: 24 anos"
           label="Qual a sua idade?"
-          min={18}
         />
       </FieldArea>
 

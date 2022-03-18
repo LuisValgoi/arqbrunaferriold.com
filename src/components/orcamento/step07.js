@@ -34,7 +34,6 @@ const Step07 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormVa
     event.preventDefault();
     if (stepHasError) return;
 
-    debugger;
     try {
       await fetch("/api/email-orcamento", {
         method: "POST",
