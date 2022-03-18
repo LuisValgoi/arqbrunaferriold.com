@@ -25,8 +25,17 @@ const handler = async (event) => {
       entryProjectForroOther,
       entryFinalsMoveis,
       entryFinalsNotes,
-      entryFinalsPlanta
+      // entryFinalsPlanta,
     } = JSON.parse(event.body);
+
+    // const entryFinalsPlantaBuffered = entryFinalsPlanta.map((planta) => {
+    //   const decoded = Buffer.from(planta.content, 'base64').toString('ascii');
+    //   const encoded = Buffer.from(planta.content).toString("base64");
+    //   return {
+    //     ...planta,
+    //     content: planta.content,
+    //   };
+    // });
 
     const html = `
       <div> 
@@ -72,10 +81,11 @@ const handler = async (event) => {
 
     await sendGridMail.send({
       from: process.env.SENDER_EMAIL,
-      to: process.env.SENDER_EMAIL,
+      to: process.env.RECEIVER_EMAIL,
+      // cc: entryEmail
       subject: `Proposta de orçamento recebida às ${new Date().toLocaleTimeString()}`,
       html,
-      attachments: entryFinalsPlanta
+      // attachments: entryFinalsPlantaBuffered,
     });
 
     return {
