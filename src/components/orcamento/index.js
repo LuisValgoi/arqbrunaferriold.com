@@ -42,19 +42,6 @@ const formItemHasError = (name, value, formValues) => {
     return false;
   }
 
-  const IS_FIELD_ANY = STEP_ALL.includes(name);
-  if (IS_FIELD_ANY || IS_OPTIONAL_FIELD_VISIBLE_2 || IS_OPTIONAL_FIELD_VISIBLE_3 || IS_OPTIONAL_FIELD_VISIBLE_4) {
-    if (new RegExp(IS_EMPTY_STANDARD).test(value)) {
-      return true;
-    }
-
-    if (IS_MORE_THAN_255(value)) {
-      return true;
-    }
-
-    return false;
-  }
-
   const IS_FIELD_EMAIL = ["entryEmail"].includes(name);
   if (IS_FIELD_EMAIL) {
     if (!new RegExp(IS_EMAIL_STANDARD).test(value)) {
@@ -90,6 +77,19 @@ const formItemHasError = (name, value, formValues) => {
 
     return false;
   }
+
+  const IS_FIELD_ANY = STEP_ALL.includes(name);
+  if (IS_FIELD_ANY || IS_OPTIONAL_FIELD_VISIBLE_2 || IS_OPTIONAL_FIELD_VISIBLE_3 || IS_OPTIONAL_FIELD_VISIBLE_4) {
+    if (new RegExp(IS_EMPTY_STANDARD).test(value)) {
+      return true;
+    }
+
+    if (IS_MORE_THAN_255(value)) {
+      return true;
+    }
+
+    return false;
+  }
 };
 
 // renders in the UI the error
@@ -106,21 +106,6 @@ const validateFormValue = (name, value, formErrors, setFormErrors, formValues) =
 
     setFormErrors({ ...formErrors, [name]: { error: false, message: "" } });
     return;
-  }
-
-  const IS_FIELD_ANY = STEP_ALL.includes(name);
-  if (IS_FIELD_ANY || IS_OPTIONAL_FIELD_VISIBLE_2 || IS_OPTIONAL_FIELD_VISIBLE_3 || IS_OPTIONAL_FIELD_VISIBLE_4) {
-    if (new RegExp(IS_EMPTY_STANDARD).test(value)) {
-      setFormErrors({ ...formErrors, [name]: { error: true, message: "Digite algum valor." } });
-      return;
-    }
-
-    if (IS_MORE_THAN_255(value)) {
-      setFormErrors({ ...formErrors, [name]: { error: true, message: "Digite no máximo 255 caracteres." } });
-      return;
-    }
-
-    setFormErrors({ ...formErrors, [name]: { error: false, message: "" } });
   }
 
   const IS_FIELD_EMAIL = ["entryEmail"].includes(name);
@@ -161,6 +146,21 @@ const validateFormValue = (name, value, formErrors, setFormErrors, formValues) =
     }
 
     return false;
+  }
+
+  const IS_FIELD_ANY = STEP_ALL.includes(name);
+  if (IS_FIELD_ANY || IS_OPTIONAL_FIELD_VISIBLE_2 || IS_OPTIONAL_FIELD_VISIBLE_3 || IS_OPTIONAL_FIELD_VISIBLE_4) {
+    if (new RegExp(IS_EMPTY_STANDARD).test(value)) {
+      setFormErrors({ ...formErrors, [name]: { error: true, message: "Digite algum valor." } });
+      return;
+    }
+
+    if (IS_MORE_THAN_255(value)) {
+      setFormErrors({ ...formErrors, [name]: { error: true, message: "Digite no máximo 255 caracteres." } });
+      return;
+    }
+
+    setFormErrors({ ...formErrors, [name]: { error: false, message: "" } });
   }
 };
 
