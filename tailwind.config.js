@@ -1,6 +1,6 @@
 module.exports = {
   purge: {
-    enabled: process.env.NODE_ENV === "production",
+    enabled: process?.env?.NODE_ENV === "production",
     content: ["src/components/**/*.js", "src/pages/**/*.js"],
   },
   darkMode: false, // or 'media' or 'class'
@@ -52,7 +52,15 @@ module.exports = {
       },
       fontFamily: {
         emperatriz: ["emperatriz"],
-        "fira-sans": ["Fira Sans"]
+        "fira-sans": ["firasans"],
+        "fira-sans-bold": ["firasans-bold"],
+        "fira-sans-extra-bold": ["firasans-extra-bold"],
+        "fira-sans-extra-light": ["firasans-extra-light"],
+        "fira-sans-light": ["firasans-light"],
+        "fira-sans-medium": ["firasans-medium"],
+        "fira-sans-regular": ["firasans-regular"],
+        "fira-sans-semi-bold": ["firasans-semi-bold"],
+        "fira-sans-thin": ["firasans-thin"],
       },
       backgroundSize: {
         "50px": "50px",

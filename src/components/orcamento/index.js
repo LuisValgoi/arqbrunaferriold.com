@@ -12,25 +12,23 @@ import Step07 from "./step07";
 const IS_EMPTY_STANDARD = /^$/g;
 const IS_MORE_THAN_255 = (value) => value?.length > 255;
 const IS_EMAIL_STANDARD = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
-const IS_PHONE_STANDARD = /\+?\(?\d{2,4}\)?[\d\s-]{3,}/g;
+const IS_PHONE_STANDARD = /(?:\()[0-9]{2}(?:\))\s?[0-9]{4,5}(?:-)[0-9]{4}/g;
 const IS_AGE_STANDARD = /^(1[89]|[2-9]\d)$/;
 const IS_POSITIVE_NUMBER_STANDARD = /^[1-9]+[0-9]*$/g;
 
 // fields
 const STEP_02 = ["entryName", "entryEmail", "entryWhatsapp"];
 const STEP_03 = ["entryOccupancy", "entryAge", "entryHowYouMet"];
-const STEP_04 = ["entryProjectDescription", "entryProjectCity", "entryProjectType"];
-const STEP_04_OPTIONAL = ["entryProjectTypeOther"];
+const STEP_04 = ["entryProjectCity", "entryProjectType", "entryStyle"];
 const STEP_05 = ["entryProjectBuilt", "entryProjectArea", "entryProjectEnvironment"];
 const STEP_06 = ["entryProjectPlace", "entryProjectRevestimentos", "entryProjectForro"];
 const STEP_06_OPTIONAL = ["entryProjectPlaceOther", "entryProjectRevestimentosOther", "entryProjectForroOther"];
-const STEP_07 = ["entryFinalsMoveis", "entryFinalsStyle", "entryFinalsNotes"];
+const STEP_07 = ["entryFinalsMoveis", "entryFinalsNotes"];
 const STEP_07_SPECIAL = ["entryFinalsPlanta"];
 const STEP_ALL = STEP_02.concat(STEP_03).concat(STEP_04).concat(STEP_05).concat(STEP_06).concat(STEP_07);
 
 // return if there is error or not
 const formItemHasError = (name, value, formValues) => {
-  const IS_OPTIONAL_FIELD_VISIBLE = name === "entryProjectTypeOther" && formValues.entryProjectType === "Outros";
   const IS_OPTIONAL_FIELD_VISIBLE_2 = name === "entryProjectPlaceOther" && formValues.entryProjectPlace === "Outros";
   const IS_OPTIONAL_FIELD_VISIBLE_3 = name === "entryProjectRevestimentosOther" && formValues.entryProjectRevestimentos === "Outros";
   const IS_OPTIONAL_FIELD_VISIBLE_4 = name === "entryProjectForroOther" && formValues.entryProjectForro === "Outros";
@@ -45,7 +43,7 @@ const formItemHasError = (name, value, formValues) => {
   }
 
   const IS_FIELD_ANY = STEP_ALL.includes(name);
-  if (IS_FIELD_ANY || IS_OPTIONAL_FIELD_VISIBLE || IS_OPTIONAL_FIELD_VISIBLE_2 || IS_OPTIONAL_FIELD_VISIBLE_3 || IS_OPTIONAL_FIELD_VISIBLE_4) {
+  if (IS_FIELD_ANY || IS_OPTIONAL_FIELD_VISIBLE_2 || IS_OPTIONAL_FIELD_VISIBLE_3 || IS_OPTIONAL_FIELD_VISIBLE_4) {
     if (new RegExp(IS_EMPTY_STANDARD).test(value)) {
       return true;
     }
@@ -96,7 +94,6 @@ const formItemHasError = (name, value, formValues) => {
 
 // renders in the UI the error
 const validateFormValue = (name, value, formErrors, setFormErrors, formValues) => {
-  const IS_OPTIONAL_FIELD_VISIBLE = name === "entryProjectTypeOther" && formValues.entryProjectType === "Outros";
   const IS_OPTIONAL_FIELD_VISIBLE_2 = name === "entryProjectPlaceOther" && formValues.entryProjectPlace === "Outros";
   const IS_OPTIONAL_FIELD_VISIBLE_3 = name === "entryProjectRevestimentosOther" && formValues.entryProjectRevestimentos === "Outros";
   const IS_OPTIONAL_FIELD_VISIBLE_4 = name === "entryProjectForroOther" && formValues.entryProjectForro === "Outros";
@@ -112,7 +109,7 @@ const validateFormValue = (name, value, formErrors, setFormErrors, formValues) =
   }
 
   const IS_FIELD_ANY = STEP_ALL.includes(name);
-  if (IS_FIELD_ANY || IS_OPTIONAL_FIELD_VISIBLE || IS_OPTIONAL_FIELD_VISIBLE_2 || IS_OPTIONAL_FIELD_VISIBLE_3 || IS_OPTIONAL_FIELD_VISIBLE_4) {
+  if (IS_FIELD_ANY || IS_OPTIONAL_FIELD_VISIBLE_2 || IS_OPTIONAL_FIELD_VISIBLE_3 || IS_OPTIONAL_FIELD_VISIBLE_4) {
     if (new RegExp(IS_EMPTY_STANDARD).test(value)) {
       setFormErrors({ ...formErrors, [name]: { error: true, message: "Digite algum valor." } });
       return;
@@ -188,10 +185,9 @@ const Orcamento = () => {
     entryAge: "",
     entryHowYouMet: "",
     // STEP_04
-    entryProjectDescription: "",
+    entryStyle: "",
     entryProjectCity: "",
     entryProjectType: "Interiores",
-    entryProjectTypeOther: "",
     // STEP_05
     entryProjectBuilt: "Sim",
     entryProjectArea: "",
@@ -205,7 +201,6 @@ const Orcamento = () => {
     entryProjectForroOther: "",
     // STEP_07
     entryFinalsMoveis: "",
-    entryFinalsStyle: "",
     entryFinalsNotes: "",
     entryFinalsPlanta: []
   });
@@ -238,10 +233,6 @@ const Orcamento = () => {
       message: "",
     },
     // STEP_04
-    entryProjectDescription: {
-      error: false,
-      message: "",
-    },
     entryProjectCity: {
       error: false,
       message: "",
@@ -250,7 +241,7 @@ const Orcamento = () => {
       error: false,
       message: "",
     },
-    entryProjectTypeOther: {
+    entryStyle: {
       error: false,
       message: "",
     },
@@ -297,10 +288,6 @@ const Orcamento = () => {
       error: false,
       message: "",
     },
-    entryFinalsStyle: {
-      error: false,
-      message: "",
-    },
     entryFinalsNotes: {
       error: false,
       message: "",
@@ -335,7 +322,7 @@ const Orcamento = () => {
     setFormStep03(formStep03);
 
     const formStep04 = Object.entries(formValues)
-      .filter((formItem) => STEP_04.concat(STEP_04_OPTIONAL).includes(formItem[0]))
+      .filter((formItem) => STEP_04.includes(formItem[0]))
       .map((formValue) => formItemHasError(formValue[0], formValue[1], formValues))
       .some((error) => error);
     setFormStep04(formStep04);

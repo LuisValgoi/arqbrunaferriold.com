@@ -20,7 +20,7 @@ const Step05 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormVa
           onChange={(e) => setFormValue("entryProjectBuilt", e.target.value)}
           hasError={formErrors.entryProjectBuilt.error}
           errorMessage={formErrors.entryProjectBuilt.message}
-          label="O imóvel já encontra-se construído?"
+          label="O imóvel encontra-se construído?"
           name="entryProjectBuilt"
           value={formValues.entryProjectBuilt}
           options={[
@@ -59,7 +59,7 @@ const Step05 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormVa
           inputType="text"
           htmlFor="entryProjectEnvironment"
           placeholder="Ex: Sala, Cozinha e Lavabo"
-          label="Quais ambientes o projeto teria?"
+          label="Em quais ambientes seria o projeto?"
         />
       </FieldArea>
 

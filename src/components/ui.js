@@ -3,6 +3,7 @@ import { DeleteOutlined, InboxOutlined } from "@ant-design/icons";
 import { Upload } from "antd";
 import styled from "styled-components";
 import tw from "tailwind-styled-components";
+import ReactInputMask from "react-input-mask";
 
 const ButtonBase = tw.button`
   w-full
@@ -34,12 +35,13 @@ export const Title = tw.h1`
 export const Paragraph = tw.p`
   text-center
   max-w-500
-  text-arq-brown-500
+  text-gray-700
   whitespace-pre-line
   font-emperatriz
-  font-fira-sans
+  font-fira-sans-extra-light
   font-black
 `;
+
 
 export const ButtonOutline = tw(ButtonBase)`
   text-arq-brown-500
@@ -77,7 +79,7 @@ export const ButtonPrimary = tw(ButtonBase)`
 `;
 
 export const Label = tw.label`
-  font-fira-sans
+  font-fira-sans-extra-light
   text-sm md:text-md
   text-gray-700
   font-black
@@ -94,6 +96,22 @@ export const Input = tw.input`
   pr-4
   text-xs
   rounded-md
+  placeholder-gray-500 placeholder-opacity-50
+  
+  ${(props) => (props.$hasError ? "border-red-500" : "border-arq-brown-200")}
+`;
+
+export const InputMask = tw(ReactInputMask)`
+  focus:ring-arq-brown-500
+  focus:border-arq-brown-500
+  block
+  w-full
+  pl-4
+  py-3
+  pr-4
+  text-xs
+  rounded-md
+  placeholder-gray-500 placeholder-opacity-25
   
   ${(props) => (props.$hasError ? "border-red-500" : "border-arq-brown-200")}
 `;
@@ -123,6 +141,7 @@ export const TextArea = tw.textarea`
   text-xs
   rounded-md
   resize-none
+  placeholder-gray-500 placeholder-opacity-50
   
   ${(props) => (props.$hasError ? "border-red-500" : "border-arq-brown-200")}
 `;
@@ -155,6 +174,20 @@ export const InputAndLabel = ({ onChange, value, htmlFor, inputType, label, plac
 
       <div className="mt-1 relative rounded-md shadow-sm">
         <Input {...props} $hasError={hasError} onChange={onChange} value={value} type={inputType} name={htmlFor} id={htmlFor} placeholder={placeholder} />
+      </div>
+
+      {hasError && <p className="mt-2 text-red-500 text-xs italic">{errorMessage}</p>}
+    </div>
+  );
+};
+
+export const InputMaskAndLabel = ({ onChange, mask, value, htmlFor, inputType, label, placeholder, hasError, errorMessage, noLabel = false, ...props }) => {
+  return (
+    <div className="text-left mb-2">
+      {!noLabel && <Label htmlFor={htmlFor}>{label}</Label>}
+
+      <div className="mt-1 relative rounded-md shadow-sm">
+        <InputMask {...props} mask={mask} $hasError={hasError} onChange={onChange} value={value} type={inputType} name={htmlFor} id={htmlFor} placeholder={placeholder} />
       </div>
 
       {hasError && <p className="mt-2 text-red-500 text-xs italic">{errorMessage}</p>}

@@ -1,14 +1,76 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import tw from "tailwind-styled-components";
 
 import StepBase from "../stepBase";
 import { ButtonOutline as ButtonOutlineUI, ButtonPrimary as ButtonPrimaryUI, FieldArea, InputAndLabel, TextAreaAndLabel, Title, UploadAndLabel } from "../ui";
 
+function getBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = (error) => reject(error);
+  });
+}
+
 const Step07 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormValue, stepHasError }) => {
-  const handleMoveForward = (event) => {
+  const [attachments, setAttachments] = useState([]);
+
+  useEffect(() => {
+    formValues.entryFinalsPlanta.forEach(async (attachment) => {
+      const attachmentDecoded = await getBase64(attachment);
+      const attachmentFormat = {
+        content: attachmentDecoded,
+        filename: attachment.name,
+        type: attachment.type,
+        disposition: "attachment",
+        content_id: attachment.uid,
+      };
+      setAttachments([...attachments, attachmentFormat]);
+    });
+  }, [formValues.entryFinalsPlanta]);
+
+  const handleMoveForward = async (event) => {
     event.preventDefault();
     if (stepHasError) return;
-    navigateToStep(8, false);
+
+    debugger;
+    try {
+      await fetch("/api/email-orcamento", {
+        method: "POST",
+        body: JSON.stringify({
+          // STEP_02
+          entryName: formValues.entryName,
+          entryEmail: formValues.entryEmail,
+          entryWhatsapp: formValues.entryWhatsapp,
+          // STEP_03
+          entryOccupancy: formValues.entryOccupancy,
+          entryAge: formValues.entryAge,
+          entryHowYouMet: formValues.entryHowYouMet,
+          // STEP_04
+          entryProjectCity: formValues.entryProjectCity,
+          entryProjectType: formValues.entryProjectType,
+          entryStyle: formValues.entryStyle,
+          // STEP_05
+          entryProjectBuilt: formValues.entryProjectBuilt,
+          entryProjectArea: formValues.entryProjectArea,
+          entryProjectEnvironment: formValues.entryProjectEnvironment,
+          // STEP_06
+          entryProjectPlace: formValues.entryProjectPlace,
+          entryProjectPlaceOther: formValues.entryProjectPlaceOther,
+          entryProjectRevestimentos: formValues.entryProjectRevestimentos,
+          entryProjectRevestimentosOther: formValues.entryProjectRevestimentosOther,
+          entryProjectForro: formValues.entryProjectForro,
+          entryProjectForroOther: formValues.entryProjectForroOther,
+          // STEP_07
+          entryFinalsMoveis: formValues.entryFinalsMoveis,
+          entryFinalsNotes: formValues.entryFinalsNotes,
+          entryFinalsPlanta: attachments,
+        }),
+      });
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
@@ -21,25 +83,10 @@ const Step07 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormVa
           value={formValues.entryFinalsMoveis}
           hasError={formErrors.entryFinalsMoveis.error}
           errorMessage={formErrors.entryFinalsMoveis.message}
-          inputType="number"
+          inputType="text"
           htmlFor="entryFinalsMoveis"
           placeholder="Ex: Microondas, Hack, Nenhum..."
           label="Quais itens gostaria de manter no projeto?"
-          min={1}
-        />
-      </FieldArea>
-
-      <FieldArea>
-        <InputAndLabel
-          onChange={(e) => setFormValue("entryFinalsStyle", e.target.value)}
-          value={formValues.entryFinalsStyle}
-          hasError={formErrors.entryFinalsStyle.error}
-          errorMessage={formErrors.entryFinalsStyle.message}
-          inputType="number"
-          htmlFor="entryFinalsStyle"
-          placeholder="Ex: Minimalista, Clássico, Industrial..."
-          label="Qual seria o seu estilo?"
-          min={1}
         />
       </FieldArea>
 

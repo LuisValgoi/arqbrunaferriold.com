@@ -16,20 +16,6 @@ const Step04 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormVa
       <Title>QUANTO AO PROJETO</Title>
 
       <FieldArea>
-        <TextAreaAndLabel
-          onChange={(e) => setFormValue("entryProjectDescription", e.target.value)}
-          value={formValues.entryProjectDescription}
-          hasError={formErrors.entryProjectDescription.error}
-          errorMessage={formErrors.entryProjectDescription.message}
-          inputType="text"
-          rows={3}
-          htmlFor="entryProjectDescription"
-          placeholder="Ex: Gostaria de reformar o meu restaurante..."
-          label="Quais são os detalhes do seu projeto?"
-        />
-      </FieldArea>
-
-      <FieldArea>
         <InputAndLabel
           onChange={(e) => setFormValue("entryProjectCity", e.target.value)}
           value={formValues.entryProjectCity}
@@ -60,26 +46,22 @@ const Step04 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormVa
             {
               label: "Arquitetônico + Interiores",
               value: "Arquitetônico + Interiores",
-            },
-            {
-              label: "Outros",
-              value: "Outros",
-            },
+            }
           ]}
         />
+      </FieldArea>
 
-        {formValues.entryProjectType === "Outros" && (
-          <InputAndLabel
-            onChange={(e) => setFormValue("entryProjectTypeOther", e.target.value)}
-            value={formValues.entryProjectTypeOther}
-            hasError={formErrors.entryProjectTypeOther.error}
-            errorMessage={formErrors.entryProjectTypeOther.message}
-            inputType="text"
-            htmlFor="entryProjectTypeOther"
-            placeholder="Ex: Externo"
-            noLabel
-          />
-        )}
+      <FieldArea>
+        <InputAndLabel
+          onChange={(e) => setFormValue("entryStyle", e.target.value)}
+          value={formValues.entryStyle}
+          hasError={formErrors.entryStyle.error}
+          errorMessage={formErrors.entryStyle.message}
+          inputType="text"
+          htmlFor="entryStyle"
+          placeholder="Ex: Minimalista, Clássico, Industrial..."
+          label="Qual seria o seu estilo?"
+        />
       </FieldArea>
 
       <ButtonArea>
