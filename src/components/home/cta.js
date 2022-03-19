@@ -23,9 +23,9 @@ const CTAs = () => {
       <ButtonOutline onClick={() => window.open(urlContato, "_blank")}>
         ENTRAR EM CONTATO
       </ButtonOutline>
-      <ButtonPrimary onClick={() => window.open(urlTCC, "_blank")}>
+      <ButtonOutline onClick={() => window.open(urlTCC, "_blank")}>
         MAIS SOBRE MEU TCC
-      </ButtonPrimary>
+      </ButtonOutline>
     </Container>
   );
 }

@@ -80,8 +80,7 @@ const handler = async (event) => {
     await sendGridMail.send({
       from: process.env.SENDER_EMAIL,
       to: process.env.RECEIVER_EMAIL,
-      cc: entryEmail,
-      subject: `Proposta de orçamento recebida às ${new Date().toLocaleTimeString()} - ${entryName}`,
+      subject: `Proposta de Orçamento recebida às ${new Date().toLocaleTimeString()} - ${entryName}`,
       html,
       attachments: entryFinalsPlantaBuffered,
     });
