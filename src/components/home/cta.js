@@ -10,7 +10,7 @@ const CTAs = () => {
   const urlContato = "mailto:arqbrunaferri@gmail.com";
   const urlTCC = "https://drive.google.com/file/d/19hfupNCSJW6yaz5ftTmKFrUpbukFQ-pf/view?usp=sharing";
 
-  const handleClickOrcamento = () => navigate("/orcamento");;
+  const handleClickOrcamento = () => navigate("/orcamento");
 
   return (
     <Container>
