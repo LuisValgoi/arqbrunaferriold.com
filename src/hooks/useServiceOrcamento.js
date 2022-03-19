@@ -41,27 +41,31 @@ export const useCompleteOrcamento = (formValues) => {
       try {
         setIsLoading(true);
 
-        await fetch("/api/contato-orcamento", {
+        const resultContato = await fetch("/api/contato-orcamento", {
           method: "POST",
           body: JSON.stringify(payload),
         });
 
-        await fetch("/api/backup-orcamento", {
+        const resultOrcamento = await fetch("/api/backup-orcamento", {
           method: "POST",
           body: JSON.stringify(payload),
         });
 
-        setSuccess(true);
-        setError(undefined);
+        if (resultContato.status === 404 || resultOrcamento.status === 404) {
+          throw Error();
+        }
       } catch (err) {
         setError(true);
         setSuccess(undefined);
       } finally {
         setIsLoading(false);
       }
+
+      setError(undefined);
+      setSuccess(true);
     },
     isLoading,
     error,
-    success
+    success,
   };
 };

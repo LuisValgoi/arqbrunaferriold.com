@@ -25,7 +25,7 @@ const Step07 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormVa
     if (shouldGoToSuccessPage) {
       navigate("/orcamento/finalizado", { state: { isValid: true } });
     } else if (shouldGoToErrorPage) {
-      navigate("/erro");
+      navigate("/orcamento/erro", { state: { isValid: true } });
     }
   }, [success, error, navigate]);
 

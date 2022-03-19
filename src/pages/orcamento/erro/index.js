@@ -8,7 +8,7 @@ import { faLongArrowAltLeft } from "@fortawesome/free-solid-svg-icons";
 import { Paragraph, Title } from "../../../components/ui";
 import { usePreventAccess } from "../../../hooks/usePreventAccess";
 
-const OrcamentoFinalizado = () => {
+const OrcamentoErro = () => {
   const navigate = useNavigate();
 
   usePreventAccess(() => {
@@ -17,22 +17,22 @@ const OrcamentoFinalizado = () => {
 
   return (
     <Container>
-      <Title>Agradecemos pelo contato!</Title>
+      <Title>Identificamos um erro!</Title>
       <Paragraph>
-        {`Acabamos de receber o seu e-mail.
-        Como próximo passo, iremos entrar em contato para agendar uma reunião por vídeo chamada para conversarmos sobre a proposta de orçamento.Muito obrigada!`}
+        {`Infelizmente, durante o envio do formulário aos nossos servidores, identificamos um erro.
+        Estaremos trabalhando o mais rápido possível para solucionar o problema!`}
       </Paragraph>
       <Button onClick={() => navigate("/")}>
         <ButtonIcon icon={faLongArrowAltLeft} size="1x" />
-        voltar para home
+        VOLTAR PARA HOME
       </Button>
     </Container>
   );
 };
 
-export default OrcamentoFinalizado;
+export default OrcamentoErro;
 
-OrcamentoFinalizado.displayName = "OrcamentoFinalizado";
+OrcamentoErro.displayName = "OrcamentoErro";
 
 const Container = tw.article`
   flex
