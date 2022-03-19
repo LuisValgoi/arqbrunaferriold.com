@@ -81,7 +81,7 @@ const handler = async (event) => {
       from: process.env.SENDER_EMAIL,
       to: process.env.RECEIVER_EMAIL,
       cc: entryEmail,
-      subject: `Proposta de orçamento recebida às ${new Date().toLocaleTimeString()}`,
+      subject: `Proposta de orçamento recebida às ${new Date().toLocaleTimeString()} - ${entryName}`,
       html,
       attachments: entryFinalsPlantaBuffered,
     });
