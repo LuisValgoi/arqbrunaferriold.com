@@ -2,16 +2,12 @@ import React from "react";
 import tw from "tailwind-styled-components";
 import styled from 'styled-components';
 
-import { useApp } from '../context/AppContext';
-
-import photo from "../img/perfil.png";
-import nameCircle from "../img/name-circle.png";
+import photo from "../../img/perfil.png";
+import nameCircle from "../../img/name-circle.png";
 
 const Avatar = () => {
-  const { selectedMenu } = useApp();
-
   return (
-    <Container $decrease={selectedMenu === "ORCAMENTO"}>
+    <Container>
       <NameCircle src={nameCircle} alt="BRUNA FERRI ARQUITETURA & INTERIORES" />
       <PhotoBorder />
       <Photo src={photo} alt="me" width="160px" height="160px" />

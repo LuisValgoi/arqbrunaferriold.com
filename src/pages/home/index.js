@@ -1,7 +1,7 @@
 import React from "react";
 
-import About from "./about";
-import CTAs from "./cta";
+import About from "../../components/home/about";
+import CTAs from "../../components/home/cta";
 
 const Home = () => {
   return (

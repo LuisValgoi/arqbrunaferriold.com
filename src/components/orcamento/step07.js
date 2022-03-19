@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import tw from "tailwind-styled-components";
 
-import StepBase from "../stepBase";
+import StepBase from "../_shared_/stepBase";
 import { ButtonOutline as ButtonOutlineUI, ButtonPrimary as ButtonPrimaryUI, FieldArea, InputAndLabel, TextAreaAndLabel, Title, UploadAndLabel } from "../ui";
 
 function getBase64(file) {

@@ -1,7 +1,7 @@
 import React from "react";
 import tw from "tailwind-styled-components";
 
-import StepBase from "../stepBase";
+import StepBase from "../_shared_/stepBase";
 import { ButtonOutline as ButtonOutlineUI, ButtonPrimary as ButtonPrimaryUI, FieldArea, InputAndLabel, SelectAndLabel, TextAreaAndLabel, Title } from "../ui";
 
 const Step04 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormValue, stepHasError }) => {

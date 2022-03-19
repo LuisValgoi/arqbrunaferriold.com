@@ -2,9 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import styled from "styled-components";
 
-import { AppProvider } from "./context/AppContext";
-import Layout from "./components/layout";
-import Switcher from "./components/switcher";
+import { BrowserRouter } from "react-router-dom";
+import Layout from "./components/_shared_/layout";
+import Switcher from "./components/_shared_/switcher";
 import LineTextureSrc from "./img/lines.svg";
 
 import "tailwindcss/tailwind.css";
@@ -18,12 +18,12 @@ const LineTexture = styled.div`
 `;
 
 ReactDOM.render(
-  <AppProvider>
-    <LineTexture>
+  <LineTexture>
+    <BrowserRouter>
       <Layout>
         <Switcher />
       </Layout>
-    </LineTexture>
-  </AppProvider>,
+    </BrowserRouter>
+  </LineTexture>,
   document.getElementById("root"),
 );

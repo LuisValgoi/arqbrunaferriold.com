@@ -1,18 +1,21 @@
 import React from "react";
 import tw from "tailwind-styled-components";
 import styled from "styled-components";
-import { useApp } from "../context/AppContext";
+import { useOrcamentoURL, useHomeURL } from "../../hooks/useURL";
 
+import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInstagram, faFacebookF, faPinterestP } from "@fortawesome/free-brands-svg-icons";
 import { faLongArrowAltLeft } from "@fortawesome/free-solid-svg-icons";
 
 const Info = () => {
-  const { selectedMenu, setSelectedMenu } = useApp();
+  const isOrcamentoURL = useOrcamentoURL();
+  const isHomeURL = useHomeURL();
+  const navigate = useNavigate();
 
   return (
     <Container>
-      {selectedMenu !== "ORCAMENTO" && (
+      {!isOrcamentoURL && (
         <Brands>
           <BrandIcon size="2x" color="#744c2f" icon={faFacebookF} onClick={() => window.open("https://www.facebook.com/arqbrunaferri")} />
           <BrandIcon size="3x" color="#744c2f" icon={faInstagram} onClick={() => window.open("https://www.instagram.com/arqbrunaferri")} />
@@ -20,14 +23,14 @@ const Info = () => {
         </Brands>
       )}
 
-      {selectedMenu === "ORCAMENTO" && (
-        <Button onClick={() => setSelectedMenu("HOME")}>
+      {isOrcamentoURL && (
+        <Button onClick={() => navigate("/")}>
           <ButtonIcon icon={faLongArrowAltLeft} size="1x" />
           voltar para home
         </Button>
       )}
 
-      {selectedMenu === "HOME" && <Paragraph>em que posso te ajudar ?</Paragraph>}
+      {isHomeURL && <Paragraph>em que posso te ajudar ?</Paragraph>}
     </Container>
   );
 };

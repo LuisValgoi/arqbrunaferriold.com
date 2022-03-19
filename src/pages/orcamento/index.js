@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 
-import Step01 from "./step01";
-import Step02 from "./step02";
-import Step03 from "./step03";
-import Step04 from "./step04";
-import Step05 from "./step05";
-import Step06 from "./step06";
-import Step07 from "./step07";
+import Step01 from "../../components/orcamento/step01";
+import Step02 from "../../components/orcamento/step02";
+import Step03 from "../../components/orcamento/step03";
+import Step04 from "../../components/orcamento/step04";
+import Step05 from "../../components/orcamento/step05";
+import Step06 from "../../components/orcamento/step06";
+import Step07 from "../../components/orcamento/step07";
 
 // regex
 const IS_EMPTY_STANDARD = /^$/g;

@@ -1,16 +1,16 @@
 import React from "react";
 import tw from "tailwind-styled-components";
 
-import { useApp } from "../../context/AppContext";
+import { useNavigate } from "react-router-dom";
 import { ButtonOutline, ButtonPrimary } from "../ui";
 
 const CTAs = () => {
+  const navigate = useNavigate();
   const urlRender = "https://api.whatsapp.com/send?phone=5551981909312&text=Ol%C3%A1,%20como%20funciona%20o%20seu%20servi%C3%A7o%20de%20render?%20";
   const urlContato = "mailto:arqbrunaferri@gmail.com";
   const urlTCC = "https://drive.google.com/file/d/19hfupNCSJW6yaz5ftTmKFrUpbukFQ-pf/view?usp=sharing";
-  const { setSelectedMenu } = useApp();
 
-  const handleClickOrcamento = () => setSelectedMenu('ORCAMENTO');
+  const handleClickOrcamento = () => navigate("/orcamento");;
 
   return (
     <Container>

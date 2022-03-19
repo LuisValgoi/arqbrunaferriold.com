@@ -2,19 +2,26 @@ import React from "react";
 import styled from "styled-components";
 import tw from "tailwind-styled-components";
 
-import { useApp } from '../context/AppContext';
+import Avatar from "./avatar";
+import Info from "./info";
+
+import { useOrcamentoURL } from "../../hooks/useURL";
 
 const Layout = ({ children }) => {
-  const { selectedMenu } = useApp();
+  const isOrcamentoURL = useOrcamentoURL();
 
   return (
     <Container>
-      <Content $isOrcamento={selectedMenu === "ORCAMENTO"}>
-        <InnerContent>{children}</InnerContent>
+      <Content $isOrcamento={isOrcamentoURL}>
+        <InnerContent>
+          <Avatar />
+          <Info />
+          {children}
+        </InnerContent>
       </Content>
     </Container>
   );
-}
+};
 
 export default Layout;
 
@@ -50,4 +57,3 @@ const InnerContent = tw.div`
   justify-center
   items-center
 `;
-

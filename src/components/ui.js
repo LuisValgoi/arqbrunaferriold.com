@@ -42,7 +42,6 @@ export const Paragraph = tw.p`
   font-black
 `;
 
-
 export const ButtonOutline = tw(ButtonBase)`
   text-arq-brown-500
   bg-transparent

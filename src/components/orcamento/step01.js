@@ -1,7 +1,7 @@
 import React from "react";
 import tw from "tailwind-styled-components";
 
-import StepBase from '../stepBase';
+import StepBase from '../_shared_/stepBase';
 import { ButtonOutline as ButtonOutlineUI, Paragraph, Title } from "../ui";
 
 const Step01 = ({ isGoingBack, navigateToStep }) => {
