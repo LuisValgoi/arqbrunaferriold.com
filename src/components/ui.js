@@ -63,8 +63,7 @@ export const ButtonPrimary = tw(ButtonBase)`
     text-gray-400
     border-gray-400
     border
-  `
-      : `
+  ` : `
     text-white
     bg-arq-brown-300
     border-arq-brown-800

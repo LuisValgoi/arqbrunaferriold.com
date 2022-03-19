@@ -83,7 +83,7 @@ const Paragraph = tw.span`
 `;
 
 const Button = tw.span`
-  text-white
+  text-arq-brown-500
   text-center
   text-sm sm:text-md
   uppercase
@@ -91,17 +91,18 @@ const Button = tw.span`
   rounded
   px-4
   py-2
-  bg-arq-brown-300
+  bg-transparent
   border-2
-  border-arq-brown-500
-  mb-2
+  border-arq-brown-300
 
   cursor-pointer
   transform transition duration-300 ease-in-out
-  hover:bg-arq-brown-700
+  hover:text-arq-brown-50
+  hover:bg-arq-brown-300
   hover:border-arq-brown-700
   hover:scale-105
   hover:black
+  focus:ring-arq-brown-300
 `;
 
 const ButtonIcon = tw(FontAwesomeIcon)`

@@ -2,7 +2,7 @@ import React from "react";
 import tw from "tailwind-styled-components";
 
 import StepBase from '../_shared_/stepBase';
-import { ButtonOutline as ButtonOutlineUI, Paragraph, Title } from "../ui";
+import { ButtonPrimary as ButtonPrimaryUI, Paragraph, Title } from "../ui";
 
 const Step01 = ({ isGoingBack, navigateToStep }) => {
   return (
@@ -14,7 +14,7 @@ const Step01 = ({ isGoingBack, navigateToStep }) => {
           {`Olá, tudo bem?! Ficamos muito felizes que você chegou até aqui. Isso significa que está interessado em nosso trabalho. Para que isso aconteça, precisamos de algumas informações, para entendermos do que se trata o seu projeto.`}
         </Paragraph>
       </ParagraphArea>
-      <ButtonOutline onClick={() => navigateToStep(2, false)}>Começar</ButtonOutline>
+      <Button onClick={() => navigateToStep(2, false)}>Começar</Button>
     </StepBase>
   );
 }
@@ -27,7 +27,7 @@ const ParagraphArea = tw.div`
   max-w-300
 `;
 
-const ButtonOutline = tw(ButtonOutlineUI)`
-  mt-6
+const Button = tw(ButtonPrimaryUI)`
+  mt-4
   max-w-200
 `;
