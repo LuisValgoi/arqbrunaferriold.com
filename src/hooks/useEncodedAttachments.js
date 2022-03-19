@@ -22,6 +22,7 @@ export const useEncodedAttachments = (plantas) => {
         content_id: attachment.uid,
       }]);
     });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [plantas]);
 
   return attachments;

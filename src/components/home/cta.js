@@ -2,7 +2,7 @@ import React from "react";
 import tw from "tailwind-styled-components";
 
 import { useNavigate } from "react-router-dom";
-import { ButtonOutline, ButtonPrimary } from "../ui";
+import { ButtonOutline } from "../ui";
 
 const CTAs = () => {
   const navigate = useNavigate();

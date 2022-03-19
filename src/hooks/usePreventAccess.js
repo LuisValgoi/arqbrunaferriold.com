@@ -14,6 +14,7 @@ export const usePreventAccess = (callback) => {
     } else {
       setShouldShow(true);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location]);
 
   useEffect(() => {
