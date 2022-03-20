@@ -193,7 +193,7 @@ const Orcamento = () => {
     entryProjectArea: "",
     entryProjectEnvironment: "",
     // STEP_06
-    entryProjectPlace: "Local novo + Sem quebra de paredes",
+    entryProjectPlace: "Local novo e Sem quebra de paredes",
     entryProjectPlaceOther: "",
     entryProjectRevestimentos: "Quero substituir os revestimentos antigos por novos",
     entryProjectRevestimentosOther: "",

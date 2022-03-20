@@ -23,20 +23,20 @@ const Step06 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormVa
           label="Qual o tipo do local e o que buscas?"
           options={[
             {
-              label: "Local novo + Sem quebra de paredes",
-              value: "Local novo + Sem quebra de paredes",
+              label: "Local novo e Sem quebra de paredes",
+              value: "Local novo e Sem quebra de paredes",
             },
             {
-              label: "Local novo + Com quebra de paredes",
-              value: "Local novo + Com quebra de paredes",
+              label: "Local novo e Com quebra de paredes",
+              value: "Local novo e Com quebra de paredes",
             },
             {
-              label: "Local antigo + Sem quebra de paredes",
-              value: "Local antigo + Sem quebra de paredes",
+              label: "Local antigo e Sem quebra de paredes",
+              value: "Local antigo e Sem quebra de paredes",
             },
             {
-              label: "Local antigo + Com quebra de paredes",
-              value: "Local antigo + Com quebra de paredes",
+              label: "Local antigo e Com quebra de paredes",
+              value: "Local antigo e Com quebra de paredes",
             },
             {
               label: "Outros",
@@ -53,7 +53,7 @@ const Step06 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormVa
             errorMessage={formErrors.entryProjectPlaceOther.message}
             inputType="text"
             htmlFor="entryProjectPlaceOther"
-            placeholder="Ex: Local Novo + Com pouca quebra de paredes"
+            placeholder="Ex: Local Novo e Com pouca quebra de paredes"
             noLabel
           />
         )}
