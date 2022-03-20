@@ -145,7 +145,7 @@ const validateFormValue = (name, value, formErrors, setFormErrors, formValues) =
       return;
     }
 
-    return false;
+    setFormErrors({ ...formErrors, [name]: { error: false, message: "" } });
   }
 
   const IS_FIELD_ANY = STEP_ALL.includes(name);
