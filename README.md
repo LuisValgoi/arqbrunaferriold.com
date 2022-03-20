@@ -16,7 +16,7 @@
 
 # Serverless Functions 
 
-- `netlify dev`: This will invoke the `yarn start` @ [3000](http://localhost:3000) + [8888](http://localhost:8888/.netlify/functions/) 
+- `netlify dev`: This will invoke the `yarn start` @ [3000](http://localhost:3000) + [8888](http://localhost:8888/.netlify/functions/).
 
 # Environment Variables
 

@@ -86,12 +86,12 @@ const handler = async (event) => {
     });
 
     return {
-      statusCode: 200,
+      status: 200,
       body: JSON.stringify({ message: "Email sent" }),
     };
   } catch (error) {
     return {
-      statusCode: 500,
+      status: 404,
       body: JSON.stringify({ message: String(error) }),
     }
   }
