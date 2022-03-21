@@ -60,7 +60,7 @@ const Step04 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormVa
           inputType="text"
           htmlFor="entryStyle"
           placeholder="Ex: Minimalista, Clássico, Industrial..."
-          label="Qual seria o seu estilo?"
+          label="Como você descreveria o seu estilo?"
         />
       </FieldArea>
 

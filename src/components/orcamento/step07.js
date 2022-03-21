@@ -55,7 +55,7 @@ const Step07 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormVa
           inputType="text"
           rows={3}
           htmlFor="entryFinalsNotes"
-          placeholder="Ex: Usar ripas, com neutras, bem minimalista..."
+          placeholder="Ex: Usar ripas, cores neutras, bem minimalista..."
           label="Mais alguma informação extra?"
         />
       </FieldArea>

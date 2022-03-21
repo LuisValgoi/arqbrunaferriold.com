@@ -56,7 +56,7 @@ const handler = async (event) => {
         <b>[QUANTO AO MEU PROJETO]</b><br>
         <b>Em qual cidade será feito o projeto?</b> ${entryProjectCity}<br>
         <b>Que tipo de projeto eu preciso?</b> ${entryProjectType}<br>
-        <b>Qual seria o meu estilo?</b> ${entryStyle}<br><br>
+        <b>Como eu descreveria o meu estilo?</b> ${entryStyle}<br><br>
 
         <b>[QUANTO À ÁREA]</b><br>
         <b>O imóvel encontra-se construído?</b> ${entryProjectBuilt}<br>
