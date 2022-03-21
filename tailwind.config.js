@@ -19,6 +19,7 @@ module.exports = {
         "arq-brown-100": "#E6E3DE",
         "arq-brown-200": "#9f6037",
         "arq-brown-300": "#744c2f",
+        "arq-brown-500": "#523521",
         "arq-brown-700": "#29261d",
         "arq-brown-800": "#332013",
         "arq-green-100": "#EFF0E9",
@@ -30,6 +31,18 @@ module.exports = {
         50: "12.8rem",
         68: "17rem",
       },
+      minWidth: {
+        300: "300px",
+        320: "320px",
+        500: "500px",
+      },
+      maxWidth: {
+        150: "150px",
+        200: "200px",
+        320: "320px",
+        500: "500px",
+        300: "300px"
+      },
       height: {
         50: "12.8rem",
         68: "17rem",
@@ -39,6 +52,15 @@ module.exports = {
       },
       fontFamily: {
         emperatriz: ["emperatriz"],
+        "fira-sans": ["firasans"],
+        "fira-sans-bold": ["firasans-bold"],
+        "fira-sans-extra-bold": ["firasans-extra-bold"],
+        "fira-sans-extra-light": ["firasans-extra-light"],
+        "fira-sans-light": ["firasans-light"],
+        "fira-sans-medium": ["firasans-medium"],
+        "fira-sans-regular": ["firasans-regular"],
+        "fira-sans-semi-bold": ["firasans-semi-bold"],
+        "fira-sans-thin": ["firasans-thin"],
       },
       backgroundSize: {
         "50px": "50px",
@@ -48,5 +70,5 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/forms"), require('tw-elements/dist/plugin')],
 };

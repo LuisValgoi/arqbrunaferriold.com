@@ -2,10 +2,10 @@ import React from "react";
 import tw from "tailwind-styled-components";
 import styled from 'styled-components';
 
-import photo from "../img/perfil.png";
-import nameCircle from "../img/name-circle.png";
+import photo from "../../img/perfil.png";
+import nameCircle from "../../img/name-circle.png";
 
-export default function Avatar() {
+const Avatar = () => {
   return (
     <Container>
       <NameCircle src={nameCircle} alt="BRUNA FERRI ARQUITETURA & INTERIORES" />
@@ -15,13 +15,19 @@ export default function Avatar() {
   );
 }
 
+export default Avatar;
+
+Avatar.displayName = "Avatar";
+
 const Container = tw.div`
   relative
   flex
   content-center
   justify-center
   items-center
-  mb-12 sm:mb-14
+  mb-10
+  transform transition duration-300 ease-in-out
+  scale-90
 `;
 
 const Photo = tw.img`
@@ -51,6 +57,7 @@ const NameCircle = styled.img`
   animation-duration: 80000ms;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
+  max-width: 300px;
 
   @keyframes spin-name-circle {
     from {

@@ -13,3 +13,17 @@
 - TailwindCSS.
 
 - Styled Components.
+
+# Serverless Functions 
+
+- `netlify dev`: This will invoke the `yarn start` @ [3000](http://localhost:3000) + [8888](http://localhost:8888/.netlify/functions/).
+
+# Environment Variables
+
+```
+SKIP_PREFLIGHT_CHECK=true
+SENDGRID_API_KEY=<GET-YOUR-SENDGRID-KEY>
+SENDER_EMAIL=<GET-YOUR-SENDER-EMAIL>
+RECEIVER_EMAIL=<GET-YOUR-RECEIVER-EMAIL>
+```
+
