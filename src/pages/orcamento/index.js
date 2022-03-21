@@ -13,7 +13,7 @@ const IS_EMPTY_STANDARD = /^$/g;
 const IS_MORE_THAN_255 = (value) => value?.length > 255;
 const IS_EMAIL_STANDARD = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
 const IS_PHONE_STANDARD = /(?:\()[0-9]{2}(?:\))\s?[0-9]{4,5}(?:-)[0-9]{4}/g;
-const IS_AGE_STANDARD = /^(1[89]|[2-9]\d)...../;
+const IS_AGE_STANDARD = /^(1[89]|[2-9]\d)/;
 const IS_POSITIVE_NUMBER_STANDARD = /^[1-9]+[0-9]*$/g;
 
 // fields
