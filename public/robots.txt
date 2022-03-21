@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://arqbrunaferri-bio.netlify.app/sitemap.xml
-Host: https://arqbrunaferri-bio.netlify.app/
+Sitemap: https://arqbrunaferri.com/sitemap.xml
+Host: https://arqbrunaferri.com/

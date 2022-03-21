@@ -19,8 +19,11 @@ const OrcamentoFinalizado = () => {
     <Container>
       <Title>Agradecemos pelo contato!</Title>
       <Paragraph>
-        {`Acabamos de receber o seu e-mail.
-        Como próximo passo, iremos entrar em contato para agendar uma reunião por vídeo chamada para conversarmos sobre a proposta de orçamento.Muito obrigada!`}
+        {`Muito obrigada pelo preenchimento formulário!
+        
+        Como próximo passo, iremos entrar em contato para agendar uma reunião por vídeo chamada para conversarmos sobre a proposta de orçamento.
+        
+        Fique atento à caixa de entrada ou spam de seu e-mail, pois em instantes você irá receber uma cópia do preenchimento deste formulário. `}
       </Paragraph>
       <Button onClick={() => navigate("/")}>
         <ButtonIcon icon={faLongArrowAltLeft} size="1x" />
