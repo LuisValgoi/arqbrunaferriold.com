@@ -19,7 +19,7 @@ const IS_POSITIVE_NUMBER_STANDARD = /^[1-9]+[0-9]*$/g;
 // fields
 const STEP_02 = ["entryName", "entryEmail", "entryWhatsapp"];
 const STEP_03 = ["entryOccupancy", "entryAge", "entryHowYouMet"];
-const STEP_04 = ["entryProjectCity", "entryProjectType", "entryStyle"];
+const STEP_04 = ["entryProjectCity", "entryProjectType", "entryCannotMiss"];
 const STEP_05 = ["entryProjectBuilt", "entryProjectArea", "entryProjectEnvironment"];
 const STEP_06 = ["entryProjectPlace", "entryProjectRevestimentos", "entryProjectForro"];
 const STEP_06_OPTIONAL = ["entryProjectPlaceOther", "entryProjectRevestimentosOther", "entryProjectForroOther"];
@@ -185,7 +185,7 @@ const Orcamento = () => {
     entryAge: "",
     entryHowYouMet: "",
     // STEP_04
-    entryStyle: "",
+    entryCannotMiss: "",
     entryProjectCity: "",
     entryProjectType: "Interiores",
     // STEP_05
@@ -241,7 +241,7 @@ const Orcamento = () => {
       error: false,
       message: "",
     },
-    entryStyle: {
+    entryCannotMiss: {
       error: false,
       message: "",
     },

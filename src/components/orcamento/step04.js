@@ -53,14 +53,14 @@ const Step04 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormVa
 
       <FieldArea>
         <InputAndLabel
-          onChange={(e) => setFormValue("entryStyle", e.target.value)}
-          value={formValues.entryStyle}
-          hasError={formErrors.entryStyle.error}
-          errorMessage={formErrors.entryStyle.message}
+          onChange={(e) => setFormValue("entryCannotMiss", e.target.value)}
+          value={formValues.entryCannotMiss}
+          hasError={formErrors.entryCannotMiss.error}
+          errorMessage={formErrors.entryCannotMiss.message}
           inputType="text"
-          htmlFor="entryStyle"
-          placeholder="Ex: Minimalista, Clássico, Industrial..."
-          label="Como você descreveria o seu estilo?"
+          htmlFor="entryCannotMiss"
+          placeholder="Ex: Quadros, Decoração, Papel de parede..."
+          label="O que não pode faltar na sua casa?"
         />
       </FieldArea>
 
