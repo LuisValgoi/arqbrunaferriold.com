@@ -23,7 +23,7 @@ const STEP_04 = ["entryProjectCity", "entryProjectType", "entryCannotMiss"];
 const STEP_05 = ["entryProjectBuilt", "entryProjectArea", "entryProjectEnvironment"];
 const STEP_06 = ["entryProjectPlace", "entryProjectRevestimentos", "entryProjectForro"];
 const STEP_06_OPTIONAL = ["entryProjectPlaceOther", "entryProjectRevestimentosOther", "entryProjectForroOther"];
-const STEP_07 = ["entryFinalsMoveis", "entryFinalsNotes"];
+const STEP_07 = ["entryBudget", "entryFinalsNotes"];
 const STEP_07_SPECIAL = ["entryFinalsPlanta"];
 const STEP_ALL = STEP_02.concat(STEP_03).concat(STEP_04).concat(STEP_05).concat(STEP_06).concat(STEP_07);
 
@@ -200,7 +200,7 @@ const Orcamento = () => {
     entryProjectForro: "Quero manter o forro existente do local",
     entryProjectForroOther: "",
     // STEP_07
-    entryFinalsMoveis: "",
+    entryBudget: "",
     entryFinalsNotes: "",
     entryFinalsPlanta: []
   });
@@ -284,7 +284,7 @@ const Orcamento = () => {
       message: "",
     },
     // STEP_07
-    entryFinalsMoveis: {
+    entryBudget: {
       error: false,
       message: "",
     },

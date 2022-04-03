@@ -24,7 +24,7 @@ const handler = async (event) => {
       entryProjectRevestimentosOther,
       entryProjectForro,
       entryProjectForroOther,
-      entryFinalsMoveis,
+      entryBudget,
       entryFinalsNotes,
       entryFinalsPlanta,
     } = JSON.parse(event.body);
@@ -69,8 +69,8 @@ const handler = async (event) => {
         <b>Qual o tipo de revestimento que busco?</b> ${entryProjectRevestimentos === "Outros" ? entryProjectRevestimentosOther : entryProjectRevestimentos}<br>
         <b>Qual o tipo de forro que busco?</b> ${entryProjectForro === "Outros" ? entryProjectForroOther : entryProjectForro}<br><br>
 
-        <b>[QUANTO À PREFERÊNCIAS]</b><br>
-        <b>Quais itens gostaria de manter no projeto?</b> ${entryFinalsMoveis}<br>
+        <b>[ÚLTIMA ETAPA]</b><br>
+        <b>Qual o seu budget para o projeto?</b> ${entryBudget}<br>
         <b>Mais alguma informação extra?</b> ${entryFinalsNotes}<br><br>
 
         Atenciosamente,<br>
