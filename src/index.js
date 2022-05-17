@@ -9,6 +9,7 @@ import LineTextureSrc from "./img/lines.svg";
 
 import "tailwindcss/tailwind.css";
 import "./index.css";
+import './components/_shared_/bootstrap';
 
 const LineTexture = styled.div`
   background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.9)), url(${LineTextureSrc});

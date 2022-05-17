@@ -1550,6 +1550,13 @@
     mkdirp "^1.0.4"
     rimraf "^3.0.2"
 
+"@openreplay/tracker@^3.5.11":
+  version "3.5.11"
+  resolved "https://registry.yarnpkg.com/@openreplay/tracker/-/tracker-3.5.11.tgz#ba442c0b7ba9971b90082a90621f60508ffeec17"
+  integrity sha512-KWAHT4U/O+A2GPBLk1AJtBIwDlIxn8GA5kDUlbg48J5P1SNckWQg+Kag0GElgbQA1zGJKSrWC8g0qrmekDYWsg==
+  dependencies:
+    error-stack-parser "^2.0.6"
+
 "@pmmmwh/react-refresh-webpack-plugin@0.4.3":
   version "0.4.3"
   resolved "https://registry.yarnpkg.com/@pmmmwh/react-refresh-webpack-plugin/-/react-refresh-webpack-plugin-0.4.3.tgz#1eec460596d200c0236bf195b078a5d1df89b766"
