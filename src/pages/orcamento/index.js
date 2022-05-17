@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 
+import { useApp } from "../../context/AppContext";
 import Step01 from "../../components/orcamento/step01";
 import Step02 from "../../components/orcamento/step02";
 import Step03 from "../../components/orcamento/step03";
@@ -166,6 +167,7 @@ const validateFormValue = (name, value, formErrors, setFormErrors, formValues) =
 
 // component
 const Orcamento = () => {
+  const { tracker } = useApp();
   const [step, setStep] = useState(1);
   const [isGoingBack, setIsGoingBack] = useState(false);
   const [formStep02, setFormStep02] = useState(false);
@@ -350,7 +352,7 @@ const Orcamento = () => {
     <>
       {step === 1 && <Step01 isGoingBack={isGoingBack} navigateToStep={navigateToStep} />}
 
-      {step === 2 && <Step02 isGoingBack={isGoingBack} navigateToStep={navigateToStep} stepHasError={formStep02} formValues={formValues} formErrors={formErrors} setFormValue={setFormValue} />}
+      {step === 2 && <Step02 tracker={tracker} isGoingBack={isGoingBack} navigateToStep={navigateToStep} stepHasError={formStep02} formValues={formValues} formErrors={formErrors} setFormValue={setFormValue} />}
 
       {step === 3 && <Step03 isGoingBack={isGoingBack} navigateToStep={navigateToStep} stepHasError={formStep03} formValues={formValues} formErrors={formErrors} setFormValue={setFormValue} />}
 

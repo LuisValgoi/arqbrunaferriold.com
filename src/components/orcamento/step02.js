@@ -4,11 +4,16 @@ import tw from "tailwind-styled-components";
 import StepBase from "../_shared_/stepBase";
 import { ButtonOutline as ButtonOutlineUI, ButtonPrimary as ButtonPrimaryUI, FieldArea, InputAndLabel, InputMaskAndLabel, Title } from "../ui";
 
-const Step02 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormValue, stepHasError }) => {
+const Step02 = ({ tracker, navigateToStep, isGoingBack, formValues, formErrors, setFormValue, stepHasError }) => {
   const handleMoveForward = (event) => {
     event.preventDefault();
     if (stepHasError) return;
     navigateToStep(3, false);
+  };
+
+  const handleSetMetadata = (name, value) => {
+    tracker?.setUserID(value);
+    setFormValue(name, value);
   };
 
   return (
@@ -30,7 +35,7 @@ const Step02 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormVa
 
       <FieldArea>
         <InputAndLabel
-          onChange={(e) => setFormValue("entryEmail", e.target.value)}
+          onChange={(e) => handleSetMetadata("entryEmail", e.target.value)}
           value={formValues.entryEmail}
           hasError={formErrors.entryEmail.error}
           errorMessage={formErrors.entryEmail.message}
