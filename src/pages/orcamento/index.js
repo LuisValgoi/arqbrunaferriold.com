@@ -200,7 +200,7 @@ const Orcamento = () => {
     entryProjectForro: "Quero manter o forro existente do local",
     entryProjectForroOther: "",
     // STEP_07
-    entryBudget: "",
+    entryBudget: "R$ 3.000,00 - R$ 10.000,00",
     entryFinalsNotes: "",
     entryFinalsPlanta: []
   });
