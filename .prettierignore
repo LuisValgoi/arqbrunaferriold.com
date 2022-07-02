@@ -1,0 +1,11 @@
+.idea
+build
+functions
+netlify
+node_modules
+public
+craco.config.js
+netlify.toml
+package.json
+*.env
+*.config.js
