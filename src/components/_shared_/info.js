@@ -14,7 +14,7 @@ const Info = () => {
   const navigate = useNavigate();
 
   return (
-    <Container>
+    <Container $shouldGoUp={isOrcamentoURL}>
       {!isOrcamentoURL && (
         <Brands>
           <BrandIcon size="2x" color="#744c2f" icon={faFacebookF} onClick={() => window.open("https://www.facebook.com/arqbrunaferri")} />
@@ -45,6 +45,7 @@ const Container = tw.article`
   justify-center
   items-center
   min-w-300
+  ${(props) => (props.$shouldGoUp && "-mt-3")}
 `;
 
 const BrandsInner = styled.div`

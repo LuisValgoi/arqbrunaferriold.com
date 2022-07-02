@@ -5,14 +5,10 @@ import tw from "tailwind-styled-components";
 import Avatar from "./avatar";
 import Info from "./info";
 
-import { useOrcamentoURL } from "../../hooks/useURL";
-
 const Layout = ({ children }) => {
-  const isOrcamentoURL = useOrcamentoURL();
-
   return (
     <Container>
-      <Content $isOrcamento={isOrcamentoURL}>
+      <Content>
         <InnerContent>
           <Avatar />
           <Info />

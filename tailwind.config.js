@@ -6,6 +6,12 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      scale: {
+        '80': '0.8',
+      },
+      margin: {
+        '-3': '-0.75rem',
+      },
       inset: {
         'title': 'top: -100px;',
       },

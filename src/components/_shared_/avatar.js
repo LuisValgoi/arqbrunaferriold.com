@@ -5,9 +5,13 @@ import styled from 'styled-components';
 import photo from "../../img/perfil.png";
 import nameCircle from "../../img/name-circle.png";
 
+import { useOrcamentoURL } from "../../hooks/useURL";
+
 const Avatar = () => {
+  const isOrcamentoURL = useOrcamentoURL();
+
   return (
-    <Container>
+    <Container $shouldScaleDown={isOrcamentoURL}>
       <NameCircle src={nameCircle} alt="BRUNA FERRI ARQUITETURA & INTERIORES" />
       <PhotoBorder />
       <Photo src={photo} alt="me" width="160px" height="160px" />
@@ -27,7 +31,7 @@ const Container = tw.div`
   items-center
   mb-10
   transform transition duration-300 ease-in-out
-  scale-90
+  ${(props) => (props.$shouldScaleDown ? "scale-80" : "scale-90")}
 `;
 
 const Photo = tw.img`
