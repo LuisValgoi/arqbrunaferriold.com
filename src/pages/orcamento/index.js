@@ -31,7 +31,8 @@ const STEP_ALL = STEP_02.concat(STEP_03).concat(STEP_04).concat(STEP_05).concat(
 // return if there is error or not
 const formItemHasError = (name, value, formValues) => {
   const IS_OPTIONAL_FIELD_VISIBLE_2 = name === "entryProjectPlaceOther" && formValues.entryProjectPlace === "Outros";
-  const IS_OPTIONAL_FIELD_VISIBLE_3 = name === "entryProjectRevestimentosOther" && formValues.entryProjectRevestimentos === "Outros";
+  const IS_OPTIONAL_FIELD_VISIBLE_3 =
+    name === "entryProjectRevestimentosOther" && formValues.entryProjectRevestimentos === "Outros";
   const IS_OPTIONAL_FIELD_VISIBLE_4 = name === "entryProjectForroOther" && formValues.entryProjectForro === "Outros";
   const IS_SPECIAL_CASE = name === "entryFinalsPlanta";
 
@@ -96,7 +97,8 @@ const formItemHasError = (name, value, formValues) => {
 // renders in the UI the error
 const validateFormValue = (name, value, formErrors, setFormErrors, formValues) => {
   const IS_OPTIONAL_FIELD_VISIBLE_2 = name === "entryProjectPlaceOther" && formValues.entryProjectPlace === "Outros";
-  const IS_OPTIONAL_FIELD_VISIBLE_3 = name === "entryProjectRevestimentosOther" && formValues.entryProjectRevestimentos === "Outros";
+  const IS_OPTIONAL_FIELD_VISIBLE_3 =
+    name === "entryProjectRevestimentosOther" && formValues.entryProjectRevestimentos === "Outros";
   const IS_OPTIONAL_FIELD_VISIBLE_4 = name === "entryProjectForroOther" && formValues.entryProjectForro === "Outros";
   const IS_SPECIAL_CASE = name === "entryFinalsPlanta";
 
@@ -167,7 +169,7 @@ const validateFormValue = (name, value, formErrors, setFormErrors, formValues) =
 
 // component
 const Orcamento = () => {
-  const { tracker } = useApp();
+  const { tracker, progressVisible, setProgressVisible, setCurrentProgress } = useApp();
   const [step, setStep] = useState(1);
   const [isGoingBack, setIsGoingBack] = useState(false);
   const [formStep02, setFormStep02] = useState(false);
@@ -204,7 +206,7 @@ const Orcamento = () => {
     // STEP_07
     entryBudget: "R$ 3.000,00 - R$ 10.000,00",
     entryFinalsNotes: "",
-    entryFinalsPlanta: []
+    entryFinalsPlanta: [],
   });
 
   const [formErrors, setFormErrors] = React.useState({
@@ -348,21 +350,84 @@ const Orcamento = () => {
     setFormStep07(formStep07);
   }, [formValues]);
 
+  useEffect(() => {
+    if (step > 1 && !progressVisible) {
+      setProgressVisible(true);
+    }
+
+    setCurrentProgress(step - 1);
+  }, [progressVisible, setCurrentProgress, setProgressVisible, step]);
+
   return (
     <>
       {step === 1 && <Step01 isGoingBack={isGoingBack} navigateToStep={navigateToStep} />}
 
-      {step === 2 && <Step02 tracker={tracker} isGoingBack={isGoingBack} navigateToStep={navigateToStep} stepHasError={formStep02} formValues={formValues} formErrors={formErrors} setFormValue={setFormValue} />}
+      {step === 2 && (
+        <Step02
+          tracker={tracker}
+          isGoingBack={isGoingBack}
+          navigateToStep={navigateToStep}
+          stepHasError={formStep02}
+          formValues={formValues}
+          formErrors={formErrors}
+          setFormValue={setFormValue}
+        />
+      )}
 
-      {step === 3 && <Step03 isGoingBack={isGoingBack} navigateToStep={navigateToStep} stepHasError={formStep03} formValues={formValues} formErrors={formErrors} setFormValue={setFormValue} />}
+      {step === 3 && (
+        <Step03
+          isGoingBack={isGoingBack}
+          navigateToStep={navigateToStep}
+          stepHasError={formStep03}
+          formValues={formValues}
+          formErrors={formErrors}
+          setFormValue={setFormValue}
+        />
+      )}
 
-      {step === 4 && <Step04 isGoingBack={isGoingBack} navigateToStep={navigateToStep} stepHasError={formStep04} formValues={formValues} formErrors={formErrors} setFormValue={setFormValue} />}
+      {step === 4 && (
+        <Step04
+          isGoingBack={isGoingBack}
+          navigateToStep={navigateToStep}
+          stepHasError={formStep04}
+          formValues={formValues}
+          formErrors={formErrors}
+          setFormValue={setFormValue}
+        />
+      )}
 
-      {step === 5 && <Step05 isGoingBack={isGoingBack} navigateToStep={navigateToStep} stepHasError={formStep05} formValues={formValues} formErrors={formErrors} setFormValue={setFormValue} />}
+      {step === 5 && (
+        <Step05
+          isGoingBack={isGoingBack}
+          navigateToStep={navigateToStep}
+          stepHasError={formStep05}
+          formValues={formValues}
+          formErrors={formErrors}
+          setFormValue={setFormValue}
+        />
+      )}
 
-      {step === 6 && <Step06 isGoingBack={isGoingBack} navigateToStep={navigateToStep} stepHasError={formStep06} formValues={formValues} formErrors={formErrors} setFormValue={setFormValue} />}
+      {step === 6 && (
+        <Step06
+          isGoingBack={isGoingBack}
+          navigateToStep={navigateToStep}
+          stepHasError={formStep06}
+          formValues={formValues}
+          formErrors={formErrors}
+          setFormValue={setFormValue}
+        />
+      )}
 
-      {step === 7 && <Step07 isGoingBack={isGoingBack} navigateToStep={navigateToStep} stepHasError={formStep07} formValues={formValues} formErrors={formErrors} setFormValue={setFormValue} />}
+      {step === 7 && (
+        <Step07
+          isGoingBack={isGoingBack}
+          navigateToStep={navigateToStep}
+          stepHasError={formStep07}
+          formValues={formValues}
+          formErrors={formErrors}
+          setFormValue={setFormValue}
+        />
+      )}
     </>
   );
 };
