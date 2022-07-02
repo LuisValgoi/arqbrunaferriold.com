@@ -6,7 +6,7 @@ import { useOrcamentoURL, useHomeURL } from '../../hooks/useURL';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInstagram, faFacebookF, faPinterestP } from '@fortawesome/free-brands-svg-icons';
-import { faLongArrowAltLeft } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { useApp } from '../../context/AppContext';
 
 const Info = () => {
@@ -14,6 +14,18 @@ const Info = () => {
   const isHomeURL = useHomeURL();
   const navigate = useNavigate();
   const { currentProgress, progressLimit, progressVisible } = useApp();
+
+  if (isOrcamentoURL) {
+    return (
+      <article className='w-320'>
+        <Button onClick={() => navigate('/')}>
+          <FontAwesomeIcon icon={faArrowLeft} size="1x" />
+        </Button>
+
+        {progressVisible && <ProgressIndicator>{`${currentProgress} / ${progressLimit}`}</ProgressIndicator>}
+      </article>
+    );
+  }
 
   return (
     <Container $shouldGoUp={isOrcamentoURL}>
@@ -40,17 +52,6 @@ const Info = () => {
         </Brands>
       )}
 
-      {isOrcamentoURL && (
-        <div className={`w-full flex ${progressVisible ? 'justify-between' : 'justify-center'}`}>
-          <Button onClick={() => navigate('/')}>
-            <ButtonIcon icon={faLongArrowAltLeft} size="1x" />
-            voltar para home
-          </Button>
-
-          {progressVisible && <ProgressIndicator>{`${currentProgress} / ${progressLimit}`}</ProgressIndicator>}
-        </div>
-      )}
-
       {isHomeURL && <Paragraph>em que posso te ajudar ?</Paragraph>}
     </Container>
   );
@@ -66,7 +67,6 @@ const Container = tw.article`
   justify-center
   items-center
   min-w-300
-  ${(props) => props.$shouldGoUp && '-mt-3'}
 `;
 
 const BrandsInner = styled.div`
@@ -105,19 +105,22 @@ const Paragraph = tw.span`
 `;
 
 const Button = tw.span`
-  text-arq-brown-500
-  text-center
-  text-sm sm:text-md
-  uppercase
-  font-emperatriz
-  rounded
-  px-4
-  py-2
+  absolute
+  top-16
+  left-0
+
+  flex
+  h-10
+  w-10
+  items-center
+  justify-center
+
+  rounded-full
   bg-transparent
   border-2
   border-arq-brown-300
-
   cursor-pointer
+
   transform transition duration-300 ease-in-out
   hover:text-arq-brown-50
   hover:bg-arq-brown-300
@@ -128,29 +131,33 @@ const Button = tw.span`
 `;
 
 const ProgressIndicator = tw.span`
-  text-arq-brown-500
+  absolute
+  top-16
+  right-0
+
+  flex
+  h-10
+  w-10
+  items-center
+  justify-center
+
+  rounded-full
+  bg-transparent
+  border-2
+  border-arq-green-300
+  cursor-auto
+
+  text-center
+  text-arq-green-400
   text-center
   text-sm sm:text-md
   uppercase
   font-emperatriz
-  rounded
-  px-4
-  py-2
-  bg-transparent
-  border-2
-  border-arq-brown-300
-  min-w-65
 
-  cursor-auto
   transform transition duration-300 ease-in-out
-  hover:text-arq-brown-50
-  hover:bg-arq-brown-300
-  hover:border-arq-brown-700
+  hover:text-arq-green-100
+  hover:bg-arq-green-300
+  hover:border-arq-green-400
   hover:scale-105
   hover:black
-  focus:ring-arq-brown-300
-`;
-
-const ButtonIcon = tw(FontAwesomeIcon)`
-  mr-2
 `;

@@ -9,11 +9,9 @@ const Layout = ({ children }) => {
   return (
     <Container>
       <Content>
-        <InnerContent>
-          <Avatar />
-          <Info />
-          {children}
-        </InnerContent>
+        <Avatar />
+        <Info />
+        {children}
       </Content>
     </Container>
   );
@@ -32,24 +30,21 @@ const ContainerTexture = styled.div`
 `;
 
 const Container = tw(ContainerTexture)`
-  w-screen
+  w-full
   h-screen
-  flex 
+  flex
   flex-col
   content-center 
   items-center
 `;
 
 const Content = tw.div`
-  align-center
-  max-w-screen-sm	
-  transform transition duration-300 ease-in-out
-  mt-10
-`;
-
-const InnerContent = tw.div`
   flex
   flex-col
   justify-center
   items-center
+  w-full
+  max-w-320
+  relative
+  mt-8
 `;

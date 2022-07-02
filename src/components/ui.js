@@ -34,7 +34,6 @@ export const Title = tw.h1`
 
 export const Paragraph = tw.p`
   text-center
-  max-w-500
   text-gray-700
   whitespace-pre-line
   font-emperatriz

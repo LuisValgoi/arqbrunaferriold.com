@@ -5,7 +5,7 @@ export default function StepBase({ children, isGoingBack }) {
 
   return (
     <motion.div
-      className="flex flex-col items-center justify-center w-full max-w-screen-md px-6 sm:px-0 my-4"
+      className="flex flex-col items-center justify-center w-full"
       transition={{ duration: 0.5, type: 'spring', stiffness: 100 }}
       initial={initial}
       animate={{ x: 0 }}
