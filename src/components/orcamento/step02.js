@@ -68,9 +68,9 @@ const Step02 = ({ tracker, navigateToStep, isGoingBack, formValues, formErrors, 
       </FieldArea>
 
       <ButtonArea>
-        <ButtonOutline onClick={() => navigateToStep(1, true)}>Voltar</ButtonOutline>
+        <ButtonOutline onClick={() => navigateToStep(1, true)}>Anterior</ButtonOutline>
         <ButtonPrimary $disabled={stepHasError} onClick={handleMoveForward}>
-          Continuar
+          Próxima
         </ButtonPrimary>
       </ButtonArea>
     </StepBase>

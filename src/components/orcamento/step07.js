@@ -94,7 +94,7 @@ const Step07 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormVa
       </FieldArea>
 
       <ButtonArea>
-        <ButtonOutline onClick={() => navigateToStep(6, true)}>Voltar</ButtonOutline>
+        <ButtonOutline onClick={() => navigateToStep(6, true)}>Anterior</ButtonOutline>
         <ButtonPrimary $loading={isLoading} $disabled={stepHasError} onClick={handleMoveForward}>
           {isLoading && <ButtonIcon icon={faSpinner} spin size="1x" />}
           {isLoading ? 'Carregando' : 'Finalizar'}

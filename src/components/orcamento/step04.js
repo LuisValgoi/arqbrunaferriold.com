@@ -72,9 +72,9 @@ const Step04 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormVa
       </FieldArea>
 
       <ButtonArea>
-        <ButtonOutline onClick={() => navigateToStep(3, true)}>Voltar</ButtonOutline>
+        <ButtonOutline onClick={() => navigateToStep(3, true)}>Anterior</ButtonOutline>
         <ButtonPrimary $disabled={stepHasError} onClick={handleMoveForward}>
-          Continuar
+          Próxima
         </ButtonPrimary>
       </ButtonArea>
     </StepBase>
