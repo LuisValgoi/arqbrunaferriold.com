@@ -351,6 +351,10 @@ const Orcamento = () => {
   }, [formValues]);
 
   useEffect(() => {
+    if (step === 1) {
+      setProgressVisible(false);
+    }
+
     if (step > 1 && !progressVisible) {
       setProgressVisible(true);
     }
