@@ -3,7 +3,7 @@ const sendGridMail = require("@sendgrid/mail");
 
 const handler = async (event) => {
   try {
-    sendGridMail.setApiKey(process.env.SENDGRID_API_KEY);
+    sendGridMail.setApiKey(process?.env?.SENDGRID_API_KEY);
 
     const {
       entryName,
@@ -79,8 +79,8 @@ const handler = async (event) => {
     `;
 
     await sendGridMail.send({
-      from: process.env.SENDER_EMAIL,
-      to: process.env.RECEIVER_EMAIL,
+      from: process?.env?.SENDER_EMAIL,
+      to: process?.env?.RECEIVER_EMAIL,
       subject: `Proposta de Orçamento recebida às ${new Date().toLocaleTimeString()} - ${entryName}`,
       html,
       attachments: entryFinalsPlantaBuffered,
