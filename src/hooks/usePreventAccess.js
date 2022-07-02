@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 export const usePreventAccess = (callback) => {
   const location = useLocation();
@@ -14,12 +14,12 @@ export const usePreventAccess = (callback) => {
     } else {
       setShouldShow(true);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location]);
 
   useEffect(() => {
     if (!shouldRedirect && shouldShow) {
-      window.history.replaceState(null, "");
+      window.history.replaceState(null, '');
     }
   }, [shouldRedirect, shouldShow]);
 };

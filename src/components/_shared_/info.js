@@ -1,13 +1,13 @@
-import React from "react";
-import tw from "tailwind-styled-components";
-import styled from "styled-components";
-import { useOrcamentoURL, useHomeURL } from "../../hooks/useURL";
+import React from 'react';
+import tw from 'tailwind-styled-components';
+import styled from 'styled-components';
+import { useOrcamentoURL, useHomeURL } from '../../hooks/useURL';
 
-import { useNavigate } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faInstagram, faFacebookF, faPinterestP } from "@fortawesome/free-brands-svg-icons";
-import { faLongArrowAltLeft } from "@fortawesome/free-solid-svg-icons";
-import { useApp } from "../../context/AppContext";
+import { useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faInstagram, faFacebookF, faPinterestP } from '@fortawesome/free-brands-svg-icons';
+import { faLongArrowAltLeft } from '@fortawesome/free-solid-svg-icons';
+import { useApp } from '../../context/AppContext';
 
 const Info = () => {
   const isOrcamentoURL = useOrcamentoURL();
@@ -23,26 +23,26 @@ const Info = () => {
             size="2x"
             color="#744c2f"
             icon={faFacebookF}
-            onClick={() => window.open("https://www.facebook.com/arqbrunaferri")}
+            onClick={() => window.open('https://www.facebook.com/arqbrunaferri')}
           />
           <BrandIcon
             size="3x"
             color="#744c2f"
             icon={faInstagram}
-            onClick={() => window.open("https://www.instagram.com/arqbrunaferri")}
+            onClick={() => window.open('https://www.instagram.com/arqbrunaferri')}
           />
           <BrandIcon
             size="2x"
             color="#744c2f"
             icon={faPinterestP}
-            onClick={() => window.open("https://br.pinterest.com/arqbrunaferri")}
+            onClick={() => window.open('https://br.pinterest.com/arqbrunaferri')}
           />
         </Brands>
       )}
 
       {isOrcamentoURL && (
-        <div className={`w-full flex ${progressVisible ? "justify-between" : "justify-center"}`}>
-          <Button onClick={() => navigate("/")}>
+        <div className={`w-full flex ${progressVisible ? 'justify-between' : 'justify-center'}`}>
+          <Button onClick={() => navigate('/')}>
             <ButtonIcon icon={faLongArrowAltLeft} size="1x" />
             voltar para home
           </Button>
@@ -58,7 +58,7 @@ const Info = () => {
 
 export default Info;
 
-Info.displayName = "Info";
+Info.displayName = 'Info';
 
 const Container = tw.article`
   flex
@@ -66,7 +66,7 @@ const Container = tw.article`
   justify-center
   items-center
   min-w-300
-  ${(props) => props.$shouldGoUp && "-mt-3"}
+  ${(props) => props.$shouldGoUp && '-mt-3'}
 `;
 
 const BrandsInner = styled.div`

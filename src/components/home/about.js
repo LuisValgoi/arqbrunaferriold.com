@@ -1,5 +1,5 @@
-import React from "react";
-import tw from "tailwind-styled-components";
+import React from 'react';
+import tw from 'tailwind-styled-components';
 
 import { Paragraph, Title } from '../ui';
 
@@ -12,11 +12,11 @@ const About = () => {
       </Paragraph>
     </Container>
   );
-}
+};
 
 export default About;
 
-About.displayName = "About";
+About.displayName = 'About';
 
 const Container = tw.article`
   flex

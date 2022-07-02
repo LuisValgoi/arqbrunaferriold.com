@@ -1,18 +1,18 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import tw from "tailwind-styled-components";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import tw from 'tailwind-styled-components';
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLongArrowAltLeft } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLongArrowAltLeft } from '@fortawesome/free-solid-svg-icons';
 
-import { Paragraph, Title } from "../../../components/ui";
-import { usePreventAccess } from "../../../hooks/usePreventAccess";
+import { Paragraph, Title } from '../../../components/ui';
+import { usePreventAccess } from '../../../hooks/usePreventAccess';
 
 const OrcamentoErro = () => {
   const navigate = useNavigate();
 
   usePreventAccess(() => {
-    navigate("/orcamento");
+    navigate('/orcamento');
   });
 
   return (
@@ -22,7 +22,7 @@ const OrcamentoErro = () => {
         {`Infelizmente, durante o envio do formulário aos nossos servidores, identificamos um erro.
         Estaremos trabalhando o mais rápido possível para solucionar o problema!`}
       </Paragraph>
-      <Button onClick={() => navigate("/")}>
+      <Button onClick={() => navigate('/')}>
         <ButtonIcon icon={faLongArrowAltLeft} size="1x" />
         VOLTAR PARA HOME
       </Button>
@@ -32,7 +32,7 @@ const OrcamentoErro = () => {
 
 export default OrcamentoErro;
 
-OrcamentoErro.displayName = "OrcamentoErro";
+OrcamentoErro.displayName = 'OrcamentoErro';
 
 const Container = tw.article`
   flex

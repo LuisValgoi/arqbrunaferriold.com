@@ -1,9 +1,9 @@
-import React from "react";
-import styled from "styled-components";
-import tw from "tailwind-styled-components";
+import React from 'react';
+import styled from 'styled-components';
+import tw from 'tailwind-styled-components';
 
-import Avatar from "./avatar";
-import Info from "./info";
+import Avatar from './avatar';
+import Info from './info';
 
 const Layout = ({ children }) => {
   return (
@@ -21,7 +21,7 @@ const Layout = ({ children }) => {
 
 export default Layout;
 
-Layout.displayName = "Layout";
+Layout.displayName = 'Layout';
 
 const ContainerTexture = styled.div`
   background-color: #fafafa;

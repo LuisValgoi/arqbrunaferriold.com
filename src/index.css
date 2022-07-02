@@ -3,71 +3,81 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "emperatriz";
-  src: url("./fonts/emperatriz/emperatriz.woff") format("woff2"), url("./fonts/emperatriz/emperatriz.woff") format("woff");
+  font-family: 'emperatriz';
+  src: url('./fonts/emperatriz/emperatriz.woff') format('woff2'),
+    url('./fonts/emperatriz/emperatriz.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "firasans";
-  src: url("./fonts/fira-sans/FiraSans-Regular.woff") format("woff2"), url("./fonts/fira-sans/FiraSans-Regular.woff") format("woff");
+  font-family: 'firasans';
+  src: url('./fonts/fira-sans/FiraSans-Regular.woff') format('woff2'),
+    url('./fonts/fira-sans/FiraSans-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "firasans-bold";
-  src: url("./fonts/fira-sans/FiraSans-Bold.woff") format("woff2"), url("./fonts/fira-sans/FiraSans-Bold.woff") format("woff");
+  font-family: 'firasans-bold';
+  src: url('./fonts/fira-sans/FiraSans-Bold.woff') format('woff2'),
+    url('./fonts/fira-sans/FiraSans-Bold.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "firasans-extra-bold";
-  src: url("./fonts/fira-sans/FiraSans-ExtraBold.woff") format("woff2"), url("./fonts/fira-sans/FiraSans-ExtraBold.woff") format("woff");
+  font-family: 'firasans-extra-bold';
+  src: url('./fonts/fira-sans/FiraSans-ExtraBold.woff') format('woff2'),
+    url('./fonts/fira-sans/FiraSans-ExtraBold.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "firasans-extra-light";
-  src: url("./fonts/fira-sans/FiraSans-ExtraLight.woff") format("woff2"), url("./fonts/fira-sans/FiraSans-ExtraLight.woff") format("woff");
+  font-family: 'firasans-extra-light';
+  src: url('./fonts/fira-sans/FiraSans-ExtraLight.woff') format('woff2'),
+    url('./fonts/fira-sans/FiraSans-ExtraLight.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "firasans-light";
-  src: url("./fonts/fira-sans/FiraSans-Light.woff") format("woff2"), url("./fonts/fira-sans/FiraSans-Light.woff") format("woff");
+  font-family: 'firasans-light';
+  src: url('./fonts/fira-sans/FiraSans-Light.woff') format('woff2'),
+    url('./fonts/fira-sans/FiraSans-Light.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "firasans-medium";
-  src: url("./fonts/fira-sans/FiraSans-Medium.woff") format("woff2"), url("./fonts/fira-sans/FiraSans-Medium.woff") format("woff");
+  font-family: 'firasans-medium';
+  src: url('./fonts/fira-sans/FiraSans-Medium.woff') format('woff2'),
+    url('./fonts/fira-sans/FiraSans-Medium.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "firasans-regular";
-  src: url("./fonts/fira-sans/FiraSans-Regular.woff") format("woff2"), url("./fonts/fira-sans/FiraSans-Regular.woff") format("woff");
+  font-family: 'firasans-regular';
+  src: url('./fonts/fira-sans/FiraSans-Regular.woff') format('woff2'),
+    url('./fonts/fira-sans/FiraSans-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "firasans-semi-bold";
-  src: url("./fonts/fira-sans/FiraSans-SemiBold.woff") format("woff2"), url("./fonts/fira-sans/FiraSans-SemiBold.woff") format("woff");
+  font-family: 'firasans-semi-bold';
+  src: url('./fonts/fira-sans/FiraSans-SemiBold.woff') format('woff2'),
+    url('./fonts/fira-sans/FiraSans-SemiBold.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "firasans-thin";
-  src: url("./fonts/fira-sans/FiraSans-Thin.woff") format("woff2"), url("./fonts/fira-sans/FiraSans-Thin.woff") format("woff");
+  font-family: 'firasans-thin';
+  src: url('./fonts/fira-sans/FiraSans-Thin.woff') format('woff2'),
+    url('./fonts/fira-sans/FiraSans-Thin.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
@@ -90,7 +100,8 @@ body,
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+    'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #f9f9fa;
@@ -98,5 +109,5 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }

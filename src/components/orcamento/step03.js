@@ -1,8 +1,15 @@
-import React from "react";
-import tw from "tailwind-styled-components";
+import React from 'react';
+import tw from 'tailwind-styled-components';
 
-import StepBase from "../_shared_/stepBase";
-import { ButtonOutline as ButtonOutlineUI, ButtonPrimary as ButtonPrimaryUI, FieldArea, InputAndLabel, InputMaskAndLabel, Title } from "../ui";
+import StepBase from '../_shared_/stepBase';
+import {
+  ButtonOutline as ButtonOutlineUI,
+  ButtonPrimary as ButtonPrimaryUI,
+  FieldArea,
+  InputAndLabel,
+  InputMaskAndLabel,
+  Title,
+} from '../ui';
 
 const Step03 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormValue, stepHasError }) => {
   const handleMoveForward = (event) => {
@@ -17,7 +24,7 @@ const Step03 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormVa
 
       <FieldArea>
         <InputAndLabel
-          onChange={(e) => setFormValue("entryOccupancy", e.target.value)}
+          onChange={(e) => setFormValue('entryOccupancy', e.target.value)}
           value={formValues.entryOccupancy}
           hasError={formErrors.entryOccupancy.error}
           errorMessage={formErrors.entryOccupancy.message}
@@ -30,7 +37,7 @@ const Step03 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormVa
 
       <FieldArea>
         <InputMaskAndLabel
-          onChange={(e) => setFormValue("entryAge", e.target.value)}
+          onChange={(e) => setFormValue('entryAge', e.target.value)}
           value={formValues.entryAge}
           hasError={formErrors.entryAge.error}
           errorMessage={formErrors.entryAge.message}
@@ -44,7 +51,7 @@ const Step03 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormVa
 
       <FieldArea>
         <InputAndLabel
-          onChange={(e) => setFormValue("entryHowYouMet", e.target.value)}
+          onChange={(e) => setFormValue('entryHowYouMet', e.target.value)}
           value={formValues.entryHowYouMet}
           hasError={formErrors.entryHowYouMet.error}
           errorMessage={formErrors.entryHowYouMet.message}
@@ -67,7 +74,7 @@ const Step03 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormVa
 
 export default Step03;
 
-Step03.displayName = "Step03";
+Step03.displayName = 'Step03';
 
 const ButtonArea = tw.div`
   grid

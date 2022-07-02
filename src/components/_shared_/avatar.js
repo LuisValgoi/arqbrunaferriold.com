@@ -1,11 +1,11 @@
-import React from "react";
-import tw from "tailwind-styled-components";
+import React from 'react';
+import tw from 'tailwind-styled-components';
 import styled from 'styled-components';
 
-import photo from "../../img/perfil.png";
-import nameCircle from "../../img/name-circle.png";
+import photo from '../../img/perfil.png';
+import nameCircle from '../../img/name-circle.png';
 
-import { useOrcamentoURL } from "../../hooks/useURL";
+import { useOrcamentoURL } from '../../hooks/useURL';
 
 const Avatar = () => {
   const isOrcamentoURL = useOrcamentoURL();
@@ -17,11 +17,11 @@ const Avatar = () => {
       <Photo src={photo} alt="me" width="160px" height="160px" />
     </Container>
   );
-}
+};
 
 export default Avatar;
 
-Avatar.displayName = "Avatar";
+Avatar.displayName = 'Avatar';
 
 const Container = tw.div`
   relative
@@ -31,7 +31,7 @@ const Container = tw.div`
   items-center
   mb-10
   transform transition duration-300 ease-in-out
-  ${(props) => (props.$shouldScaleDown ? "scale-80" : "scale-90")}
+  ${(props) => (props.$shouldScaleDown ? 'scale-80' : 'scale-90')}
 `;
 
 const Photo = tw.img`

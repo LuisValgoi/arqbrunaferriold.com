@@ -1,8 +1,15 @@
-import React from "react";
-import tw from "tailwind-styled-components";
+import React from 'react';
+import tw from 'tailwind-styled-components';
 
-import StepBase from "../_shared_/stepBase";
-import { ButtonOutline as ButtonOutlineUI, ButtonPrimary as ButtonPrimaryUI, FieldArea, InputAndLabel, RadioButtonGroupAndLabel, Title } from "../ui";
+import StepBase from '../_shared_/stepBase';
+import {
+  ButtonOutline as ButtonOutlineUI,
+  ButtonPrimary as ButtonPrimaryUI,
+  FieldArea,
+  InputAndLabel,
+  RadioButtonGroupAndLabel,
+  Title,
+} from '../ui';
 
 const Step05 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormValue, stepHasError }) => {
   const handleMoveForward = (event) => {
@@ -17,7 +24,7 @@ const Step05 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormVa
 
       <FieldArea>
         <RadioButtonGroupAndLabel
-          onChange={(e) => setFormValue("entryProjectBuilt", e.target.value)}
+          onChange={(e) => setFormValue('entryProjectBuilt', e.target.value)}
           hasError={formErrors.entryProjectBuilt.error}
           errorMessage={formErrors.entryProjectBuilt.message}
           label="O imóvel encontra-se construído?"
@@ -25,12 +32,12 @@ const Step05 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormVa
           value={formValues.entryProjectBuilt}
           options={[
             {
-              value: "Sim",
-              label: "Sim",
+              value: 'Sim',
+              label: 'Sim',
             },
             {
-              value: "Não",
-              label: "Não",
+              value: 'Não',
+              label: 'Não',
             },
           ]}
         />
@@ -38,7 +45,7 @@ const Step05 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormVa
 
       <FieldArea>
         <InputAndLabel
-          onChange={(e) => setFormValue("entryProjectArea", e.target.value)}
+          onChange={(e) => setFormValue('entryProjectArea', e.target.value)}
           value={formValues.entryProjectArea}
           hasError={formErrors.entryProjectArea.error}
           errorMessage={formErrors.entryProjectArea.message}
@@ -52,7 +59,7 @@ const Step05 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormVa
 
       <FieldArea>
         <InputAndLabel
-          onChange={(e) => setFormValue("entryProjectEnvironment", e.target.value)}
+          onChange={(e) => setFormValue('entryProjectEnvironment', e.target.value)}
           value={formValues.entryProjectEnvironment}
           hasError={formErrors.entryProjectEnvironment.error}
           errorMessage={formErrors.entryProjectEnvironment.message}
@@ -75,7 +82,7 @@ const Step05 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormVa
 
 export default Step05;
 
-Step05.displayName = "Step05";
+Step05.displayName = 'Step05';
 
 const ButtonArea = tw.div`
   grid

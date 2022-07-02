@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
-import { useApp } from "../../context/AppContext";
-import Step01 from "../../components/orcamento/step01";
-import Step02 from "../../components/orcamento/step02";
-import Step03 from "../../components/orcamento/step03";
-import Step04 from "../../components/orcamento/step04";
-import Step05 from "../../components/orcamento/step05";
-import Step06 from "../../components/orcamento/step06";
-import Step07 from "../../components/orcamento/step07";
+import { useApp } from '../../context/AppContext';
+import Step01 from '../../components/orcamento/step01';
+import Step02 from '../../components/orcamento/step02';
+import Step03 from '../../components/orcamento/step03';
+import Step04 from '../../components/orcamento/step04';
+import Step05 from '../../components/orcamento/step05';
+import Step06 from '../../components/orcamento/step06';
+import Step07 from '../../components/orcamento/step07';
 
 // regex
 const IS_EMPTY_STANDARD = /^$/g;
@@ -18,23 +18,23 @@ const IS_AGE_STANDARD = /^(1[89]|[2-9]\d)/;
 const IS_POSITIVE_NUMBER_STANDARD = /^[1-9]+[0-9]*$/g;
 
 // fields
-const STEP_02 = ["entryName", "entryEmail", "entryWhatsapp"];
-const STEP_03 = ["entryOccupancy", "entryAge", "entryHowYouMet"];
-const STEP_04 = ["entryProjectCity", "entryProjectType", "entryCannotMiss"];
-const STEP_05 = ["entryProjectBuilt", "entryProjectArea", "entryProjectEnvironment"];
-const STEP_06 = ["entryProjectPlace", "entryProjectRevestimentos", "entryProjectForro"];
-const STEP_06_OPTIONAL = ["entryProjectPlaceOther", "entryProjectRevestimentosOther", "entryProjectForroOther"];
-const STEP_07 = ["entryBudget", "entryFinalsNotes"];
-const STEP_07_SPECIAL = ["entryFinalsPlanta"];
+const STEP_02 = ['entryName', 'entryEmail', 'entryWhatsapp'];
+const STEP_03 = ['entryOccupancy', 'entryAge', 'entryHowYouMet'];
+const STEP_04 = ['entryProjectCity', 'entryProjectType', 'entryCannotMiss'];
+const STEP_05 = ['entryProjectBuilt', 'entryProjectArea', 'entryProjectEnvironment'];
+const STEP_06 = ['entryProjectPlace', 'entryProjectRevestimentos', 'entryProjectForro'];
+const STEP_06_OPTIONAL = ['entryProjectPlaceOther', 'entryProjectRevestimentosOther', 'entryProjectForroOther'];
+const STEP_07 = ['entryBudget', 'entryFinalsNotes'];
+const STEP_07_SPECIAL = ['entryFinalsPlanta'];
 const STEP_ALL = STEP_02.concat(STEP_03).concat(STEP_04).concat(STEP_05).concat(STEP_06).concat(STEP_07);
 
 // return if there is error or not
 const formItemHasError = (name, value, formValues) => {
-  const IS_OPTIONAL_FIELD_VISIBLE_2 = name === "entryProjectPlaceOther" && formValues.entryProjectPlace === "Outros";
+  const IS_OPTIONAL_FIELD_VISIBLE_2 = name === 'entryProjectPlaceOther' && formValues.entryProjectPlace === 'Outros';
   const IS_OPTIONAL_FIELD_VISIBLE_3 =
-    name === "entryProjectRevestimentosOther" && formValues.entryProjectRevestimentos === "Outros";
-  const IS_OPTIONAL_FIELD_VISIBLE_4 = name === "entryProjectForroOther" && formValues.entryProjectForro === "Outros";
-  const IS_SPECIAL_CASE = name === "entryFinalsPlanta";
+    name === 'entryProjectRevestimentosOther' && formValues.entryProjectRevestimentos === 'Outros';
+  const IS_OPTIONAL_FIELD_VISIBLE_4 = name === 'entryProjectForroOther' && formValues.entryProjectForro === 'Outros';
+  const IS_SPECIAL_CASE = name === 'entryFinalsPlanta';
 
   if (IS_SPECIAL_CASE) {
     if (formValues.entryFinalsPlanta.length === 0) {
@@ -44,7 +44,7 @@ const formItemHasError = (name, value, formValues) => {
     return false;
   }
 
-  const IS_FIELD_EMAIL = ["entryEmail"].includes(name);
+  const IS_FIELD_EMAIL = ['entryEmail'].includes(name);
   if (IS_FIELD_EMAIL) {
     if (!new RegExp(IS_EMAIL_STANDARD).test(value)) {
       return true;
@@ -53,7 +53,7 @@ const formItemHasError = (name, value, formValues) => {
     return false;
   }
 
-  const IS_FIELD_WHATSAPP = ["entryWhatsapp"].includes(name);
+  const IS_FIELD_WHATSAPP = ['entryWhatsapp'].includes(name);
   if (IS_FIELD_WHATSAPP) {
     if (!new RegExp(IS_PHONE_STANDARD).test(value)) {
       return true;
@@ -62,7 +62,7 @@ const formItemHasError = (name, value, formValues) => {
     return false;
   }
 
-  const IS_FIELD_AGE = ["entryAge"].includes(name);
+  const IS_FIELD_AGE = ['entryAge'].includes(name);
   if (IS_FIELD_AGE) {
     if (!new RegExp(IS_AGE_STANDARD).test(value)) {
       return true;
@@ -71,7 +71,7 @@ const formItemHasError = (name, value, formValues) => {
     return false;
   }
 
-  const IS_FIELD_POSITIVE_NUMBER = ["entryProjectArea"].includes(name);
+  const IS_FIELD_POSITIVE_NUMBER = ['entryProjectArea'].includes(name);
   if (IS_FIELD_POSITIVE_NUMBER) {
     if (!new RegExp(IS_POSITIVE_NUMBER_STANDARD).test(value)) {
       return true;
@@ -96,74 +96,74 @@ const formItemHasError = (name, value, formValues) => {
 
 // renders in the UI the error
 const validateFormValue = (name, value, formErrors, setFormErrors, formValues) => {
-  const IS_OPTIONAL_FIELD_VISIBLE_2 = name === "entryProjectPlaceOther" && formValues.entryProjectPlace === "Outros";
+  const IS_OPTIONAL_FIELD_VISIBLE_2 = name === 'entryProjectPlaceOther' && formValues.entryProjectPlace === 'Outros';
   const IS_OPTIONAL_FIELD_VISIBLE_3 =
-    name === "entryProjectRevestimentosOther" && formValues.entryProjectRevestimentos === "Outros";
-  const IS_OPTIONAL_FIELD_VISIBLE_4 = name === "entryProjectForroOther" && formValues.entryProjectForro === "Outros";
-  const IS_SPECIAL_CASE = name === "entryFinalsPlanta";
+    name === 'entryProjectRevestimentosOther' && formValues.entryProjectRevestimentos === 'Outros';
+  const IS_OPTIONAL_FIELD_VISIBLE_4 = name === 'entryProjectForroOther' && formValues.entryProjectForro === 'Outros';
+  const IS_SPECIAL_CASE = name === 'entryFinalsPlanta';
 
   if (IS_SPECIAL_CASE) {
     if (formValues.entryFinalsPlanta.length === 0) {
-      setFormErrors({ ...formErrors, [name]: { error: true, message: "Anexe alguma planta." } });
+      setFormErrors({ ...formErrors, [name]: { error: true, message: 'Anexe alguma planta.' } });
     }
 
-    setFormErrors({ ...formErrors, [name]: { error: false, message: "" } });
+    setFormErrors({ ...formErrors, [name]: { error: false, message: '' } });
     return;
   }
 
-  const IS_FIELD_EMAIL = ["entryEmail"].includes(name);
+  const IS_FIELD_EMAIL = ['entryEmail'].includes(name);
   if (IS_FIELD_EMAIL) {
     if (!new RegExp(IS_EMAIL_STANDARD).test(value)) {
-      setFormErrors({ ...formErrors, [name]: { error: true, message: "Digite um e-mail válido." } });
+      setFormErrors({ ...formErrors, [name]: { error: true, message: 'Digite um e-mail válido.' } });
       return;
     }
 
-    setFormErrors({ ...formErrors, [name]: { error: false, message: "" } });
+    setFormErrors({ ...formErrors, [name]: { error: false, message: '' } });
   }
 
-  const IS_FIELD_WHATSAPP = ["entryWhatsapp"].includes(name);
+  const IS_FIELD_WHATSAPP = ['entryWhatsapp'].includes(name);
   if (IS_FIELD_WHATSAPP) {
     if (!new RegExp(IS_PHONE_STANDARD).test(value)) {
-      setFormErrors({ ...formErrors, [name]: { error: true, message: "Digite um número válido." } });
+      setFormErrors({ ...formErrors, [name]: { error: true, message: 'Digite um número válido.' } });
       return;
     }
 
-    setFormErrors({ ...formErrors, [name]: { error: false, message: "" } });
+    setFormErrors({ ...formErrors, [name]: { error: false, message: '' } });
   }
 
-  const IS_FIELD_AGE = ["entryAge"].includes(name);
+  const IS_FIELD_AGE = ['entryAge'].includes(name);
   if (IS_FIELD_AGE) {
     if (!new RegExp(IS_AGE_STANDARD).test(value)) {
-      setFormErrors({ ...formErrors, [name]: { error: true, message: "Você precisa ter 18 anos ou mais." } });
+      setFormErrors({ ...formErrors, [name]: { error: true, message: 'Você precisa ter 18 anos ou mais.' } });
       return;
     }
 
-    setFormErrors({ ...formErrors, [name]: { error: false, message: "" } });
+    setFormErrors({ ...formErrors, [name]: { error: false, message: '' } });
   }
 
-  const IS_FIELD_POSITIVE_NUMBER = ["entryProjectArea"].includes(name);
+  const IS_FIELD_POSITIVE_NUMBER = ['entryProjectArea'].includes(name);
   if (IS_FIELD_POSITIVE_NUMBER) {
     if (!new RegExp(IS_POSITIVE_NUMBER_STANDARD).test(value)) {
-      setFormErrors({ ...formErrors, [name]: { error: true, message: "Digite uma metragem válida." } });
+      setFormErrors({ ...formErrors, [name]: { error: true, message: 'Digite uma metragem válida.' } });
       return;
     }
 
-    setFormErrors({ ...formErrors, [name]: { error: false, message: "" } });
+    setFormErrors({ ...formErrors, [name]: { error: false, message: '' } });
   }
 
   const IS_FIELD_ANY = STEP_ALL.includes(name);
   if (IS_FIELD_ANY || IS_OPTIONAL_FIELD_VISIBLE_2 || IS_OPTIONAL_FIELD_VISIBLE_3 || IS_OPTIONAL_FIELD_VISIBLE_4) {
     if (new RegExp(IS_EMPTY_STANDARD).test(value)) {
-      setFormErrors({ ...formErrors, [name]: { error: true, message: "Digite algum valor." } });
+      setFormErrors({ ...formErrors, [name]: { error: true, message: 'Digite algum valor.' } });
       return;
     }
 
     if (IS_MORE_THAN_255(value)) {
-      setFormErrors({ ...formErrors, [name]: { error: true, message: "Digite no máximo 255 caracteres." } });
+      setFormErrors({ ...formErrors, [name]: { error: true, message: 'Digite no máximo 255 caracteres.' } });
       return;
     }
 
-    setFormErrors({ ...formErrors, [name]: { error: false, message: "" } });
+    setFormErrors({ ...formErrors, [name]: { error: false, message: '' } });
   }
 };
 
@@ -181,31 +181,31 @@ const Orcamento = () => {
 
   const [formValues, setFormValues] = React.useState({
     // STEP_02
-    entryName: "",
-    entryEmail: "",
-    entryWhatsapp: "",
+    entryName: '',
+    entryEmail: '',
+    entryWhatsapp: '',
     // STEP_03
-    entryOccupancy: "",
-    entryAge: "",
-    entryHowYouMet: "",
+    entryOccupancy: '',
+    entryAge: '',
+    entryHowYouMet: '',
     // STEP_04
-    entryCannotMiss: "",
-    entryProjectCity: "",
-    entryProjectType: "Interiores",
+    entryCannotMiss: '',
+    entryProjectCity: '',
+    entryProjectType: 'Interiores',
     // STEP_05
-    entryProjectBuilt: "Sim",
-    entryProjectArea: "",
-    entryProjectEnvironment: "",
+    entryProjectBuilt: 'Sim',
+    entryProjectArea: '',
+    entryProjectEnvironment: '',
     // STEP_06
-    entryProjectPlace: "Local novo e Sem quebra de paredes",
-    entryProjectPlaceOther: "",
-    entryProjectRevestimentos: "Quero substituir os revestimentos antigos por novos",
-    entryProjectRevestimentosOther: "",
-    entryProjectForro: "Quero manter o forro existente do local",
-    entryProjectForroOther: "",
+    entryProjectPlace: 'Local novo e Sem quebra de paredes',
+    entryProjectPlaceOther: '',
+    entryProjectRevestimentos: 'Quero substituir os revestimentos antigos por novos',
+    entryProjectRevestimentosOther: '',
+    entryProjectForro: 'Quero manter o forro existente do local',
+    entryProjectForroOther: '',
     // STEP_07
-    entryBudget: "R$ 3.000,00 - R$ 10.000,00",
-    entryFinalsNotes: "",
+    entryBudget: 'R$ 3.000,00 - R$ 10.000,00',
+    entryFinalsNotes: '',
     entryFinalsPlanta: [],
   });
 
@@ -213,92 +213,92 @@ const Orcamento = () => {
     // STEP_02
     entryName: {
       error: false,
-      message: "",
+      message: '',
     },
     entryEmail: {
       error: false,
-      message: "",
+      message: '',
     },
     entryWhatsapp: {
       error: false,
-      message: "",
+      message: '',
     },
     // STEP_03
     entryOccupancy: {
       error: false,
-      message: "",
+      message: '',
     },
     entryAge: {
       error: false,
-      message: "",
+      message: '',
     },
     entryHowYouMet: {
       error: false,
-      message: "",
+      message: '',
     },
     // STEP_04
     entryProjectCity: {
       error: false,
-      message: "",
+      message: '',
     },
     entryProjectType: {
       error: false,
-      message: "",
+      message: '',
     },
     entryCannotMiss: {
       error: false,
-      message: "",
+      message: '',
     },
     // STEP_05
     entryProjectBuilt: {
       error: false,
-      message: "",
+      message: '',
     },
     entryProjectArea: {
       error: false,
-      message: "",
+      message: '',
     },
     entryProjectEnvironment: {
       error: false,
-      message: "",
+      message: '',
     },
     // STEP_06
     entryProjectPlace: {
       error: false,
-      message: "",
+      message: '',
     },
     entryProjectPlaceOther: {
       error: false,
-      message: "",
+      message: '',
     },
     entryProjectRevestimentos: {
       error: false,
-      message: "",
+      message: '',
     },
     entryProjectRevestimentosOther: {
       error: false,
-      message: "",
+      message: '',
     },
     entryProjectForro: {
       error: false,
-      message: "",
+      message: '',
     },
     entryProjectForroOther: {
       error: false,
-      message: "",
+      message: '',
     },
     // STEP_07
     entryBudget: {
       error: false,
-      message: "",
+      message: '',
     },
     entryFinalsNotes: {
       error: false,
-      message: "",
+      message: '',
     },
     entryFinalsPlanta: {
       error: false,
-      message: "",
+      message: '',
     },
   });
 
@@ -434,4 +434,4 @@ const Orcamento = () => {
 
 export default Orcamento;
 
-Orcamento.displayName = "Orcamento";
+Orcamento.displayName = 'Orcamento';

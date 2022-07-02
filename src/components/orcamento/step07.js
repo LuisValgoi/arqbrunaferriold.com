@@ -1,12 +1,20 @@
-import React, { useEffect } from "react";
-import tw from "tailwind-styled-components";
+import React, { useEffect } from 'react';
+import tw from 'tailwind-styled-components';
 
-import StepBase from "../_shared_/stepBase";
-import { useCompleteOrcamento } from "../../hooks/useServiceOrcamento";
-import { ButtonOutline as ButtonOutlineUI, ButtonPrimary as ButtonPrimaryUI, FieldArea, SelectAndLabel, TextAreaAndLabel, Title, UploadAndLabel } from "../ui";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSpinner } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate } from "react-router-dom";
+import StepBase from '../_shared_/stepBase';
+import { useCompleteOrcamento } from '../../hooks/useServiceOrcamento';
+import {
+  ButtonOutline as ButtonOutlineUI,
+  ButtonPrimary as ButtonPrimaryUI,
+  FieldArea,
+  SelectAndLabel,
+  TextAreaAndLabel,
+  Title,
+  UploadAndLabel,
+} from '../ui';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
 
 const Step07 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormValue, stepHasError }) => {
   const navigate = useNavigate();
@@ -23,9 +31,9 @@ const Step07 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormVa
     const shouldGoToErrorPage = error === true && success === undefined;
 
     if (shouldGoToSuccessPage) {
-      navigate("/orcamento/finalizado", { state: { isValid: true } });
+      navigate('/orcamento/finalizado', { state: { isValid: true } });
     } else if (shouldGoToErrorPage) {
-      navigate("/orcamento/erro", { state: { isValid: true } });
+      navigate('/orcamento/erro', { state: { isValid: true } });
     }
   }, [success, error, navigate]);
 
@@ -35,34 +43,34 @@ const Step07 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormVa
 
       <FieldArea>
         <SelectAndLabel
-          onChange={(e) => setFormValue("entryBudget", e.target.value)}
+          onChange={(e) => setFormValue('entryBudget', e.target.value)}
           value={formValues.entryBudget}
           htmlFor="entryBudget"
           label="Qual o seu budget para o projeto?"
           options={[
             {
-              label: "R$ 3.000,00 - R$ 10.000,00",
-              value: "R$ 3.000,00 - R$ 10.000,00",
+              label: 'R$ 3.000,00 - R$ 10.000,00',
+              value: 'R$ 3.000,00 - R$ 10.000,00',
             },
             {
-              label: "R$ 10.000,00 - R$ 20.000,00",
-              value: "R$ 10.000,00 - R$ 20.000,00",
+              label: 'R$ 10.000,00 - R$ 20.000,00',
+              value: 'R$ 10.000,00 - R$ 20.000,00',
             },
             {
-              label: "R$ 20.000,00 - R$ 50.000,00",
-              value: "R$ 20.000,00 - R$ 50.000,00",
+              label: 'R$ 20.000,00 - R$ 50.000,00',
+              value: 'R$ 20.000,00 - R$ 50.000,00',
             },
             {
-              label: "Mais de R$ 50.000,00",
-              value: "Mais de R$ 50.000,00",
-            }
+              label: 'Mais de R$ 50.000,00',
+              value: 'Mais de R$ 50.000,00',
+            },
           ]}
         />
       </FieldArea>
 
       <FieldArea>
         <TextAreaAndLabel
-          onChange={(e) => setFormValue("entryFinalsNotes", e.target.value)}
+          onChange={(e) => setFormValue('entryFinalsNotes', e.target.value)}
           value={formValues.entryFinalsNotes}
           hasError={formErrors.entryFinalsNotes.error}
           errorMessage={formErrors.entryFinalsNotes.message}
@@ -76,7 +84,7 @@ const Step07 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormVa
 
       <FieldArea>
         <UploadAndLabel
-          onChange={(fileList) => setFormValue("entryFinalsPlanta", fileList)}
+          onChange={(fileList) => setFormValue('entryFinalsPlanta', fileList)}
           fileList={formValues.entryFinalsPlanta}
           hasError={formErrors.entryFinalsPlanta.error}
           errorMessage={formErrors.entryFinalsPlanta.message}
@@ -89,7 +97,7 @@ const Step07 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormVa
         <ButtonOutline onClick={() => navigateToStep(6, true)}>Voltar</ButtonOutline>
         <ButtonPrimary $loading={isLoading} $disabled={stepHasError} onClick={handleMoveForward}>
           {isLoading && <ButtonIcon icon={faSpinner} spin size="1x" />}
-          {isLoading ? "Carregando" : "Finalizar"}
+          {isLoading ? 'Carregando' : 'Finalizar'}
         </ButtonPrimary>
       </ButtonArea>
     </StepBase>
@@ -98,7 +106,7 @@ const Step07 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormVa
 
 export default Step07;
 
-Step07.displayName = "Step07";
+Step07.displayName = 'Step07';
 
 const ButtonArea = tw.div`
   grid

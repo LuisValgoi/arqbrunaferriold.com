@@ -1,8 +1,15 @@
-import React from "react";
-import tw from "tailwind-styled-components";
+import React from 'react';
+import tw from 'tailwind-styled-components';
 
-import StepBase from "../_shared_/stepBase";
-import { ButtonOutline as ButtonOutlineUI, ButtonPrimary as ButtonPrimaryUI, FieldArea, InputAndLabel, SelectAndLabel, Title } from "../ui";
+import StepBase from '../_shared_/stepBase';
+import {
+  ButtonOutline as ButtonOutlineUI,
+  ButtonPrimary as ButtonPrimaryUI,
+  FieldArea,
+  InputAndLabel,
+  SelectAndLabel,
+  Title,
+} from '../ui';
 
 const Step04 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormValue, stepHasError }) => {
   const handleMoveForward = (event) => {
@@ -17,7 +24,7 @@ const Step04 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormVa
 
       <FieldArea>
         <InputAndLabel
-          onChange={(e) => setFormValue("entryProjectCity", e.target.value)}
+          onChange={(e) => setFormValue('entryProjectCity', e.target.value)}
           value={formValues.entryProjectCity}
           hasError={formErrors.entryProjectCity.error}
           errorMessage={formErrors.entryProjectCity.message}
@@ -30,30 +37,30 @@ const Step04 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormVa
 
       <FieldArea>
         <SelectAndLabel
-          onChange={(e) => setFormValue("entryProjectType", e.target.value)}
+          onChange={(e) => setFormValue('entryProjectType', e.target.value)}
           value={formValues.entryProjectType}
           htmlFor="entryProjectType"
           label="Que tipo de projeto você precisa?"
           options={[
             {
-              label: "Interiores",
-              value: "Interiores",
+              label: 'Interiores',
+              value: 'Interiores',
             },
             {
-              label: "Arquitetônico",
-              value: "Arquitetônico",
+              label: 'Arquitetônico',
+              value: 'Arquitetônico',
             },
             {
-              label: "Arquitetônico + Interiores",
-              value: "Arquitetônico + Interiores",
-            }
+              label: 'Arquitetônico + Interiores',
+              value: 'Arquitetônico + Interiores',
+            },
           ]}
         />
       </FieldArea>
 
       <FieldArea>
         <InputAndLabel
-          onChange={(e) => setFormValue("entryCannotMiss", e.target.value)}
+          onChange={(e) => setFormValue('entryCannotMiss', e.target.value)}
           value={formValues.entryCannotMiss}
           hasError={formErrors.entryCannotMiss.error}
           errorMessage={formErrors.entryCannotMiss.message}
@@ -76,7 +83,7 @@ const Step04 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormVa
 
 export default Step04;
 
-Step04.displayName = "Step04";
+Step04.displayName = 'Step04';
 
 const ButtonArea = tw.div`
   grid

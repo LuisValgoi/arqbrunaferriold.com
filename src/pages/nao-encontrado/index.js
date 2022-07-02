@@ -1,8 +1,8 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import tw from "tailwind-styled-components";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import tw from 'tailwind-styled-components';
 
-import { Paragraph, Title } from "../../components/ui";
+import { Paragraph, Title } from '../../components/ui';
 
 const NaoEncontrado = () => {
   const navigate = useNavigate();
@@ -11,14 +11,14 @@ const NaoEncontrado = () => {
     <Container>
       <Title>PÁGINA NÃO ENCONTRADA</Title>
       <Paragraph>{`Infelizmente acabamos identificando que a página que você tentou acessar não consta em nosso sistema.`}</Paragraph>
-      <Button onClick={() => navigate("/")}>voltar para home</Button>
+      <Button onClick={() => navigate('/')}>voltar para home</Button>
     </Container>
   );
 };
 
 export default NaoEncontrado;
 
-NaoEncontrado.displayName = "NaoEncontrado";
+NaoEncontrado.displayName = 'NaoEncontrado';
 
 const Container = tw.article`
   flex

@@ -1,8 +1,8 @@
-import React from "react";
-import tw from "tailwind-styled-components";
+import React from 'react';
+import tw from 'tailwind-styled-components';
 
 import StepBase from '../_shared_/stepBase';
-import { ButtonPrimary as ButtonPrimaryUI, Paragraph, Title } from "../ui";
+import { ButtonPrimary as ButtonPrimaryUI, Paragraph, Title } from '../ui';
 
 const Step01 = ({ isGoingBack, navigateToStep }) => {
   return (
@@ -17,11 +17,11 @@ const Step01 = ({ isGoingBack, navigateToStep }) => {
       <Button onClick={() => navigateToStep(2, false)}>Começar</Button>
     </StepBase>
   );
-}
+};
 
 export default Step01;
 
-Step01.displayName = "Step01";
+Step01.displayName = 'Step01';
 
 const ParagraphArea = tw.div`
   max-w-300

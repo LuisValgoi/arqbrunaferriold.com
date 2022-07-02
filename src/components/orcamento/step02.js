@@ -1,8 +1,15 @@
-import React from "react";
-import tw from "tailwind-styled-components";
+import React from 'react';
+import tw from 'tailwind-styled-components';
 
-import StepBase from "../_shared_/stepBase";
-import { ButtonOutline as ButtonOutlineUI, ButtonPrimary as ButtonPrimaryUI, FieldArea, InputAndLabel, InputMaskAndLabel, Title } from "../ui";
+import StepBase from '../_shared_/stepBase';
+import {
+  ButtonOutline as ButtonOutlineUI,
+  ButtonPrimary as ButtonPrimaryUI,
+  FieldArea,
+  InputAndLabel,
+  InputMaskAndLabel,
+  Title,
+} from '../ui';
 
 const Step02 = ({ tracker, navigateToStep, isGoingBack, formValues, formErrors, setFormValue, stepHasError }) => {
   const handleMoveForward = (event) => {
@@ -22,7 +29,7 @@ const Step02 = ({ tracker, navigateToStep, isGoingBack, formValues, formErrors, 
 
       <FieldArea>
         <InputAndLabel
-          onChange={(e) => setFormValue("entryName", e.target.value)}
+          onChange={(e) => setFormValue('entryName', e.target.value)}
           value={formValues.entryName}
           hasError={formErrors.entryName.error}
           errorMessage={formErrors.entryName.message}
@@ -35,7 +42,7 @@ const Step02 = ({ tracker, navigateToStep, isGoingBack, formValues, formErrors, 
 
       <FieldArea>
         <InputAndLabel
-          onChange={(e) => handleSetMetadata("entryEmail", e.target.value)}
+          onChange={(e) => handleSetMetadata('entryEmail', e.target.value)}
           value={formValues.entryEmail}
           hasError={formErrors.entryEmail.error}
           errorMessage={formErrors.entryEmail.message}
@@ -48,7 +55,7 @@ const Step02 = ({ tracker, navigateToStep, isGoingBack, formValues, formErrors, 
 
       <FieldArea>
         <InputMaskAndLabel
-          onChange={(e) => setFormValue("entryWhatsapp", e.target.value)}
+          onChange={(e) => setFormValue('entryWhatsapp', e.target.value)}
           value={formValues.entryWhatsapp}
           hasError={formErrors.entryWhatsapp.error}
           errorMessage={formErrors.entryWhatsapp.message}
@@ -72,7 +79,7 @@ const Step02 = ({ tracker, navigateToStep, isGoingBack, formValues, formErrors, 
 
 export default Step02;
 
-Step02.displayName = "Step02";
+Step02.displayName = 'Step02';
 
 const ButtonArea = tw.div`
   grid

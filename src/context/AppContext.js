@@ -1,5 +1,5 @@
-import { createContext, useContext, useState } from "react";
-import { tracker } from "../components/_shared_/bootstrap";
+import { createContext, useContext, useState } from 'react';
+import { tracker } from '../components/_shared_/bootstrap';
 
 const AppContext = createContext({
   tracker: () => {},
@@ -16,7 +16,9 @@ export const AppProvider = (props) => {
   const progressLimit = 9;
 
   return (
-    <AppContext.Provider value={{ tracker, currentProgress, setCurrentProgress, progressVisible, setProgressVisible, progressLimit }}>
+    <AppContext.Provider
+      value={{ tracker, currentProgress, setCurrentProgress, progressVisible, setProgressVisible, progressLimit }}
+    >
       {props.children}
     </AppContext.Provider>
   );
@@ -24,7 +26,7 @@ export const AppProvider = (props) => {
 
 export function useApp() {
   const app = useContext(AppContext);
-  if (!app) throw new Error("it must be used within a Provider");
+  if (!app) throw new Error('it must be used within a Provider');
   return app;
 }
 

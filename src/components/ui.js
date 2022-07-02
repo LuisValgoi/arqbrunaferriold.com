@@ -1,9 +1,9 @@
-import React from "react";
-import { DeleteOutlined, InboxOutlined } from "@ant-design/icons";
-import { Upload } from "antd";
-import styled from "styled-components";
-import tw from "tailwind-styled-components";
-import ReactInputMask from "react-input-mask";
+import React from 'react';
+import { DeleteOutlined, InboxOutlined } from '@ant-design/icons';
+import { Upload } from 'antd';
+import styled from 'styled-components';
+import tw from 'tailwind-styled-components';
+import ReactInputMask from 'react-input-mask';
 
 const ButtonBase = tw.button`
   w-full
@@ -63,7 +63,8 @@ export const ButtonPrimary = tw(ButtonBase)`
     text-gray-400
     border-gray-400
     border
-  ` : `
+  `
+      : `
     text-white
     bg-arq-brown-300
     border-arq-brown-800
@@ -81,7 +82,7 @@ export const Label = tw.label`
   text-sm md:text-md
   text-gray-700
   font-black
-  ${(props) => (props.$noMarginBottom ? "mb-0" : "mb-1")}
+  ${(props) => (props.$noMarginBottom ? 'mb-0' : 'mb-1')}
 `;
 
 export const Input = tw.input`
@@ -96,7 +97,7 @@ export const Input = tw.input`
   rounded-md
   placeholder-gray-500 placeholder-opacity-50
   
-  ${(props) => (props.$hasError ? "border-red-500" : "border-arq-brown-200")}
+  ${(props) => (props.$hasError ? 'border-red-500' : 'border-arq-brown-200')}
 `;
 
 export const InputMask = tw(ReactInputMask)`
@@ -111,7 +112,7 @@ export const InputMask = tw(ReactInputMask)`
   rounded-md
   placeholder-gray-500 placeholder-opacity-25
   
-  ${(props) => (props.$hasError ? "border-red-500" : "border-arq-brown-200")}
+  ${(props) => (props.$hasError ? 'border-red-500' : 'border-arq-brown-200')}
 `;
 
 export const Select = tw.select`
@@ -125,7 +126,7 @@ export const Select = tw.select`
   text-xs
   rounded-md
   
-  ${(props) => (props.$hasError ? "border-red-500" : "border-arq-brown-300")}
+  ${(props) => (props.$hasError ? 'border-red-500' : 'border-arq-brown-300')}
 `;
 
 export const TextArea = tw.textarea`
@@ -141,7 +142,7 @@ export const TextArea = tw.textarea`
   resize-none
   placeholder-gray-500 placeholder-opacity-50
   
-  ${(props) => (props.$hasError ? "border-red-500" : "border-arq-brown-200")}
+  ${(props) => (props.$hasError ? 'border-red-500' : 'border-arq-brown-200')}
 `;
 
 export const RadioButton = tw.input`
@@ -165,13 +166,33 @@ export const FieldArea = tw.div`
   max-w-320
 `;
 
-export const InputAndLabel = ({ onChange, value, htmlFor, inputType, label, placeholder, hasError, errorMessage, noLabel = false, ...props }) => {
+export const InputAndLabel = ({
+  onChange,
+  value,
+  htmlFor,
+  inputType,
+  label,
+  placeholder,
+  hasError,
+  errorMessage,
+  noLabel = false,
+  ...props
+}) => {
   return (
     <div className="text-left mb-2">
       {!noLabel && <Label htmlFor={htmlFor}>{label}</Label>}
 
       <div className="mt-1 relative rounded-md shadow-sm">
-        <Input {...props} $hasError={hasError} onChange={onChange} value={value} type={inputType} name={htmlFor} id={htmlFor} placeholder={placeholder} />
+        <Input
+          {...props}
+          $hasError={hasError}
+          onChange={onChange}
+          value={value}
+          type={inputType}
+          name={htmlFor}
+          id={htmlFor}
+          placeholder={placeholder}
+        />
       </div>
 
       {hasError && <p className="mt-2 text-red-500 text-xs italic">{errorMessage}</p>}
@@ -179,13 +200,35 @@ export const InputAndLabel = ({ onChange, value, htmlFor, inputType, label, plac
   );
 };
 
-export const InputMaskAndLabel = ({ onChange, mask, value, htmlFor, inputType, label, placeholder, hasError, errorMessage, noLabel = false, ...props }) => {
+export const InputMaskAndLabel = ({
+  onChange,
+  mask,
+  value,
+  htmlFor,
+  inputType,
+  label,
+  placeholder,
+  hasError,
+  errorMessage,
+  noLabel = false,
+  ...props
+}) => {
   return (
     <div className="text-left mb-2">
       {!noLabel && <Label htmlFor={htmlFor}>{label}</Label>}
 
       <div className="mt-1 relative rounded-md shadow-sm">
-        <InputMask {...props} mask={mask} $hasError={hasError} onChange={onChange} value={value} type={inputType} name={htmlFor} id={htmlFor} placeholder={placeholder} />
+        <InputMask
+          {...props}
+          mask={mask}
+          $hasError={hasError}
+          onChange={onChange}
+          value={value}
+          type={inputType}
+          name={htmlFor}
+          id={htmlFor}
+          placeholder={placeholder}
+        />
       </div>
 
       {hasError && <p className="mt-2 text-red-500 text-xs italic">{errorMessage}</p>}
@@ -193,9 +236,18 @@ export const InputMaskAndLabel = ({ onChange, mask, value, htmlFor, inputType, l
   );
 };
 
-export const RadioButtonGroupAndLabel = ({ onChange, hasError, errorMessage, name, label, options, value, formItemsInLine = true }) => {
-  const wrapperClasses = formItemsInLine ? "mt-1 relative flex" : "mt-1 relative flex flex-col";
-  const itemClasses = formItemsInLine ? "form-check form-check-inline" : "form-check mt-2";
+export const RadioButtonGroupAndLabel = ({
+  onChange,
+  hasError,
+  errorMessage,
+  name,
+  label,
+  options,
+  value,
+  formItemsInLine = true,
+}) => {
+  const wrapperClasses = formItemsInLine ? 'mt-1 relative flex' : 'mt-1 relative flex flex-col';
+  const itemClasses = formItemsInLine ? 'form-check form-check-inline' : 'form-check mt-2';
 
   return (
     <div className="text-left mb-2 mt-4 flex flex-col">
@@ -204,7 +256,14 @@ export const RadioButtonGroupAndLabel = ({ onChange, hasError, errorMessage, nam
       <div className={wrapperClasses}>
         {options.map((option) => (
           <div key={option.value} className={itemClasses}>
-            <RadioButton type="radio" id={option.value} name={name} value={option.value} checked={option.value === value} onChange={onChange} />
+            <RadioButton
+              type="radio"
+              id={option.value}
+              name={name}
+              value={option.value}
+              checked={option.value === value}
+              onChange={onChange}
+            />
             <Label className="ml-2" htmlFor={option.value}>
               {option.label}
             </Label>
@@ -217,13 +276,32 @@ export const RadioButtonGroupAndLabel = ({ onChange, hasError, errorMessage, nam
   );
 };
 
-export const TextAreaAndLabel = ({ onChange, value, htmlFor, inputType, label, rows = 3, placeholder, hasError, errorMessage }) => {
+export const TextAreaAndLabel = ({
+  onChange,
+  value,
+  htmlFor,
+  inputType,
+  label,
+  rows = 3,
+  placeholder,
+  hasError,
+  errorMessage,
+}) => {
   return (
     <div className="text-left mb-2">
       <Label htmlFor={htmlFor}>{label}</Label>
 
       <div className="mt-1 relative rounded-md shadow-sm">
-        <TextArea rows={rows} $hasError={hasError} onChange={onChange} value={value} type={inputType} name={htmlFor} id={htmlFor} placeholder={placeholder} />
+        <TextArea
+          rows={rows}
+          $hasError={hasError}
+          onChange={onChange}
+          value={value}
+          type={inputType}
+          name={htmlFor}
+          id={htmlFor}
+          placeholder={placeholder}
+        />
       </div>
 
       {hasError && <p className="mt-2 text-red-500 text-xs italic">{errorMessage}</p>}

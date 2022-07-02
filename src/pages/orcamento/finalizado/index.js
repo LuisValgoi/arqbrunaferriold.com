@@ -1,18 +1,18 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import tw from "tailwind-styled-components";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import tw from 'tailwind-styled-components';
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLongArrowAltLeft } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLongArrowAltLeft } from '@fortawesome/free-solid-svg-icons';
 
-import { Paragraph, Title } from "../../../components/ui";
-import { usePreventAccess } from "../../../hooks/usePreventAccess";
+import { Paragraph, Title } from '../../../components/ui';
+import { usePreventAccess } from '../../../hooks/usePreventAccess';
 
 const OrcamentoFinalizado = () => {
   const navigate = useNavigate();
 
   usePreventAccess(() => {
-    navigate("/orcamento");
+    navigate('/orcamento');
   });
 
   return (
@@ -25,7 +25,7 @@ const OrcamentoFinalizado = () => {
         
         Fique atento à caixa de entrada ou spam de seu e-mail, pois em instantes você irá receber uma cópia do preenchimento deste formulário. `}
       </Paragraph>
-      <Button onClick={() => navigate("/")}>
+      <Button onClick={() => navigate('/')}>
         <ButtonIcon icon={faLongArrowAltLeft} size="1x" />
         voltar para home
       </Button>
@@ -35,7 +35,7 @@ const OrcamentoFinalizado = () => {
 
 export default OrcamentoFinalizado;
 
-OrcamentoFinalizado.displayName = "OrcamentoFinalizado";
+OrcamentoFinalizado.displayName = 'OrcamentoFinalizado';
 
 const Container = tw.article`
   flex

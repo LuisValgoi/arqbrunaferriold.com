@@ -1,5 +1,10 @@
 .idea
+.nyc_output
+coverage
+config
 build
+build
+dist
 functions
 netlify
 node_modules
@@ -9,3 +14,8 @@ netlify.toml
 package.json
 *.env
 *.config.js
+*.html
+*.env
+.vscode
+*.env.*
+

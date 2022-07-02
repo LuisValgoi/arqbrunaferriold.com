@@ -1,8 +1,15 @@
-import React from "react";
-import tw from "tailwind-styled-components";
+import React from 'react';
+import tw from 'tailwind-styled-components';
 
-import StepBase from "../_shared_/stepBase";
-import { ButtonOutline as ButtonOutlineUI, ButtonPrimary as ButtonPrimaryUI, FieldArea, InputAndLabel, SelectAndLabel, Title } from "../ui";
+import StepBase from '../_shared_/stepBase';
+import {
+  ButtonOutline as ButtonOutlineUI,
+  ButtonPrimary as ButtonPrimaryUI,
+  FieldArea,
+  InputAndLabel,
+  SelectAndLabel,
+  Title,
+} from '../ui';
 
 const Step06 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormValue, stepHasError }) => {
   const handleMoveForward = (event) => {
@@ -17,37 +24,37 @@ const Step06 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormVa
 
       <FieldArea>
         <SelectAndLabel
-          onChange={(e) => setFormValue("entryProjectPlace", e.target.value)}
+          onChange={(e) => setFormValue('entryProjectPlace', e.target.value)}
           value={formValues.entryProjectPlace}
           htmlFor="entryProjectPlace"
           label="Qual o tipo do local e o que buscas?"
           options={[
             {
-              label: "Local novo e Sem quebra de paredes",
-              value: "Local novo e Sem quebra de paredes",
+              label: 'Local novo e Sem quebra de paredes',
+              value: 'Local novo e Sem quebra de paredes',
             },
             {
-              label: "Local novo e Com quebra de paredes",
-              value: "Local novo e Com quebra de paredes",
+              label: 'Local novo e Com quebra de paredes',
+              value: 'Local novo e Com quebra de paredes',
             },
             {
-              label: "Local antigo e Sem quebra de paredes",
-              value: "Local antigo e Sem quebra de paredes",
+              label: 'Local antigo e Sem quebra de paredes',
+              value: 'Local antigo e Sem quebra de paredes',
             },
             {
-              label: "Local antigo e Com quebra de paredes",
-              value: "Local antigo e Com quebra de paredes",
+              label: 'Local antigo e Com quebra de paredes',
+              value: 'Local antigo e Com quebra de paredes',
             },
             {
-              label: "Outros",
-              value: "Outros",
+              label: 'Outros',
+              value: 'Outros',
             },
           ]}
         />
 
-        {formValues.entryProjectPlace === "Outros" && (
+        {formValues.entryProjectPlace === 'Outros' && (
           <InputAndLabel
-            onChange={(e) => setFormValue("entryProjectPlaceOther", e.target.value)}
+            onChange={(e) => setFormValue('entryProjectPlaceOther', e.target.value)}
             value={formValues.entryProjectPlaceOther}
             hasError={formErrors.entryProjectPlaceOther.error}
             errorMessage={formErrors.entryProjectPlaceOther.message}
@@ -61,37 +68,37 @@ const Step06 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormVa
 
       <FieldArea>
         <SelectAndLabel
-          onChange={(e) => setFormValue("entryProjectRevestimentos", e.target.value)}
+          onChange={(e) => setFormValue('entryProjectRevestimentos', e.target.value)}
           value={formValues.entryProjectRevestimentos}
           htmlFor="entryProjectRevestimentos"
           label="Qual o tipo de revestimento e o que buscas?"
           options={[
             {
-              label: "Quero substituir os revestimentos antigos por novos",
-              value: "Quero substituir os revestimentos antigos por novos",
+              label: 'Quero substituir os revestimentos antigos por novos',
+              value: 'Quero substituir os revestimentos antigos por novos',
             },
             {
-              label: "Quero manter os revestimentos antigos existente",
-              value: "Quero manter os revestimentos antigos existente",
+              label: 'Quero manter os revestimentos antigos existente',
+              value: 'Quero manter os revestimentos antigos existente',
             },
             {
-              label: "Quero substituir os revestimentos entregue pela construtora",
-              value: "Quero substituir os revestimentos entregue pela construtora",
+              label: 'Quero substituir os revestimentos entregue pela construtora',
+              value: 'Quero substituir os revestimentos entregue pela construtora',
             },
             {
-              label: "Quero manter os revestimentos entregue pela construtora",
-              value: "Quero manter os revestimentos entregue pela construtora",
+              label: 'Quero manter os revestimentos entregue pela construtora',
+              value: 'Quero manter os revestimentos entregue pela construtora',
             },
             {
-              label: "Outros",
-              value: "Outros",
+              label: 'Outros',
+              value: 'Outros',
             },
           ]}
         />
 
-        {formValues.entryProjectRevestimentos === "Outros" && (
+        {formValues.entryProjectRevestimentos === 'Outros' && (
           <InputAndLabel
-            onChange={(e) => setFormValue("entryProjectRevestimentosOther", e.target.value)}
+            onChange={(e) => setFormValue('entryProjectRevestimentosOther', e.target.value)}
             value={formValues.entryProjectRevestimentosOther}
             hasError={formErrors.entryProjectRevestimentosOther.error}
             errorMessage={formErrors.entryProjectRevestimentosOther.message}
@@ -103,41 +110,39 @@ const Step06 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormVa
         )}
       </FieldArea>
 
-
-
       <FieldArea>
         <SelectAndLabel
-          onChange={(e) => setFormValue("entryProjectForro", e.target.value)}
+          onChange={(e) => setFormValue('entryProjectForro', e.target.value)}
           value={formValues.entryProjectForro}
           htmlFor="entryProjectForro"
           label="Qual o tipo de forro e o que buscas?"
           options={[
             {
-              label: "Quero manter o forro existente do local",
-              value: "Quero manter o forro existente do local",
+              label: 'Quero manter o forro existente do local',
+              value: 'Quero manter o forro existente do local',
             },
             {
-              label: "Quero colocar forro novo no local",
-              value: "Quero colocar forro novo no local",
+              label: 'Quero colocar forro novo no local',
+              value: 'Quero colocar forro novo no local',
             },
             {
-              label: "Quero deixar o local sem forro",
-              value: "Quero deixar o local sem forro",
+              label: 'Quero deixar o local sem forro',
+              value: 'Quero deixar o local sem forro',
             },
             {
-              label: "Quero melhorar o forro existente do local",
-              value: "Quero melhorar o forro existente do local",
+              label: 'Quero melhorar o forro existente do local',
+              value: 'Quero melhorar o forro existente do local',
             },
             {
-              label: "Outros",
-              value: "Outros",
+              label: 'Outros',
+              value: 'Outros',
             },
           ]}
         />
 
-        {formValues.entryProjectForro === "Outros" && (
+        {formValues.entryProjectForro === 'Outros' && (
           <InputAndLabel
-            onChange={(e) => setFormValue("entryProjectForroOther", e.target.value)}
+            onChange={(e) => setFormValue('entryProjectForroOther', e.target.value)}
             value={formValues.entryProjectForroOther}
             hasError={formErrors.entryProjectForroOther.error}
             errorMessage={formErrors.entryProjectForroOther.message}
@@ -161,7 +166,7 @@ const Step06 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormVa
 
 export default Step06;
 
-Step06.displayName = "Step06";
+Step06.displayName = 'Step06';
 
 const ButtonArea = tw.div`
   grid
