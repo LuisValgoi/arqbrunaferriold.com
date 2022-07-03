@@ -1,16 +1,14 @@
 import React from "react";
 import tw from "tailwind-styled-components";
 
-import { useNavigate } from "react-router-dom";
 import { ButtonOutline } from "../ui";
 
 const CTAs = () => {
-  const navigate = useNavigate();
   const urlRender = process.env.REACT_APP_CTA_RENDER;
   const urlContato = "mailto:arqbrunaferri@gmail.com";
   const urlTCC = process.env.REACT_APP_CTA_TCC_LINK;
 
-  const handleClickOrcamento = () => navigate("/orcamento");
+  const handleClickOrcamento = () => window.open('https://my.forms.app/arqbrunaferri/orcamento', '_blank');
 
   return (
     <Container>
