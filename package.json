@@ -36,6 +36,9 @@
     "tw-elements": "^1.0.0-alpha11",
     "web-vitals": "^1.0.1"
   },
+  "resolutions": {
+    "react-error-overlay": "6.0.9"
+  },
   "scripts": {
     "dev": "netlify dev",
     "start": "craco start",
@@ -62,5 +65,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "react-error-overlay": "6.0.9"
   }
 }
