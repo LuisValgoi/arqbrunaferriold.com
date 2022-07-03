@@ -4,6 +4,8 @@ import { Upload } from 'antd';
 import styled from 'styled-components';
 import tw from 'tailwind-styled-components';
 import ReactInputMask from 'react-input-mask';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircle, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 
 const ButtonBase = tw.button`
   w-full
@@ -243,27 +245,51 @@ export const RadioButtonGroupAndLabel = ({
   label,
   options,
   value,
-  formItemsInLine = true,
 }) => {
-  const wrapperClasses = formItemsInLine ? 'mt-1 relative flex' : 'mt-1 relative flex flex-col';
-  const itemClasses = formItemsInLine ? 'form-check form-check-inline' : 'form-check mt-2';
+  const itemClasses = (isFirst, isChecked) => `
+  ${!isFirst ? 'mt-2' : ''}
+  ${isChecked ? 'border-2 bg-arq-brown-100 font-bold' : 'border'}
+    form-check
+    flex
+    row
+    items-center
+    bg-white
+    py-3
+    px-2
+    w-full
+    rounded-md
+    cursor-pointer
+    border-arq-brown-200
+    transform transition duration-300 ease-in-out
+    hover:border-arq-brown-300
+    focus:ring-arq-brown-500
+    focus:border-arq-brown-500
+  `;
+
+  const handleOutsideClick = (event) => onChange({ target: { value: event.currentTarget.children[0].value } });
 
   return (
-    <div className="text-left mb-2 mt-4 flex flex-col">
+    <div className="text-left mb-4 mt-2 flex flex-col">
       <Label $noMarginBottom>{label}</Label>
 
-      <div className={wrapperClasses}>
-        {options.map((option) => (
-          <div key={option.value} className={itemClasses}>
-            <RadioButton
+      <div className="mt-1 relative flex flex-col">
+        {options.map((option, index) => (
+          <div
+            key={option.value}
+            onClick={handleOutsideClick}
+            className={itemClasses(index === 0, option.value === value)}
+          >
+            <input
               type="radio"
               id={option.value}
               name={name}
               value={option.value}
               checked={option.value === value}
+              className="hidden"
               onChange={onChange}
             />
-            <Label className="ml-2" htmlFor={option.value}>
+            <FontAwesomeIcon icon={option.value === value ? faCheckCircle : faCircle} size="1x" className={`${option.value === value ? 'text-arq-brown-200' : 'text-arq-brown-100'}`} />
+            <Label $noMarginBottom className="ml-2 cursor-pointer text-xs" htmlFor={option.value}>
               {option.label}
             </Label>
           </div>

@@ -18,7 +18,6 @@ export const useCompleteOrcamento = (formValues) => {
     // STEP_04
     entryProjectCity: formValues.entryProjectCity,
     entryProjectType: formValues.entryProjectType,
-    entryCannotMiss: formValues.entryCannotMiss,
     // STEP_05
     entryProjectBuilt: formValues.entryProjectBuilt,
     entryProjectArea: formValues.entryProjectArea,
@@ -69,9 +68,9 @@ export const useCompleteOrcamento = (formValues) => {
             : formValues.entryProjectRevestimentos
         }&entry.122732658=${
           formValues.entryProjectForro === 'Outros' ? formValues.entryProjectForroOther : formValues.entryProjectForro
-        }&entry.2123598535=${encodeURI(formValues.entryBudget)}&entry.316321790=${
-          formValues.entryCannotMiss
-        }&entry.1058871605=${formValues.entryFinalsNotes}&submit=Submit`;
+        }&entry.2123598535=${encodeURI(formValues.entryBudget)}&entry.1058871605=${
+          formValues.entryFinalsNotes
+        }&submit=Submit`;
         const resultForm = await fetch(URL.replace(/\s/g, '+'), {
           method: 'GET',
           mode: 'no-cors',

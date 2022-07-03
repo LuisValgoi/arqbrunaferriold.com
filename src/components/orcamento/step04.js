@@ -7,7 +7,7 @@ import {
   ButtonPrimary as ButtonPrimaryUI,
   FieldArea,
   InputAndLabel,
-  SelectAndLabel,
+  RadioButtonGroupAndLabel,
   Title,
 } from '../ui';
 
@@ -20,7 +20,7 @@ const Step04 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormVa
 
   return (
     <StepBase isGoingBack={isGoingBack}>
-      <Title>QUANTO AO PROJETO</Title>
+      <Title>QUANTO AO PROJETO...</Title>
 
       <FieldArea>
         <InputAndLabel
@@ -36,38 +36,31 @@ const Step04 = ({ navigateToStep, isGoingBack, formValues, formErrors, setFormVa
       </FieldArea>
 
       <FieldArea>
-        <SelectAndLabel
+        <RadioButtonGroupAndLabel
           onChange={(e) => setFormValue('entryProjectType', e.target.value)}
-          value={formValues.entryProjectType}
-          htmlFor="entryProjectType"
+          hasError={formErrors.entryProjectType.error}
+          errorMessage={formErrors.entryProjectType.message}
           label="Que tipo de projeto você precisa?"
+          name="entryProjectType"
+          value={formValues.entryProjectType}
           options={[
             {
-              label: 'Interiores',
-              value: 'Interiores',
+              label: 'Apartamento Novo',
+              value: 'Apartamento Novo',
             },
             {
-              label: 'Arquitetônico',
-              value: 'Arquitetônico',
+              label: 'Apartamento Reforma',
+              value: 'Apartamento Reforma',
             },
             {
-              label: 'Arquitetônico + Interiores',
-              value: 'Arquitetônico + Interiores',
+              label: 'Casa Nova',
+              value: 'Casa Nova',
+            },
+            {
+              label: 'Casa Reforma',
+              value: 'Casa Reforma',
             },
           ]}
-        />
-      </FieldArea>
-
-      <FieldArea>
-        <InputAndLabel
-          onChange={(e) => setFormValue('entryCannotMiss', e.target.value)}
-          value={formValues.entryCannotMiss}
-          hasError={formErrors.entryCannotMiss.error}
-          errorMessage={formErrors.entryCannotMiss.message}
-          inputType="text"
-          htmlFor="entryCannotMiss"
-          placeholder="Ex: Quadros, Decoração, Papel de parede..."
-          label="O que não pode faltar na sua casa?"
         />
       </FieldArea>
 
