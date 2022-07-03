@@ -12,6 +12,7 @@ const Layout = ({ children }) => {
 
   return (
     <Container>
+      <ContainerTexture />
       <Content $isOrcamento={isOrcamentoURL}>
         <InnerContent>
           <Avatar />
@@ -33,15 +34,20 @@ const ContainerTexture = styled.div`
   opacity: 0.8;
   background-size: 10px 10px;
   background-image: repeating-linear-gradient(45deg, #ffffff 0, #ffffff 1px, #fafafa 0, #fafafa 50%);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 0;
 `;
 
-const Container = tw(ContainerTexture)`
+const Container = tw.div`
   w-screen
   h-screen
   flex 
   flex-col
   content-center 
   items-center
+  z-10
 `;
 
 const Content = tw.div`
